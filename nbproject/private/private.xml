@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/NewCrossOriginResourceSharingFilter.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagenttpFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentnatureFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/PropertyPK.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/conf/persistence.xml</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/ApplicationConfig.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/BitFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagentshFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/WorksheetFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/EntrepriseFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Instance.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/PropertyFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/VwLastidoftableFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/VwLastidoftable.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagenteeFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/MarkFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/InstanceFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Agent.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/DamageFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Property.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AbstractFacade.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AgentFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Mark.java</file>
+        </group>
+    </open-files>
+</project-private>
