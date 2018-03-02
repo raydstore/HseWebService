@@ -64,7 +64,6 @@ public class VwDamageaccidentnatureFacadeREST extends AbstractFacade<VwDamageacc
 
     @GET
     // @Override
-    // filtre par accident et nature
     @Produces({"application/xml", "application/json"})
     public List<VwDamageaccidentnature> findAll(@QueryParam("idaccident") BigInteger idaccident, @QueryParam("idnature") BigInteger idnature) {
         if (idaccident != null && idnature != null)
