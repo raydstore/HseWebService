@@ -7,19 +7,25 @@ package entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,6 +47,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagentsh.findByOwner", query = "SELECT a FROM Accidentagentsh a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accidentagentsh.findByLastuser", query = "SELECT a FROM Accidentagentsh a WHERE a.lastuser = :lastuser")})
 public class Accidentagentsh implements Serializable {
+    @JoinColumn(name = "IDAGENT", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Agent agent;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accidentagentsh")
+    private Collection<Accidentagentshbit> accidentagentshbitCollection;
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AccidentagentshPK accidentagentshPK;
@@ -195,6 +206,23 @@ public class Accidentagentsh implements Serializable {
     @Override
     public String toString() {
         return "entity.Accidentagentsh[ accidentagentshPK=" + accidentagentshPK + " ]";
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    @XmlTransient
+    public Collection<Accidentagentshbit> getAccidentagentshbitCollection() {
+        return accidentagentshbitCollection;
+    }
+
+    public void setAccidentagentshbitCollection(Collection<Accidentagentshbit> accidentagentshbitCollection) {
+        this.accidentagentshbitCollection = accidentagentshbitCollection;
     }
     
 }

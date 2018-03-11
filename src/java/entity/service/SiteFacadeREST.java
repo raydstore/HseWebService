@@ -36,14 +36,14 @@ public class SiteFacadeREST extends AbstractFacade<Site> {
 
     @POST
     @Override
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void create(Site entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") BigDecimal id, Site entity) {
         super.edit(entity);
     }
@@ -56,21 +56,21 @@ public class SiteFacadeREST extends AbstractFacade<Site> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public Site find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Site> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Site> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

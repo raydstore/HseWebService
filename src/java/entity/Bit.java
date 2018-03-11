@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Bit.findByOwner", query = "SELECT b FROM Bit b WHERE b.owner = :owner"),
     @NamedQuery(name = "Bit.findByLastuser", query = "SELECT b FROM Bit b WHERE b.lastuser = :lastuser"),
     @NamedQuery(name = "Bit.findByKindparent", query = "SELECT b FROM Bit b WHERE b.kindparent = :kindparent"),
-    @NamedQuery(name = "Bit.findByCount", query = "SELECT b FROM Bit b WHERE b.count = :count")})
+    @NamedQuery(name = "Bit.findByCount", query = "SELECT b FROM Bit b WHERE b.count = :count"),
+    @NamedQuery(name = "Bit.findByIdbitclass", query = "SELECT b FROM Bit b WHERE b.idbitclass = :idbitclass"),
+    @NamedQuery(name = "Bit.findByKindancestor", query = "SELECT b FROM Bit b WHERE b.kindancestor = :kindancestor")})
 public class Bit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -82,6 +84,12 @@ public class Bit implements Serializable {
     private String kindparent;
     @Column(name = "COUNT")
     private BigInteger count;
+    @Size(max = 4)
+    @Column(name = "IDBITCLASS")
+    private String idbitclass;
+    @Size(max = 1)
+    @Column(name = "KINDANCESTOR")
+    private String kindancestor;
 
     public Bit() {
     }
@@ -176,6 +184,22 @@ public class Bit implements Serializable {
 
     public void setCount(BigInteger count) {
         this.count = count;
+    }
+
+    public String getIdbitclass() {
+        return idbitclass;
+    }
+
+    public void setIdbitclass(String idbitclass) {
+        this.idbitclass = idbitclass;
+    }
+
+    public String getKindancestor() {
+        return kindancestor;
+    }
+
+    public void setKindancestor(String kindancestor) {
+        this.kindancestor = kindancestor;
     }
 
     @Override

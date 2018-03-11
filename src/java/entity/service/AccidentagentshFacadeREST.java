@@ -88,7 +88,7 @@ public class AccidentagentshFacadeREST extends AbstractFacade<Accidentagentsh> {
     }
 
     @GET
-   // @Override
+    //@Override
     @Produces({"application/xml", "application/json"})
     public List<Accidentagentsh> findAll(@QueryParam("iddamage") BigInteger iddamage) {
         if (iddamage != null)

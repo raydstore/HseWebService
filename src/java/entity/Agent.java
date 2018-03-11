@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,6 +43,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Agent.findByOwner", query = "SELECT a FROM Agent a WHERE a.owner = :owner"),
     @NamedQuery(name = "Agent.findByLastuser", query = "SELECT a FROM Agent a WHERE a.lastuser = :lastuser")})
 public class Agent implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agent")
+    private Collection<Accidentagentsh> accidentagentshCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idagentdeclare")
+    private Collection<Accident> accidentCollection;
+    @OneToMany(mappedBy = "idagentvalidate")
+    private Collection<Accident> accidentCollection1;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "agent")
+    private Driversh driversh;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -206,6 +215,41 @@ public class Agent implements Serializable {
     @Override
     public String toString() {
         return "entity.Agent[ id=" + id + " ]";
+    }
+
+    public Driversh getDriversh() {
+        return driversh;
+    }
+
+    public void setDriversh(Driversh driversh) {
+        this.driversh = driversh;
+    }
+
+    @XmlTransient
+    public Collection<Accidentagentsh> getAccidentagentshCollection() {
+        return accidentagentshCollection;
+    }
+
+    public void setAccidentagentshCollection(Collection<Accidentagentsh> accidentagentshCollection) {
+        this.accidentagentshCollection = accidentagentshCollection;
+    }
+
+    @XmlTransient
+    public Collection<Accident> getAccidentCollection() {
+        return accidentCollection;
+    }
+
+    public void setAccidentCollection(Collection<Accident> accidentCollection) {
+        this.accidentCollection = accidentCollection;
+    }
+
+    @XmlTransient
+    public Collection<Accident> getAccidentCollection1() {
+        return accidentCollection1;
+    }
+
+    public void setAccidentCollection1(Collection<Accident> accidentCollection1) {
+        this.accidentCollection1 = accidentCollection1;
     }
     
 }

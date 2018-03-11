@@ -36,14 +36,14 @@ public class MarkFacadeREST extends AbstractFacade<Mark> {
 
     @POST
     @Override
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void create(Mark entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") BigDecimal id, Mark entity) {
         super.edit(entity);
     }
@@ -56,21 +56,21 @@ public class MarkFacadeREST extends AbstractFacade<Mark> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public Mark find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Mark> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Mark> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

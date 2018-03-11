@@ -36,14 +36,14 @@ public class LabelFacadeREST extends AbstractFacade<Label> {
 
     @POST
     @Override
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void create(Label entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/json"})
+    @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") BigDecimal id, Label entity) {
         super.edit(entity);
     }
@@ -56,21 +56,21 @@ public class LabelFacadeREST extends AbstractFacade<Label> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public Label find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Label> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/json"})
+    @Produces({"application/xml", "application/json"})
     public List<Label> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

@@ -7,6 +7,7 @@ package entity.service;
 
 import entity.Accidentagenttp;
 import entity.AccidentagenttpPK;
+import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.PathSegment;
 
 /**
@@ -86,9 +88,11 @@ public class AccidentagenttpFacadeREST extends AbstractFacade<Accidentagenttp> {
     }
 
     @GET
-    @Override
+    //@Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentagenttp> findAll() {
+    public List<Accidentagenttp> findAll(@QueryParam("iddamage") BigInteger iddamage) {
+        if (iddamage != null)
+            return em.createNamedQuery("Accidentagenttp.findByIddamage").setParameter("iddamage", iddamage).getResultList();
         return super.findAll();
     }
 

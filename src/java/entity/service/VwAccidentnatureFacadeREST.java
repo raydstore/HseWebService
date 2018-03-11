@@ -65,9 +65,9 @@ public class VwAccidentnatureFacadeREST extends AbstractFacade<VwAccidentnature>
     @GET
     //@Override
     @Produces({"application/xml", "application/json"})
-    public List<VwAccidentnature> findAll(@QueryParam("idaccident") BigInteger idaccident, @QueryParam("idnature") BigInteger idnature) {
-        if (idaccident != null && idnature != null)
-            return em.createNamedQuery("VwAccidentnature.findByAccidentNature").setParameter("idaccident", idaccident).setParameter("idnature", idnature).getResultList();
+    public List<VwAccidentnature> findAll(@QueryParam("idaccident") BigInteger idaccident) {
+        if (idaccident != null)
+            return em.createNamedQuery("VwAccidentnature.findByIdaccident").setParameter("idaccident", idaccident).getResultList();
         return super.findAll();
     }
 

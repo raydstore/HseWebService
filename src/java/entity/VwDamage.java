@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "VwDamage.findByIdgrid", query = "SELECT v FROM VwDamage v WHERE v.idgrid = :idgrid"),
     @NamedQuery(name = "VwDamage.findByIdrank", query = "SELECT v FROM VwDamage v WHERE v.idrank = :idrank"),
     @NamedQuery(name = "VwDamage.findByName", query = "SELECT v FROM VwDamage v WHERE v.name = :name"),
-    @NamedQuery(name = "VwDamage.findByAccidentNature", query = "SELECT v FROM VwDamage v WHERE v.idaccident = :idaccident and v.idnature = :idnature"),
+    @NamedQuery(name = "VwDamage.findByAccidentNatureAccidentdomain", query = "SELECT v FROM VwDamage v WHERE v.idaccident = :idaccident and v.idnature = :idnature and v.accidentdomain = :accidentdomain"),
 })
 public class VwDamage implements Serializable {
     private static final long serialVersionUID = 1L;

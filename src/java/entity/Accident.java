@@ -14,6 +14,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -45,6 +47,24 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accident.findByOwner", query = "SELECT a FROM Accident a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accident.findByLastuser", query = "SELECT a FROM Accident a WHERE a.lastuser = :lastuser")})
 public class Accident implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Accidentpicture> accidentpictureCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Cause> causeCollection;
+    @JoinColumn(name = "IDAGENTDECLARE", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Agent idagentdeclare;
+    @JoinColumn(name = "IDAGENTVALIDATE", referencedColumnName = "ID")
+    @ManyToOne
+    private Agent idagentvalidate;
+    @JoinColumn(name = "IDSITEPARENT", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Site idsiteparent;
+    @JoinColumn(name = "IDSITE", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Site idsite;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Recommendation> recommendationCollection;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -223,6 +243,65 @@ public class Accident implements Serializable {
     @Override
     public String toString() {
         return "entity.Accident[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Accidentpicture> getAccidentpictureCollection() {
+        return accidentpictureCollection;
+    }
+
+    public void setAccidentpictureCollection(Collection<Accidentpicture> accidentpictureCollection) {
+        this.accidentpictureCollection = accidentpictureCollection;
+    }
+
+    @XmlTransient
+    public Collection<Cause> getCauseCollection() {
+        return causeCollection;
+    }
+
+    public void setCauseCollection(Collection<Cause> causeCollection) {
+        this.causeCollection = causeCollection;
+    }
+
+    public Agent getIdagentdeclare() {
+        return idagentdeclare;
+    }
+
+    public void setIdagentdeclare(Agent idagentdeclare) {
+        this.idagentdeclare = idagentdeclare;
+    }
+
+    public Agent getIdagentvalidate() {
+        return idagentvalidate;
+    }
+
+    public void setIdagentvalidate(Agent idagentvalidate) {
+        this.idagentvalidate = idagentvalidate;
+    }
+
+    public Site getIdsiteparent() {
+        return idsiteparent;
+    }
+
+    public void setIdsiteparent(Site idsiteparent) {
+        this.idsiteparent = idsiteparent;
+    }
+
+    public Site getIdsite() {
+        return idsite;
+    }
+
+    public void setIdsite(Site idsite) {
+        this.idsite = idsite;
+    }
+
+    @XmlTransient
+    public Collection<Recommendation> getRecommendationCollection() {
+        return recommendationCollection;
+    }
+
+    public void setRecommendationCollection(Collection<Recommendation> recommendationCollection) {
+        this.recommendationCollection = recommendationCollection;
     }
     
 }
