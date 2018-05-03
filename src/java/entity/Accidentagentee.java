@@ -43,7 +43,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagentee.findByDatecreate", query = "SELECT a FROM Accidentagentee a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Accidentagentee.findByDateupdate", query = "SELECT a FROM Accidentagentee a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentagentee.findByOwner", query = "SELECT a FROM Accidentagentee a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accidentagentee.findByLastuser", query = "SELECT a FROM Accidentagentee a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Accidentagentee.findByLastuser", query = "SELECT a FROM Accidentagentee a WHERE a.lastuser = :lastuser"),
+    @NamedQuery(name = "Accidentagentee.findByIdgrid", query = "SELECT a FROM Accidentagentee a WHERE a.idgrid = :idgrid"),
+    @NamedQuery(name = "Accidentagentee.findByIddamageIdgrid", query = "SELECT a FROM Accidentagentee a WHERE a.accidentagenteePK.iddamage = :iddamage and a.idgrid = :idgrid"),
+})
 public class Accidentagentee implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -90,6 +93,8 @@ public class Accidentagentee implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
     @JoinColumn(name = "IDENTREPRISE", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Entreprise identreprise;
@@ -202,6 +207,14 @@ public class Accidentagentee implements Serializable {
 
     public void setLastuser(String lastuser) {
         this.lastuser = lastuser;
+    }
+
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
     }
 
     public Entreprise getIdentreprise() {

@@ -40,7 +40,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagenttp.findByDateupdate", query = "SELECT a FROM Accidentagenttp a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentagenttp.findByOwner", query = "SELECT a FROM Accidentagenttp a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accidentagenttp.findByLastuser", query = "SELECT a FROM Accidentagenttp a WHERE a.lastuser = :lastuser"),
-    @NamedQuery(name = "Accidentagenttp.findByCountstopwork", query = "SELECT a FROM Accidentagenttp a WHERE a.countstopwork = :countstopwork")})
+    @NamedQuery(name = "Accidentagenttp.findByCountstopwork", query = "SELECT a FROM Accidentagenttp a WHERE a.countstopwork = :countstopwork"),
+    @NamedQuery(name = "Accidentagenttp.findByIdgrid", query = "SELECT a FROM Accidentagenttp a WHERE a.idgrid = :idgrid"),
+    @NamedQuery(name = "Accidentagenttp.findByIddamageIdgrid", query = "SELECT a FROM Accidentagenttp a WHERE a.accidentagenttpPK.iddamage = :iddamage and a.idgrid = :idgrid")
+})
 public class Accidentagenttp implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -84,6 +87,10 @@ public class Accidentagenttp implements Serializable {
     @NotNull
     @Column(name = "COUNTSTOPWORK")
     private BigInteger countstopwork;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
 
     public Accidentagenttp() {
     }
@@ -92,7 +99,7 @@ public class Accidentagenttp implements Serializable {
         this.accidentagenttpPK = accidentagenttpPK;
     }
 
-    public Accidentagenttp(AccidentagenttpPK accidentagenttpPK, String name, short accidentdomain, String typeaccident, String samury, Date datecreate, Date dateupdate, BigInteger countstopwork) {
+    public Accidentagenttp(AccidentagenttpPK accidentagenttpPK, String name, short accidentdomain, String typeaccident, String samury, Date datecreate, Date dateupdate, BigInteger countstopwork, BigInteger idgrid) {
         this.accidentagenttpPK = accidentagenttpPK;
         this.name = name;
         this.accidentdomain = accidentdomain;
@@ -101,6 +108,7 @@ public class Accidentagenttp implements Serializable {
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
         this.countstopwork = countstopwork;
+        this.idgrid = idgrid;
     }
 
     public Accidentagenttp(BigInteger id, BigInteger iddamage) {
@@ -185,6 +193,14 @@ public class Accidentagenttp implements Serializable {
 
     public void setCountstopwork(BigInteger countstopwork) {
         this.countstopwork = countstopwork;
+    }
+
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
     }
 
     @Override

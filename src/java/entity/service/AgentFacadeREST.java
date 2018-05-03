@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * @author boutarfa
  */
 @Stateless
-@Path("agent")
+@Path("entity.agent")
 public class AgentFacadeREST extends AbstractFacade<Agent> {
     @PersistenceContext(unitName = "HseWebServicePU")
     private EntityManager em;

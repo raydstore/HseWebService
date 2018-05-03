@@ -7,7 +7,6 @@ package entity.service;
 
 import entity.Accidentagentshbit;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -64,11 +62,9 @@ public class AccidentagentshbitFacadeREST extends AbstractFacade<Accidentagentsh
     }
 
     @GET
-    //@Override
+    @Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentagentshbit> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idagent") String idagent) {
-        if (iddamage != null && idagent != null)
-            return em.createNamedQuery("VwAccidentagentshbit.findByIddamageIdagent").setParameter("iddamage", iddamage).setParameter("idagent", idagent).getResultList();
+    public List<Accidentagentshbit> findAll() {
         return super.findAll();
     }
 

@@ -90,9 +90,10 @@ public class AccidentagentshFacadeREST extends AbstractFacade<Accidentagentsh> {
     @GET
     //@Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentagentsh> findAll(@QueryParam("iddamage") BigInteger iddamage) {
+    public List<Accidentagentsh> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idgrid") BigInteger idgrid) {
         if (iddamage != null)
-            return em.createNamedQuery("Accidentagentsh.findByIddamage").setParameter("iddamage", iddamage).getResultList();
+            return em.createNamedQuery("Accidentagentsh.findByIddamageIdgrid").setParameter("iddamage", iddamage)
+                       .setParameter("idgrid", idgrid).getResultList();
         return super.findAll();
     }
 

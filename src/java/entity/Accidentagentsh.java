@@ -45,13 +45,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accidentagentsh.findByDatecreate", query = "SELECT a FROM Accidentagentsh a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Accidentagentsh.findByDateupdate", query = "SELECT a FROM Accidentagentsh a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentagentsh.findByOwner", query = "SELECT a FROM Accidentagentsh a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accidentagentsh.findByLastuser", query = "SELECT a FROM Accidentagentsh a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Accidentagentsh.findByLastuser", query = "SELECT a FROM Accidentagentsh a WHERE a.lastuser = :lastuser"),
+    @NamedQuery(name = "Accidentagentsh.findByIdgrid", query = "SELECT a FROM Accidentagentsh a WHERE a.idgrid = :idgrid"),
+    @NamedQuery(name = "Accidentagentsh.findByIddamageIdgrid", query = "SELECT a FROM Accidentagentsh a WHERE a.accidentagentshPK.iddamage = :iddamage and a.idgrid = :idgrid"),
+})
 public class Accidentagentsh implements Serializable {
-    @JoinColumn(name = "IDAGENT", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Agent agent;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accidentagentsh")
-    private Collection<Accidentagentshbit> accidentagentshbitCollection;
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AccidentagentshPK accidentagentshPK;
@@ -89,6 +87,13 @@ public class Accidentagentsh implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
+    @JoinColumn(name = "IDAGENT", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Agent agent;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accidentagentsh")
+    private Collection<Accidentagentshbit> accidentagentshbitCollection;
 
     public Accidentagentsh() {
     }
@@ -183,6 +188,31 @@ public class Accidentagentsh implements Serializable {
         this.lastuser = lastuser;
     }
 
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
+    }
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    @XmlTransient
+    public Collection<Accidentagentshbit> getAccidentagentshbitCollection() {
+        return accidentagentshbitCollection;
+    }
+
+    public void setAccidentagentshbitCollection(Collection<Accidentagentshbit> accidentagentshbitCollection) {
+        this.accidentagentshbitCollection = accidentagentshbitCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -206,23 +236,6 @@ public class Accidentagentsh implements Serializable {
     @Override
     public String toString() {
         return "entity.Accidentagentsh[ accidentagentshPK=" + accidentagentshPK + " ]";
-    }
-
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
-    }
-
-    @XmlTransient
-    public Collection<Accidentagentshbit> getAccidentagentshbitCollection() {
-        return accidentagentshbitCollection;
-    }
-
-    public void setAccidentagentshbitCollection(Collection<Accidentagentshbit> accidentagentshbitCollection) {
-        this.accidentagentshbitCollection = accidentagentshbitCollection;
     }
     
 }

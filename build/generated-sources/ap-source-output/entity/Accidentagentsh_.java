@@ -10,7 +10,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-05-01T14:53:21")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-05-03T17:08:23")
 @StaticMetamodel(Accidentagentsh.class)
 public class Accidentagentsh_ { 
 
@@ -25,5 +25,6 @@ public class Accidentagentsh_ {
     public static volatile SingularAttribute<Accidentagentsh, Date> dateupdate;
     public static volatile SingularAttribute<Accidentagentsh, BigInteger> countstopwork;
     public static volatile SingularAttribute<Accidentagentsh, Short> accidentdomain;
+    public static volatile SingularAttribute<Accidentagentsh, BigInteger> idgrid;
 
 }

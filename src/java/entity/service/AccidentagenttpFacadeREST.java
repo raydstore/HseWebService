@@ -88,11 +88,12 @@ public class AccidentagenttpFacadeREST extends AbstractFacade<Accidentagenttp> {
     }
 
     @GET
-    //@Override
+    // @Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentagenttp> findAll(@QueryParam("iddamage") BigInteger iddamage) {
+    public List<Accidentagenttp> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idgrid") BigInteger idgrid) {
         if (iddamage != null)
-            return em.createNamedQuery("Accidentagenttp.findByIddamage").setParameter("iddamage", iddamage).getResultList();
+            return em.createNamedQuery("Accidentagenttp.findByIddamageIdgrid").setParameter("iddamage", iddamage)
+                       .setParameter("idgrid", idgrid).getResultList();
         return super.findAll();
     }
 
