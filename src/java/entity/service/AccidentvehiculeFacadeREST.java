@@ -66,10 +66,10 @@ public class AccidentvehiculeFacadeREST extends AbstractFacade<Accidentvehicule>
     @GET
    // @Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentvehicule> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("accidentdomain") BigInteger accidentdomain,
+    public List<Accidentvehicule> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idgrid") BigInteger idgrid, @QueryParam("accidentdomain") BigInteger accidentdomain,
                                           @QueryParam("classification") String classification) {
         if (iddamage != null && accidentdomain != null && classification != null)
-            return em.createNamedQuery("Accidentvehicule.findByDamageAccdomClas").setParameter("iddamage", iddamage).setParameter("accidentdomain", accidentdomain).setParameter("classification", classification).getResultList();
+            return em.createNamedQuery("Accidentvehicule.findByDamageAccdomClas").setParameter("iddamage", iddamage).setParameter("idgrid", idgrid).setParameter("accidentdomain", accidentdomain).setParameter("classification", classification).getResultList();
         return super.findAll();
     }
 

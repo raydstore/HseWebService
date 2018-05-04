@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accidentvehicule.findAll", query = "SELECT a FROM Accidentvehicule a"),
     @NamedQuery(name = "Accidentvehicule.findById", query = "SELECT a FROM Accidentvehicule a WHERE a.id = :id"),
     @NamedQuery(name = "Accidentvehicule.findByIddamage", query = "SELECT a FROM Accidentvehicule a WHERE a.iddamage = :iddamage"),
+    @NamedQuery(name = "Accidentvehicule.findByIdgrid", query = "SELECT a FROM Accidentvehicule a WHERE a.idgrid = :idgrid"),
     @NamedQuery(name = "Accidentvehicule.findByAccidentdomain", query = "SELECT a FROM Accidentvehicule a WHERE a.accidentdomain = :accidentdomain"),
     @NamedQuery(name = "Accidentvehicule.findByName", query = "SELECT a FROM Accidentvehicule a WHERE a.name = :name"),
     @NamedQuery(name = "Accidentvehicule.findByKind", query = "SELECT a FROM Accidentvehicule a WHERE a.kind = :kind"),
@@ -51,7 +52,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accidentvehicule.findByLastuser", query = "SELECT a FROM Accidentvehicule a WHERE a.lastuser = :lastuser"),
     @NamedQuery(name = "Accidentvehicule.findByMatricule", query = "SELECT a FROM Accidentvehicule a WHERE a.matricule = :matricule"),
     @NamedQuery(name = "Accidentvehicule.findByDamageAccdomClas", query = "SELECT a FROM Accidentvehicule a WHERE  a.iddamage = :iddamage and "
-                     + "a.accidentdomain = :accidentdomain and a.classification = :classification")
+                     + "a.idgrid = :idgrid and a.accidentdomain = :accidentdomain and a.classification = :classification")
 })
 public class Accidentvehicule implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -90,6 +91,8 @@ public class Accidentvehicule implements Serializable {
     @Size(max = 31)
     @Column(name = "DESTINATION")
     private String destination;
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -203,6 +206,14 @@ public class Accidentvehicule implements Serializable {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+    
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
     }
 
     public Date getDatecreate() {
