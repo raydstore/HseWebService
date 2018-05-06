@@ -65,9 +65,10 @@ public class VwAccidentagentshbitFacadeREST extends AbstractFacade<VwAccidentage
     @GET
    // @Override
     @Produces({"application/xml", "application/json"})
-    public List<VwAccidentagentshbit> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idagent") String idagent) {
+    public List<VwAccidentagentshbit> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idagent") String idagent, @QueryParam("idgrid") BigInteger idgrid) {
         if (iddamage != null && idagent != null)
-            return em.createNamedQuery("VwAccidentagentshbit.findByIddamageIdagent").setParameter("iddamage", iddamage).setParameter("idagent", idagent).getResultList();
+            return em.createNamedQuery("VwAccidentagentshbit.findByIddamageIdagentIdgrid").setParameter("iddamage", iddamage)
+                    .setParameter("idagent", idagent).setParameter("idgrid", idgrid).getResultList();
         return super.findAll();
     }
 

@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagentshbit.findByIdbit", query = "SELECT a FROM Accidentagentshbit a WHERE a.idbit = :idbit"),
     @NamedQuery(name = "Accidentagentshbit.findByIdbitclass", query = "SELECT a FROM Accidentagentshbit a WHERE a.idbitclass = :idbitclass"),
     @NamedQuery(name = "Accidentagentshbit.findByKind", query = "SELECT a FROM Accidentagentshbit a WHERE a.kind = :kind"),
+    @NamedQuery(name = "Accidentagentshbit.findByIdgrid", query = "SELECT a FROM Accidentagentshbit a WHERE a.idgrid = :idgrid"),
     @NamedQuery(name = "Accidentagentshbit.findByDatecreate", query = "SELECT a FROM Accidentagentshbit a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Accidentagentshbit.findByDateupdate", query = "SELECT a FROM Accidentagentshbit a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentagentshbit.findByOwner", query = "SELECT a FROM Accidentagentshbit a WHERE a.owner = :owner"),
@@ -80,6 +82,8 @@ public class Accidentagentshbit implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
     @JoinColumns({
         @JoinColumn(name = "IDDAMAGE", referencedColumnName = "IDDAMAGE"),
         @JoinColumn(name = "IDAGENT", referencedColumnName = "IDAGENT")})
@@ -165,6 +169,15 @@ public class Accidentagentshbit implements Serializable {
     public void setLastuser(String lastuser) {
         this.lastuser = lastuser;
     }
+
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
+    }
+    
 
     public Accidentagentsh getAccidentagentsh() {
         return accidentagentsh;

@@ -30,10 +30,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "VwAccidentagentshbit.findById", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.id = :id"),
     @NamedQuery(name = "VwAccidentagentshbit.findByIddamage", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.iddamage = :iddamage"),
     @NamedQuery(name = "VwAccidentagentshbit.findByIdagent", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.idagent = :idagent"),
+    @NamedQuery(name = "VwAccidentagentshbit.findByIdgrid", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.idgrid = :idgrid"),
     @NamedQuery(name = "VwAccidentagentshbit.findByIdbitclass", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.idbitclass = :idbitclass"),
     @NamedQuery(name = "VwAccidentagentshbit.findByClassname", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.classname = :classname"),
     @NamedQuery(name = "VwAccidentagentshbit.findByName", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.name = :name"),
-    @NamedQuery(name = "VwAccidentagentshbit.findByIddamageIdagent", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.iddamage = :iddamage and  v.idagent = :idagent")
+    @NamedQuery(name = "VwAccidentagentshbit.findByIddamageIdagentIdgrid", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.iddamage = :iddamage and v.idgrid = :idgrid and  v.idagent = :idagent")
 })
 public class VwAccidentagentshbit implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,6 +51,10 @@ public class VwAccidentagentshbit implements Serializable {
     @Size(min = 1, max = 6)
     @Column(name = "IDAGENT")
     private String idagent;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idgrid")
+    private BigInteger idgrid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 4)
@@ -93,6 +98,14 @@ public class VwAccidentagentshbit implements Serializable {
         this.idagent = idagent;
     }
 
+    public BigInteger getIdgrid() {
+        return idgrid;
+    }
+
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
+    }
+    
     public String getIdbitclass() {
         return idbitclass;
     }
