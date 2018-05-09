@@ -13,8 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -36,11 +34,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentmaterial.findById", query = "SELECT a FROM Accidentmaterial a WHERE a.id = :id"),
     @NamedQuery(name = "Accidentmaterial.findByIddamage", query = "SELECT a FROM Accidentmaterial a WHERE a.iddamage = :iddamage"),
     @NamedQuery(name = "Accidentmaterial.findByAccidentdomain", query = "SELECT a FROM Accidentmaterial a WHERE a.accidentdomain = :accidentdomain"),
+    @NamedQuery(name = "Accidentmaterial.findByDamagename", query = "SELECT a FROM Accidentmaterial a WHERE a.damagename = :damagename"),
     @NamedQuery(name = "Accidentmaterial.findByName", query = "SELECT a FROM Accidentmaterial a WHERE a.name = :name"),
     @NamedQuery(name = "Accidentmaterial.findByDatecreate", query = "SELECT a FROM Accidentmaterial a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Accidentmaterial.findByDateupdate", query = "SELECT a FROM Accidentmaterial a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentmaterial.findByOwner", query = "SELECT a FROM Accidentmaterial a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accidentmaterial.findByLastuser", query = "SELECT a FROM Accidentmaterial a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Accidentmaterial.findByLastuser", query = "SELECT a FROM Accidentmaterial a WHERE a.lastuser = :lastuser"),
+    @NamedQuery(name = "Accidentmaterial.findByIdgrid", query = "SELECT a FROM Accidentmaterial a WHERE a.idgrid = :idgrid"),
+    @NamedQuery(name = "Accidentmaterial.findByIddamageIdgridAcc", query = "SELECT a FROM Accidentmaterial a WHERE a.iddamage = :iddamage"
+            + " and a.idgrid = :idgrid and a.accidentdomain = :accidentdomain"),
+})
 public class Accidentmaterial implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -57,9 +60,10 @@ public class Accidentmaterial implements Serializable {
     @NotNull
     @Column(name = "ACCIDENTDOMAIN")
     private BigInteger accidentdomain;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 31)
+    @Size(max = 128)
+    @Column(name = "DAMAGENAME")
+    private String damagename;
+    @Size(max = 128)
     @Column(name = "NAME")
     private String name;
     @Basic(optional = false)
@@ -78,9 +82,10 @@ public class Accidentmaterial implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @JoinColumn(name = "IDMATERIAL", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Material idmaterial;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
 
     public Accidentmaterial() {
     }
@@ -89,13 +94,13 @@ public class Accidentmaterial implements Serializable {
         this.id = id;
     }
 
-    public Accidentmaterial(BigDecimal id, BigInteger iddamage, BigInteger accidentdomain, String name, Date datecreate, Date dateupdate) {
+    public Accidentmaterial(BigDecimal id, BigInteger iddamage, BigInteger accidentdomain, Date datecreate, Date dateupdate, BigInteger idgrid) {
         this.id = id;
         this.iddamage = iddamage;
         this.accidentdomain = accidentdomain;
-        this.name = name;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
+        this.idgrid = idgrid;
     }
 
     public BigDecimal getId() {
@@ -120,6 +125,14 @@ public class Accidentmaterial implements Serializable {
 
     public void setAccidentdomain(BigInteger accidentdomain) {
         this.accidentdomain = accidentdomain;
+    }
+
+    public String getDamagename() {
+        return damagename;
+    }
+
+    public void setDamagename(String damagename) {
+        this.damagename = damagename;
     }
 
     public String getName() {
@@ -162,12 +175,12 @@ public class Accidentmaterial implements Serializable {
         this.lastuser = lastuser;
     }
 
-    public Material getIdmaterial() {
-        return idmaterial;
+    public BigInteger getIdgrid() {
+        return idgrid;
     }
 
-    public void setIdmaterial(Material idmaterial) {
-        this.idmaterial = idmaterial;
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
     }
 
     @Override

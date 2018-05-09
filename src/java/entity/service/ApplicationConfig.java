@@ -41,6 +41,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.AccidentvehiculeFacadeREST.class);
         resources.add(entity.service.AccidentvehiculedriverFacadeREST.class);
         resources.add(entity.service.ActionFacadeREST.class);
+        resources.add(entity.service.ActionassignmentFacadeREST.class);
         resources.add(entity.service.ActivityFacadeREST.class);
         resources.add(entity.service.AgencyFacadeREST.class);
         resources.add(entity.service.AgentFacadeREST.class);
@@ -50,6 +51,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.CaseagentFacadeREST.class);
         resources.add(entity.service.CauseFacadeREST.class);
         resources.add(entity.service.DamageFacadeREST.class);
+        resources.add(entity.service.DamagedefinitionFacadeREST.class);
         resources.add(entity.service.DetailsiteFacadeREST.class);
         resources.add(entity.service.DpropertyFacadeREST.class);
         resources.add(entity.service.DriverFacadeREST.class);
@@ -81,6 +83,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.RecommendationFacadeREST.class);
         resources.add(entity.service.SiteFacadeREST.class);
         resources.add(entity.service.StatementtaskFacadeREST.class);
+        resources.add(entity.service.StructureFacadeREST.class);
         resources.add(entity.service.TitletaskFacadeREST.class);
         resources.add(entity.service.TypeobjectFacadeREST.class);
         resources.add(entity.service.TypeoperationFacadeREST.class);

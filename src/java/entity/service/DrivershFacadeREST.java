@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * @author boutarfa
  */
 @Stateless
-@Path("entity.driversh")
+@Path("driversh")
 public class DrivershFacadeREST extends AbstractFacade<Driversh> {
     @PersistenceContext(unitName = "HseWebServicePU")
     private EntityManager em;

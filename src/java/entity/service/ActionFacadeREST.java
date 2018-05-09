@@ -7,7 +7,6 @@ package entity.service;
 
 import entity.Action;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -64,11 +62,9 @@ public class ActionFacadeREST extends AbstractFacade<Action> {
     }
 
     @GET
-   // @Override
+    @Override
     @Produces({"application/xml", "application/json"})
-    public List<Action> findAll(@QueryParam("idparent") BigInteger idparent) {
-        if (idparent != null)
-            return em.createNamedQuery("Action.findByIdparent").setParameter("idparent", idparent).getResultList();
+    public List<Action> findAll() {
         return super.findAll();
     }
 

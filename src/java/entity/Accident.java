@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -47,6 +48,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accident.findByOwner", query = "SELECT a FROM Accident a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accident.findByLastuser", query = "SELECT a FROM Accident a WHERE a.lastuser = :lastuser")})
 public class Accident implements Serializable {
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "TABINDEX")
+    private BigInteger tabindex;
+    @OneToMany(mappedBy = "idparent")
+    private Collection<Action> actionCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
     private Collection<Accidentpicture> accidentpictureCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
@@ -302,6 +309,23 @@ public class Accident implements Serializable {
 
     public void setRecommendationCollection(Collection<Recommendation> recommendationCollection) {
         this.recommendationCollection = recommendationCollection;
+    }
+
+    public BigInteger getTabindex() {
+        return tabindex;
+    }
+
+    public void setTabindex(BigInteger tabindex) {
+        this.tabindex = tabindex;
+    }
+
+    @XmlTransient
+    public Collection<Action> getActionCollection() {
+        return actionCollection;
+    }
+
+    public void setActionCollection(Collection<Action> actionCollection) {
+        this.actionCollection = actionCollection;
     }
     
 }

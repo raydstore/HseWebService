@@ -75,8 +75,7 @@ public class Material implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idmaterial")
-    private Collection<Accidentmaterial> accidentmaterialCollection;
+
 
     public Material() {
     }
@@ -149,14 +148,7 @@ public class Material implements Serializable {
         this.lastuser = lastuser;
     }
 
-    @XmlTransient
-    public Collection<Accidentmaterial> getAccidentmaterialCollection() {
-        return accidentmaterialCollection;
-    }
-
-    public void setAccidentmaterialCollection(Collection<Accidentmaterial> accidentmaterialCollection) {
-        this.accidentmaterialCollection = accidentmaterialCollection;
-    }
+   
 
     @Override
     public int hashCode() {
