@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Accidentnature.findAll", query = "SELECT a FROM Accidentnature a"),
     @NamedQuery(name = "Accidentnature.findByIdaccident", query = "SELECT a FROM Accidentnature a WHERE a.accidentnaturePK.idaccident = :idaccident"),
+    @NamedQuery(name = "Accidentnature.findByIdaccidentIdnature", query = "SELECT a FROM Accidentnature a WHERE a.accidentnaturePK.idaccident = :idaccident"
+                                                                        + " and a.accidentnaturePK.idnature = :idnature"),
     @NamedQuery(name = "Accidentnature.findByIdnature", query = "SELECT a FROM Accidentnature a WHERE a.accidentnaturePK.idnature = :idnature"),
     @NamedQuery(name = "Accidentnature.findByDatecreate", query = "SELECT a FROM Accidentnature a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Accidentnature.findByDateupdate", query = "SELECT a FROM Accidentnature a WHERE a.dateupdate = :dateupdate"),

@@ -6,6 +6,7 @@
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/NewCrossOriginResourceSharingFilter.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Accident.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Action.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Damage.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagenttpFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/PropertyPK.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/conf/persistence.xml</file>
@@ -30,10 +31,12 @@
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AgentFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Mark.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentnatureFacadeREST.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/web/test-resbeans.html</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/SiteFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentsh.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/ActionFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehicule.java</file>
+            <file>file:/C:/NetBeansProjects/HseWebService/build/generated-sources/ap-source-output/entity/Accidentfile_.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentvehiculeFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/WorksheetFacadeREST.java</file>
             <file>file:/C:/NetBeansProjects/HseWebService/src/java/entity/service/EntrepriseFacadeREST.java</file>

@@ -51,8 +51,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Accidentvehicule.findByOwner", query = "SELECT a FROM Accidentvehicule a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accidentvehicule.findByLastuser", query = "SELECT a FROM Accidentvehicule a WHERE a.lastuser = :lastuser"),
     @NamedQuery(name = "Accidentvehicule.findByMatricule", query = "SELECT a FROM Accidentvehicule a WHERE a.matricule = :matricule"),
-    @NamedQuery(name = "Accidentvehicule.findByDamageAccdomClas", query = "SELECT a FROM Accidentvehicule a WHERE  a.iddamage = :iddamage and "
-                     + "a.idgrid = :idgrid and a.accidentdomain = :accidentdomain and a.classification = :classification")
+    @NamedQuery(name = "Accidentvehicule.findByDamageAccdom", query = "SELECT a FROM Accidentvehicule a WHERE  a.iddamage = :iddamage and "
+                     + "a.idgrid = :idgrid and a.accidentdomain = :accidentdomain")
 })
 public class Accidentvehicule implements Serializable {
     private static final long serialVersionUID = 1L;

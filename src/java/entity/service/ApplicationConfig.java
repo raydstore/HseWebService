@@ -35,6 +35,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.AccidentagentshFacadeREST.class);
         resources.add(entity.service.AccidentagentshbitFacadeREST.class);
         resources.add(entity.service.AccidentagenttpFacadeREST.class);
+        resources.add(entity.service.AccidentfileFacadeREST.class);
         resources.add(entity.service.AccidentmaterialFacadeREST.class);
         resources.add(entity.service.AccidentnatureFacadeREST.class);
         resources.add(entity.service.AccidentpictureFacadeREST.class);

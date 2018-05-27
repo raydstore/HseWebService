@@ -7,15 +7,12 @@ package entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,20 +28,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author boutarfa
  */
 @Entity
-@Table(name = "DAMAGE")
+@Table(name = "ACCIDENTFILE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Damage.findAll", query = "SELECT d FROM Damage d"),
-    @NamedQuery(name = "Damage.findById", query = "SELECT d FROM Damage d WHERE d.id = :id"),
-    @NamedQuery(name = "Damage.findByIdgrid", query = "SELECT d FROM Damage d WHERE d.idgrid = :idgrid"),
-    @NamedQuery(name = "Damage.findByAccidentdomain", query = "SELECT d FROM Damage d WHERE d.accidentdomain = :accidentdomain"),
-    @NamedQuery(name = "Damage.findByDescription", query = "SELECT d FROM Damage d WHERE d.description = :description"),
-    @NamedQuery(name = "Damage.findByDatecreate", query = "SELECT d FROM Damage d WHERE d.datecreate = :datecreate"),
-    @NamedQuery(name = "Damage.findByDateupdate", query = "SELECT d FROM Damage d WHERE d.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Damage.findByOwner", query = "SELECT d FROM Damage d WHERE d.owner = :owner"),
-    @NamedQuery(name = "Damage.findByLastuser", query = "SELECT d FROM Damage d WHERE d.lastuser = :lastuser"),
-    @NamedQuery(name = "Damage.findByDegree", query = "SELECT d FROM Damage d WHERE d.degree = :degree")})
-public class Damage implements Serializable {
+    @NamedQuery(name = "Accidentfile.findAll", query = "SELECT a FROM Accidentfile a"),
+    @NamedQuery(name = "Accidentfile.findById", query = "SELECT a FROM Accidentfile a WHERE a.id = :id"),
+    @NamedQuery(name = "Accidentfile.findByIdaccident", query = "SELECT a FROM Accidentfile a WHERE a.idaccident.id = :idaccident"),
+    @NamedQuery(name = "Accidentfile.findByName", query = "SELECT a FROM Accidentfile a WHERE a.name = :name"),
+    @NamedQuery(name = "Accidentfile.findByPath", query = "SELECT a FROM Accidentfile a WHERE a.path = :path"),
+    @NamedQuery(name = "Accidentfile.findByDatecreate", query = "SELECT a FROM Accidentfile a WHERE a.datecreate = :datecreate"),
+    @NamedQuery(name = "Accidentfile.findByDateupdate", query = "SELECT a FROM Accidentfile a WHERE a.dateupdate = :dateupdate"),
+    @NamedQuery(name = "Accidentfile.findByOwner", query = "SELECT a FROM Accidentfile a WHERE a.owner = :owner"),
+    @NamedQuery(name = "Accidentfile.findByLastuser", query = "SELECT a FROM Accidentfile a WHERE a.lastuser = :lastuser")})
+public class Accidentfile implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -52,15 +48,12 @@ public class Damage implements Serializable {
     @NotNull
     @Column(name = "ID")
     private BigDecimal id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "IDGRID")
-    private BigInteger idgrid;
-    @Column(name = "ACCIDENTDOMAIN")
-    private Short accidentdomain;
-    @Size(max = 100)
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Size(max = 31)
+    @Column(name = "NAME")
+    private String name;
+    @Size(max = 128)
+    @Column(name = "PATH")
+    private String path;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -77,30 +70,21 @@ public class Damage implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
-    @Column(name = "DEGREE")
-    private String degree;
-    @JoinColumns({
-        @JoinColumn(name = "IDACCIDENT", referencedColumnName = "IDACCIDENT"),
-        @JoinColumn(name = "IDNATURE", referencedColumnName = "IDNATURE")})
+    @JoinColumn(name = "IDACCIDENT", referencedColumnName = "ID")
     @ManyToOne(optional = false)
-    private Accidentnature accidentnature;
+    private Accident idaccident;
 
-    public Damage() {
+    public Accidentfile() {
     }
 
-    public Damage(BigDecimal id) {
+    public Accidentfile(BigDecimal id) {
         this.id = id;
     }
 
-    public Damage(BigDecimal id, BigInteger idgrid, Date datecreate, Date dateupdate, String degree) {
+    public Accidentfile(BigDecimal id, Date datecreate, Date dateupdate) {
         this.id = id;
-        this.idgrid = idgrid;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
-        this.degree = degree;
     }
 
     public BigDecimal getId() {
@@ -111,28 +95,20 @@ public class Damage implements Serializable {
         this.id = id;
     }
 
-    public BigInteger getIdgrid() {
-        return idgrid;
+    public String getName() {
+        return name;
     }
 
-    public void setIdgrid(BigInteger idgrid) {
-        this.idgrid = idgrid;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Short getAccidentdomain() {
-        return accidentdomain;
+    public String getPath() {
+        return path;
     }
 
-    public void setAccidentdomain(Short accidentdomain) {
-        this.accidentdomain = accidentdomain;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Date getDatecreate() {
@@ -167,20 +143,12 @@ public class Damage implements Serializable {
         this.lastuser = lastuser;
     }
 
-    public String getDegree() {
-        return degree;
+    public Accident getIdaccident() {
+        return idaccident;
     }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
-
-    public Accidentnature getAccidentnature() {
-        return accidentnature;
-    }
-
-    public void setAccidentnature(Accidentnature accidentnature) {
-        this.accidentnature = accidentnature;
+    public void setIdaccident(Accident idaccident) {
+        this.idaccident = idaccident;
     }
 
     @Override
@@ -193,10 +161,10 @@ public class Damage implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Damage)) {
+        if (!(object instanceof Accidentfile)) {
             return false;
         }
-        Damage other = (Damage) object;
+        Accidentfile other = (Accidentfile) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -205,7 +173,7 @@ public class Damage implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Damage[ id=" + id + " ]";
+        return "entity.Accidentfile[ id=" + id + " ]";
     }
     
 }

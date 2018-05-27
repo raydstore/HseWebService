@@ -5,7 +5,7 @@
  */
 package entity.service;
 
-import entity.Accidentvehicule;
+import entity.Accidentfile;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
@@ -27,26 +27,26 @@ import javax.ws.rs.QueryParam;
  * @author boutarfa
  */
 @Stateless
-@Path("accidentvehicule")
-public class AccidentvehiculeFacadeREST extends AbstractFacade<Accidentvehicule> {
+@Path("accidentfile")
+public class AccidentfileFacadeREST extends AbstractFacade<Accidentfile> {
     @PersistenceContext(unitName = "HseWebServicePU")
     private EntityManager em;
 
-    public AccidentvehiculeFacadeREST() {
-        super(Accidentvehicule.class);
+    public AccidentfileFacadeREST() {
+        super(Accidentfile.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Accidentvehicule entity) {
+    public void create(Accidentfile entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") BigDecimal id, Accidentvehicule entity) {
+    public void edit(@PathParam("id") BigDecimal id, Accidentfile entity) {
         super.edit(entity);
     }
 
@@ -59,23 +59,23 @@ public class AccidentvehiculeFacadeREST extends AbstractFacade<Accidentvehicule>
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Accidentvehicule find(@PathParam("id") BigDecimal id) {
+    public Accidentfile find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
-   // @Override
+    // @Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentvehicule> findAll(@QueryParam("iddamage") BigInteger iddamage, @QueryParam("idgrid") BigInteger idgrid, @QueryParam("accidentdomain") BigInteger accidentdomain) {
-        if (iddamage != null && idgrid != null && accidentdomain != null)
-            return em.createNamedQuery("Accidentvehicule.findByDamageAccdom").setParameter("iddamage", iddamage).setParameter("idgrid", idgrid).setParameter("accidentdomain", accidentdomain).getResultList();
+    public List<Accidentfile> findAll(@QueryParam("idaccident") BigInteger idaccident) {
+        if (idaccident != null)
+            return em.createNamedQuery("Accidentfile.findByIdaccident").setParameter("idaccident", idaccident).getResultList();
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Accidentvehicule> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Accidentfile> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

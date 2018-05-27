@@ -7,6 +7,7 @@ package entity.service;
 
 import entity.Accidentnature;
 import entity.AccidentnaturePK;
+import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,6 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.PathSegment;
 
 /**
@@ -81,14 +83,23 @@ public class AccidentnatureFacadeREST extends AbstractFacade<Accidentnature> {
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
     public Accidentnature find(@PathParam("id") PathSegment id) {
+        // System.out.print(id.toString());
+     //   System.out.println("id: " + id.getPath());
+       // System.out.println("id: " + id.getMatrixParameters());
+      /*  for (String name : id.getMatrixParameters().keySet()){
+            String value = id.getMatrixParameters().getFirst(name);
+            System.out.println("\tmatrix param name: " + name + " value: " + value);
+        } */
         entity.AccidentnaturePK key = getPrimaryKey(id);
         return super.find(key);
     }
 
     @GET
-    @Override
+    //@Override
     @Produces({"application/xml", "application/json"})
-    public List<Accidentnature> findAll() {
+    public List<Accidentnature> findAll(@QueryParam("idaccident") BigInteger idaccident, @QueryParam("idnature") BigInteger idnature) {
+        if (idaccident != null)
+            return em.createNamedQuery("Accidentnature.findByIdaccidentIdnature").setParameter("idaccident", idaccident).setParameter("idnature", idnature).getResultList();
         return super.findAll();
     }
 
