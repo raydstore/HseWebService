@@ -105,13 +105,13 @@ public class Accidentpicture implements Serializable {
         this.name = name;
     }
 
-    public Serializable getImage() {
-        return image;
-    }
-
-    public void setImage(Serializable image) {
-        this.image = image;
-    }
+//    public Serializable getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(Serializable image) {
+//        this.image = image;
+//    }
 
     public Date getDatecreate() {
         return datecreate;

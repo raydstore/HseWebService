@@ -45,6 +45,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Site.findByOwner", query = "SELECT s FROM Site s WHERE s.owner = :owner"),
     @NamedQuery(name = "Site.findByLastuser", query = "SELECT s FROM Site s WHERE s.lastuser = :lastuser")})
 public class Site implements Serializable {
+
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idsite")
+//    private Inspectedsite inspectedsite;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsiteparent")
     private Collection<Accident> accidentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsite")
@@ -236,5 +240,15 @@ public class Site implements Serializable {
     public void setAccidentCollection1(Collection<Accident> accidentCollection1) {
         this.accidentCollection1 = accidentCollection1;
     }
+
+//    public Inspectedsite getInspectedsite() {
+//        return inspectedsite;
+//    }
+//
+//    public void setInspectedsite(Inspectedsite inspectedsite) {
+//        this.inspectedsite = inspectedsite;
+//    }
+
+   
     
 }

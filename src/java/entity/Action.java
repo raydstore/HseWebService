@@ -43,7 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Action.findByDatecreate", query = "SELECT a FROM Action a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Action.findByDateupdate", query = "SELECT a FROM Action a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Action.findByOwner", query = "SELECT a FROM Action a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser"),
+    @NamedQuery(name = "Action.findByAccident", query = "SELECT a FROM Action a WHERE a.idparent.id = :idparent")
+})
 public class Action implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaction")
     private Collection<Actionassignment> actionassignmentCollection;
