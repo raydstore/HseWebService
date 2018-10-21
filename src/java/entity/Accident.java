@@ -36,42 +36,29 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ACCIDENT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Accident.findAll", query = "SELECT a FROM Accident a"),
-    @NamedQuery(name = "Accident.findById", query = "SELECT a FROM Accident a WHERE a.id = :id"),
-    @NamedQuery(name = "Accident.findByClassification", query = "SELECT a FROM Accident a WHERE a.classification = :classification"),
-    @NamedQuery(name = "Accident.findByCurdate", query = "SELECT a FROM Accident a WHERE a.curdate = :curdate"),
-    @NamedQuery(name = "Accident.findByTime", query = "SELECT a FROM Accident a WHERE a.time = :time"),
-    @NamedQuery(name = "Accident.findBySitedescription", query = "SELECT a FROM Accident a WHERE a.sitedescription = :sitedescription"),
-    @NamedQuery(name = "Accident.findByEvent", query = "SELECT a FROM Accident a WHERE a.event = :event"),
-    @NamedQuery(name = "Accident.findByDatecreate", query = "SELECT a FROM Accident a WHERE a.datecreate = :datecreate"),
-    @NamedQuery(name = "Accident.findByDateupdate", query = "SELECT a FROM Accident a WHERE a.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Accident.findByOwner", query = "SELECT a FROM Accident a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accident.findByLastuser", query = "SELECT a FROM Accident a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Accident.findAll", query = "SELECT a FROM Accident a")
+    , @NamedQuery(name = "Accident.findById", query = "SELECT a FROM Accident a WHERE a.id = :id")
+    , @NamedQuery(name = "Accident.findByClassification", query = "SELECT a FROM Accident a WHERE a.classification = :classification")
+    , @NamedQuery(name = "Accident.findByCurdate", query = "SELECT a FROM Accident a WHERE a.curdate = :curdate")
+    , @NamedQuery(name = "Accident.findByTime", query = "SELECT a FROM Accident a WHERE a.time = :time")
+    , @NamedQuery(name = "Accident.findBySitedescription", query = "SELECT a FROM Accident a WHERE a.sitedescription = :sitedescription")
+    , @NamedQuery(name = "Accident.findByEvent", query = "SELECT a FROM Accident a WHERE a.event = :event")
+    , @NamedQuery(name = "Accident.findByDatecreate", query = "SELECT a FROM Accident a WHERE a.datecreate = :datecreate")
+    , @NamedQuery(name = "Accident.findByDateupdate", query = "SELECT a FROM Accident a WHERE a.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Accident.findByOwner", query = "SELECT a FROM Accident a WHERE a.owner = :owner")
+    , @NamedQuery(name = "Accident.findByLastuser", query = "SELECT a FROM Accident a WHERE a.lastuser = :lastuser")
+    , @NamedQuery(name = "Accident.findByTabindex", query = "SELECT a FROM Accident a WHERE a.tabindex = :tabindex")
+    , @NamedQuery(name = "Accident.findByPlace", query = "SELECT a FROM Accident a WHERE a.place = :place")
+    , @NamedQuery(name = "Accident.findByPersondamage", query = "SELECT a FROM Accident a WHERE a.persondamage = :persondamage")
+    , @NamedQuery(name = "Accident.findByPropertydamage", query = "SELECT a FROM Accident a WHERE a.propertydamage = :propertydamage")
+    , @NamedQuery(name = "Accident.findByEnvirenementdamage", query = "SELECT a FROM Accident a WHERE a.envirenementdamage = :envirenementdamage")
+    , @NamedQuery(name = "Accident.findByObviousecause", query = "SELECT a FROM Accident a WHERE a.obviouscause = :obviouscause")
+})
 public class Accident implements Serializable {
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "TABINDEX")
-    private BigInteger tabindex;
-    @OneToMany(mappedBy = "idparent")
-    private Collection<Action> actionCollection;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
-    private Collection<Accidentpicture> accidentpictureCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
-    private Collection<Cause> causeCollection;
-    @JoinColumn(name = "IDAGENTDECLARE", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Agent idagentdeclare;
-    @JoinColumn(name = "IDAGENTVALIDATE", referencedColumnName = "ID")
-    @ManyToOne
-    private Agent idagentvalidate;
-    @JoinColumn(name = "IDSITEPARENT", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Site idsiteparent;
-    @JoinColumn(name = "IDSITE", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Site idsite;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
-    private Collection<Recommendation> recommendationCollection;
+    private Collection<Aggravatingfactor> aggravatingfactorCollection;
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -89,12 +76,10 @@ public class Accident implements Serializable {
     @Column(name = "CURDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date curdate;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
-    @Size(max = 100)
+    @Size(max = 250)
     @Column(name = "SITEDESCRIPTION")
     private String sitedescription;
     @Basic(optional = false)
@@ -118,6 +103,40 @@ public class Accident implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "TABINDEX")
+    private BigInteger tabindex;
+    @Size(max = 200)
+    @Column(name = "PLACE")
+    private String place;
+    @Size(max = 200)
+    @Column(name = "PERSONDAMAGE")
+    private String persondamage;
+    @Size(max = 200)
+    @Column(name = "PROPERTYDAMAGE")
+    private String propertydamage;
+    @Size(max = 200)
+    @Column(name = "ENVIRENEMENTDAMAGE")
+    private String envirenementdamage;
+    @Size(max = 150)
+    @Column(name = "OBVIOUSCAUSE")
+    private String obviouscause;
+    @JoinColumn(name = "IDAGENTDECLARE", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Agent idagentdeclare;
+    @JoinColumn(name = "IDAGENTVALIDATE", referencedColumnName = "ID")
+    @ManyToOne
+    private Agent idagentvalidate;
+    @JoinColumn(name = "IDSITE", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Site idsite;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Accidentpicture> accidentpictureCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Cause> causeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Recommendation> recommendationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "accident")
     private Collection<Accidentnature> accidentnatureCollection;
 
@@ -128,14 +147,14 @@ public class Accident implements Serializable {
         this.id = id;
     }
 
-    public Accident(BigDecimal id, String classification, Date curdate, Date time, String event, Date datecreate, Date dateupdate) {
+    public Accident(BigDecimal id, String classification, Date curdate, String event, Date datecreate, Date dateupdate, BigInteger tabindex) {
         this.id = id;
         this.classification = classification;
         this.curdate = curdate;
-        this.time = time;
         this.event = event;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
+        this.tabindex = tabindex;
     }
 
     public BigDecimal getId() {
@@ -218,6 +237,78 @@ public class Accident implements Serializable {
         this.lastuser = lastuser;
     }
 
+    public BigInteger getTabindex() {
+        return tabindex;
+    }
+
+    public void setTabindex(BigInteger tabindex) {
+        this.tabindex = tabindex;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getPersondamage() {
+        return persondamage;
+    }
+
+    public void setPersondamage(String persondamage) {
+        this.persondamage = persondamage;
+    }
+
+    public String getPropertydamage() {
+        return propertydamage;
+    }
+
+    public void setPropertydamage(String propertydamage) {
+        this.propertydamage = propertydamage;
+    }
+
+    public String getEnvirenementdamage() {
+        return envirenementdamage;
+    }
+
+    public void setEnvirenementdamage(String envirenementdamage) {
+        this.envirenementdamage = envirenementdamage;
+    }
+
+    public String getObviouscause() {
+        return obviouscause;
+    }
+
+    public void setObviouscause(String obviouscause) {
+        this.obviouscause = obviouscause;
+    }
+    
+    public Agent getIdagentdeclare() {
+        return idagentdeclare;
+    }
+
+    public void setIdagentdeclare(Agent idagentdeclare) {
+        this.idagentdeclare = idagentdeclare;
+    }
+
+    public Agent getIdagentvalidate() {
+        return idagentvalidate;
+    }
+
+    public void setIdagentvalidate(Agent idagentvalidate) {
+        this.idagentvalidate = idagentvalidate;
+    }
+
+    public Site getIdsite() {
+        return idsite;
+    }
+
+    public void setIdsite(Site idsite) {
+        this.idsite = idsite;
+    }
+    
     @XmlTransient
     public Collection<Accidentnature> getAccidentnatureCollection() {
         return accidentnatureCollection;
@@ -225,6 +316,33 @@ public class Accident implements Serializable {
 
     public void setAccidentnatureCollection(Collection<Accidentnature> accidentnatureCollection) {
         this.accidentnatureCollection = accidentnatureCollection;
+    }
+    
+    @XmlTransient
+    public Collection<Accidentpicture> getAccidentpictureCollection() {
+        return accidentpictureCollection;
+    }
+
+    public void setAccidentpictureCollection(Collection<Accidentpicture> accidentpictureCollection) {
+        this.accidentpictureCollection = accidentpictureCollection;
+    }
+
+    @XmlTransient
+    public Collection<Cause> getCauseCollection() {
+        return causeCollection;
+    }
+
+    public void setCauseCollection(Collection<Cause> causeCollection) {
+        this.causeCollection = causeCollection;
+    }
+
+    @XmlTransient
+    public Collection<Recommendation> getRecommendationCollection() {
+        return recommendationCollection;
+    }
+
+    public void setRecommendationCollection(Collection<Recommendation> recommendationCollection) {
+        this.recommendationCollection = recommendationCollection;
     }
 
     @Override
@@ -253,79 +371,12 @@ public class Accident implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Accidentpicture> getAccidentpictureCollection() {
-        return accidentpictureCollection;
+    public Collection<Aggravatingfactor> getAggravatingfactorCollection() {
+        return aggravatingfactorCollection;
     }
 
-    public void setAccidentpictureCollection(Collection<Accidentpicture> accidentpictureCollection) {
-        this.accidentpictureCollection = accidentpictureCollection;
-    }
-
-    @XmlTransient
-    public Collection<Cause> getCauseCollection() {
-        return causeCollection;
-    }
-
-    public void setCauseCollection(Collection<Cause> causeCollection) {
-        this.causeCollection = causeCollection;
-    }
-
-    public Agent getIdagentdeclare() {
-        return idagentdeclare;
-    }
-
-    public void setIdagentdeclare(Agent idagentdeclare) {
-        this.idagentdeclare = idagentdeclare;
-    }
-
-    public Agent getIdagentvalidate() {
-        return idagentvalidate;
-    }
-
-    public void setIdagentvalidate(Agent idagentvalidate) {
-        this.idagentvalidate = idagentvalidate;
-    }
-
-    public Site getIdsiteparent() {
-        return idsiteparent;
-    }
-
-    public void setIdsiteparent(Site idsiteparent) {
-        this.idsiteparent = idsiteparent;
-    }
-
-    public Site getIdsite() {
-        return idsite;
-    }
-
-    public void setIdsite(Site idsite) {
-        this.idsite = idsite;
-    }
-
-    @XmlTransient
-    public Collection<Recommendation> getRecommendationCollection() {
-        return recommendationCollection;
-    }
-
-    public void setRecommendationCollection(Collection<Recommendation> recommendationCollection) {
-        this.recommendationCollection = recommendationCollection;
-    }
-
-    public BigInteger getTabindex() {
-        return tabindex;
-    }
-
-    public void setTabindex(BigInteger tabindex) {
-        this.tabindex = tabindex;
-    }
-
-    @XmlTransient
-    public Collection<Action> getActionCollection() {
-        return actionCollection;
-    }
-
-    public void setActionCollection(Collection<Action> actionCollection) {
-        this.actionCollection = actionCollection;
+    public void setAggravatingfactorCollection(Collection<Aggravatingfactor> aggravatingfactorCollection) {
+        this.aggravatingfactorCollection = aggravatingfactorCollection;
     }
     
 }

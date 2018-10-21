@@ -43,8 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Action.findByDatecreate", query = "SELECT a FROM Action a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Action.findByDateupdate", query = "SELECT a FROM Action a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Action.findByOwner", query = "SELECT a FROM Action a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser"),
-    @NamedQuery(name = "Action.findByAccident", query = "SELECT a FROM Action a WHERE a.idparent.id = :idparent")
+    @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser")
+//        ,
+//    @NamedQuery(name = "Action.findByAccident", query = "SELECT a FROM Action a WHERE a.idparent.id = :idparent")
 })
 public class Action implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaction")
@@ -85,9 +86,9 @@ public class Action implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @JoinColumn(name = "IDPARENT", referencedColumnName = "ID")
-    @ManyToOne
-    private Accident idparent;
+//    @JoinColumn(name = "IDPARENT", referencedColumnName = "ID")
+//    @ManyToOne
+//    private Accident idparent;
 
     public Action() {
     }
@@ -169,13 +170,13 @@ public class Action implements Serializable {
         this.lastuser = lastuser;
     }
 
-    public Accident getIdparent() {
-        return idparent;
-    }
-
-    public void setIdparent(Accident idparent) {
-        this.idparent = idparent;
-    }
+//    public Accident getIdparent() {
+//        return idparent;
+//    }
+//
+//    public void setIdparent(Accident idparent) {
+//        this.idparent = idparent;
+//    }
 
     @Override
     public int hashCode() {

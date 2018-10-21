@@ -46,6 +46,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.ActivityFacadeREST.class);
         resources.add(entity.service.AgencyFacadeREST.class);
         resources.add(entity.service.AgentFacadeREST.class);
+        resources.add(entity.service.AggravatingfactorFacadeREST.class);
         resources.add(entity.service.AssuranceFacadeREST.class);
         resources.add(entity.service.BitFacadeREST.class);
         resources.add(entity.service.BitclassFacadeREST.class);

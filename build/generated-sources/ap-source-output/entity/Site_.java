@@ -10,7 +10,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-14T12:03:22")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-21T09:24:58")
 @StaticMetamodel(Site.class)
 public class Site_ { 
 
@@ -23,7 +23,6 @@ public class Site_ {
     public static volatile SingularAttribute<Site, Date> datecreate;
     public static volatile SingularAttribute<Site, Date> dateupdate;
     public static volatile SingularAttribute<Site, Label> idlabel;
-    public static volatile CollectionAttribute<Site, Accident> accidentCollection;
     public static volatile CollectionAttribute<Site, Accident> accidentCollection1;
 
 }

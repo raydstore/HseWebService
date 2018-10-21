@@ -49,8 +49,8 @@ public class Site implements Serializable {
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idsite")
 //    private Inspectedsite inspectedsite;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsiteparent")
-    private Collection<Accident> accidentCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsiteparent")
+//    private Collection<Accident> accidentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsite")
     private Collection<Accident> accidentCollection1;
     private static final long serialVersionUID = 1L;
@@ -221,15 +221,6 @@ public class Site implements Serializable {
     @Override
     public String toString() {
         return "entity.Site[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Accident> getAccidentCollection() {
-        return accidentCollection;
-    }
-
-    public void setAccidentCollection(Collection<Accident> accidentCollection) {
-        this.accidentCollection = accidentCollection;
     }
 
     @XmlTransient
