@@ -49,9 +49,6 @@ public class Agent implements Serializable {
     private Collection<Accident> accidentCollection;
     @OneToMany(mappedBy = "idagentvalidate")
     private Collection<Accident> accidentCollection1;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "agent")
-    private Driversh driversh;
-    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
@@ -215,14 +212,6 @@ public class Agent implements Serializable {
     @Override
     public String toString() {
         return "entity.Agent[ id=" + id + " ]";
-    }
-
-    public Driversh getDriversh() {
-        return driversh;
-    }
-
-    public void setDriversh(Driversh driversh) {
-        this.driversh = driversh;
     }
 
     @XmlTransient

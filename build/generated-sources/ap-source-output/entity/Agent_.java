@@ -2,7 +2,6 @@ package entity;
 
 import entity.Accident;
 import entity.Accidentagentsh;
-import entity.Driversh;
 import entity.Jobposting;
 import entity.Listagent;
 import java.util.Date;
@@ -11,7 +10,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-21T09:24:58")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-10-24T09:46:36")
 @StaticMetamodel(Agent.class)
 public class Agent_ { 
 
@@ -19,7 +18,6 @@ public class Agent_ {
     public static volatile SingularAttribute<Agent, String> firstname;
     public static volatile CollectionAttribute<Agent, Accidentagentsh> accidentagentshCollection;
     public static volatile CollectionAttribute<Agent, Listagent> listagentCollection;
-    public static volatile SingularAttribute<Agent, Driversh> driversh;
     public static volatile SingularAttribute<Agent, Date> datecreate;
     public static volatile SingularAttribute<Agent, Date> dateupdate;
     public static volatile CollectionAttribute<Agent, Accident> accidentCollection1;

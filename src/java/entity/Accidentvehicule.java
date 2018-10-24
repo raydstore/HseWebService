@@ -8,7 +8,6 @@ package entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -19,14 +18,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,25 +34,26 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ACCIDENTVEHICULE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Accidentvehicule.findAll", query = "SELECT a FROM Accidentvehicule a"),
-    @NamedQuery(name = "Accidentvehicule.findById", query = "SELECT a FROM Accidentvehicule a WHERE a.id = :id"),
-    @NamedQuery(name = "Accidentvehicule.findByIddamage", query = "SELECT a FROM Accidentvehicule a WHERE a.iddamage = :iddamage"),
-    @NamedQuery(name = "Accidentvehicule.findByIdgrid", query = "SELECT a FROM Accidentvehicule a WHERE a.idgrid = :idgrid"),
-    @NamedQuery(name = "Accidentvehicule.findByAccidentdomain", query = "SELECT a FROM Accidentvehicule a WHERE a.accidentdomain = :accidentdomain"),
-    @NamedQuery(name = "Accidentvehicule.findByName", query = "SELECT a FROM Accidentvehicule a WHERE a.name = :name"),
-    @NamedQuery(name = "Accidentvehicule.findByKind", query = "SELECT a FROM Accidentvehicule a WHERE a.kind = :kind"),
-    @NamedQuery(name = "Accidentvehicule.findByClassification", query = "SELECT a FROM Accidentvehicule a WHERE a.classification = :classification"),
-    @NamedQuery(name = "Accidentvehicule.findBySource", query = "SELECT a FROM Accidentvehicule a WHERE a.source = :source"),
-    @NamedQuery(name = "Accidentvehicule.findByDestination", query = "SELECT a FROM Accidentvehicule a WHERE a.destination = :destination"),
-    @NamedQuery(name = "Accidentvehicule.findByDatecreate", query = "SELECT a FROM Accidentvehicule a WHERE a.datecreate = :datecreate"),
-    @NamedQuery(name = "Accidentvehicule.findByDateupdate", query = "SELECT a FROM Accidentvehicule a WHERE a.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Accidentvehicule.findByOwner", query = "SELECT a FROM Accidentvehicule a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accidentvehicule.findByLastuser", query = "SELECT a FROM Accidentvehicule a WHERE a.lastuser = :lastuser"),
-    @NamedQuery(name = "Accidentvehicule.findByMatricule", query = "SELECT a FROM Accidentvehicule a WHERE a.matricule = :matricule"),
-    @NamedQuery(name = "Accidentvehicule.findByDamageAccdom", query = "SELECT a FROM Accidentvehicule a WHERE  a.iddamage = :iddamage and "
-                     + "a.idgrid = :idgrid and a.accidentdomain = :accidentdomain")
+    @NamedQuery(name = "Accidentvehicule.findAll", query = "SELECT a FROM Accidentvehicule a")
+    , @NamedQuery(name = "Accidentvehicule.findById", query = "SELECT a FROM Accidentvehicule a WHERE a.id = :id")
+    , @NamedQuery(name = "Accidentvehicule.findByIddamage", query = "SELECT a FROM Accidentvehicule a WHERE a.iddamage = :iddamage")
+    , @NamedQuery(name = "Accidentvehicule.findByAccidentdomain", query = "SELECT a FROM Accidentvehicule a WHERE a.accidentdomain = :accidentdomain")
+    , @NamedQuery(name = "Accidentvehicule.findByName", query = "SELECT a FROM Accidentvehicule a WHERE a.name = :name")
+    , @NamedQuery(name = "Accidentvehicule.findByKind", query = "SELECT a FROM Accidentvehicule a WHERE a.kind = :kind")
+    , @NamedQuery(name = "Accidentvehicule.findByClassification", query = "SELECT a FROM Accidentvehicule a WHERE a.classification = :classification")
+    , @NamedQuery(name = "Accidentvehicule.findBySource", query = "SELECT a FROM Accidentvehicule a WHERE a.source = :source")
+    , @NamedQuery(name = "Accidentvehicule.findByDestination", query = "SELECT a FROM Accidentvehicule a WHERE a.destination = :destination")
+    , @NamedQuery(name = "Accidentvehicule.findByDatecreate", query = "SELECT a FROM Accidentvehicule a WHERE a.datecreate = :datecreate")
+    , @NamedQuery(name = "Accidentvehicule.findByDateupdate", query = "SELECT a FROM Accidentvehicule a WHERE a.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Accidentvehicule.findByOwner", query = "SELECT a FROM Accidentvehicule a WHERE a.owner = :owner")
+    , @NamedQuery(name = "Accidentvehicule.findByLastuser", query = "SELECT a FROM Accidentvehicule a WHERE a.lastuser = :lastuser")
+    , @NamedQuery(name = "Accidentvehicule.findByMatricule", query = "SELECT a FROM Accidentvehicule a WHERE a.matricule = :matricule")
+    , @NamedQuery(name = "Accidentvehicule.findByIdgrid", query = "SELECT a FROM Accidentvehicule a WHERE a.idgrid = :idgrid")
+    , @NamedQuery(name = "Accidentvehicule.findByDamageAccdom", query = "SELECT a FROM Accidentvehicule a WHERE  a.iddamage = :iddamage and "
+                       + "a.idgrid = :idgrid and a.accidentdomain = :accidentdomain")
 })
 public class Accidentvehicule implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -91,8 +90,6 @@ public class Accidentvehicule implements Serializable {
     @Size(max = 31)
     @Column(name = "DESTINATION")
     private String destination;
-    @Column(name = "IDGRID")
-    private BigInteger idgrid;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -114,16 +111,19 @@ public class Accidentvehicule implements Serializable {
     @Size(min = 1, max = 14)
     @Column(name = "MATRICULE")
     private String matricule;
-    @JoinColumn(name = "IDENTREPRISE", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Entreprise identreprise;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDGRID")
+    private BigInteger idgrid;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "accidentvehicule")
+//    private Accidentvehiculeinsurance accidentvehiculeinsurance;
     @JoinColumn(name = "IDMARK", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Mark idmark;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccidentvehicule")
-    private Collection<Assurance> assuranceCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccidentvehicule")
-    private Collection<Accidentvehiculedriver> accidentvehiculedriverCollection;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "accidentvehicule")
+//    private Accidentvehiculeowner accidentvehiculeowner;
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "accidentvehicule")
+//    private Accidentvehiculedriver accidentvehiculedriver;
 
     public Accidentvehicule() {
     }
@@ -132,7 +132,7 @@ public class Accidentvehicule implements Serializable {
         this.id = id;
     }
 
-    public Accidentvehicule(BigDecimal id, BigInteger iddamage, BigInteger accidentdomain, String name, String kind, String classification, Date datecreate, Date dateupdate, String matricule) {
+    public Accidentvehicule(BigDecimal id, BigInteger iddamage, BigInteger accidentdomain, String name, String kind, String classification, Date datecreate, Date dateupdate, String matricule, BigInteger idgrid) {
         this.id = id;
         this.iddamage = iddamage;
         this.accidentdomain = accidentdomain;
@@ -142,6 +142,7 @@ public class Accidentvehicule implements Serializable {
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
         this.matricule = matricule;
+        this.idgrid = idgrid;
     }
 
     public BigDecimal getId() {
@@ -207,14 +208,6 @@ public class Accidentvehicule implements Serializable {
     public void setDestination(String destination) {
         this.destination = destination;
     }
-    
-    public BigInteger getIdgrid() {
-        return idgrid;
-    }
-
-    public void setIdgrid(BigInteger idgrid) {
-        this.idgrid = idgrid;
-    }
 
     public Date getDatecreate() {
         return datecreate;
@@ -256,13 +249,21 @@ public class Accidentvehicule implements Serializable {
         this.matricule = matricule;
     }
 
-    public Entreprise getIdentreprise() {
-        return identreprise;
+    public BigInteger getIdgrid() {
+        return idgrid;
     }
 
-    public void setIdentreprise(Entreprise identreprise) {
-        this.identreprise = identreprise;
+    public void setIdgrid(BigInteger idgrid) {
+        this.idgrid = idgrid;
     }
+
+//    public Accidentvehiculeinsurance getAccidentvehiculeinsurance() {
+//        return accidentvehiculeinsurance;
+//    }
+//
+//    public void setAccidentvehiculeinsurance(Accidentvehiculeinsurance accidentvehiculeinsurance) {
+//        this.accidentvehiculeinsurance = accidentvehiculeinsurance;
+//    }
 
     public Mark getIdmark() {
         return idmark;
@@ -272,23 +273,21 @@ public class Accidentvehicule implements Serializable {
         this.idmark = idmark;
     }
 
-    @XmlTransient
-    public Collection<Assurance> getAssuranceCollection() {
-        return assuranceCollection;
-    }
+//    public Accidentvehiculeowner getAccidentvehiculeowner() {
+//        return accidentvehiculeowner;
+//    }
+//
+//    public void setAccidentvehiculeowner(Accidentvehiculeowner accidentvehiculeowner) {
+//        this.accidentvehiculeowner = accidentvehiculeowner;
+//    }
 
-    public void setAssuranceCollection(Collection<Assurance> assuranceCollection) {
-        this.assuranceCollection = assuranceCollection;
-    }
-
-    @XmlTransient
-    public Collection<Accidentvehiculedriver> getAccidentvehiculedriverCollection() {
-        return accidentvehiculedriverCollection;
-    }
-
-    public void setAccidentvehiculedriverCollection(Collection<Accidentvehiculedriver> accidentvehiculedriverCollection) {
-        this.accidentvehiculedriverCollection = accidentvehiculedriverCollection;
-    }
+//    public Accidentvehiculedriver getAccidentvehiculedriver() {
+//        return accidentvehiculedriver;
+//    }
+//
+//    public void setAccidentvehiculedriver(Accidentvehiculedriver accidentvehiculedriver) {
+//        this.accidentvehiculedriver = accidentvehiculedriver;
+//    }
 
     @Override
     public int hashCode() {

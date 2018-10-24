@@ -41,6 +41,8 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.AccidentpictureFacadeREST.class);
         resources.add(entity.service.AccidentvehiculeFacadeREST.class);
         resources.add(entity.service.AccidentvehiculedriverFacadeREST.class);
+        resources.add(entity.service.AccidentvehiculeinsuranceFacadeREST.class);
+        resources.add(entity.service.AccidentvehiculeownerFacadeREST.class);
         resources.add(entity.service.ActionFacadeREST.class);
         resources.add(entity.service.ActionassignmentFacadeREST.class);
         resources.add(entity.service.ActivityFacadeREST.class);
@@ -56,9 +58,6 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.DamagedefinitionFacadeREST.class);
         resources.add(entity.service.DetailsiteFacadeREST.class);
         resources.add(entity.service.DpropertyFacadeREST.class);
-        resources.add(entity.service.DriverFacadeREST.class);
-        resources.add(entity.service.DrivernonshFacadeREST.class);
-        resources.add(entity.service.DrivershFacadeREST.class);
         resources.add(entity.service.ElementFacadeREST.class);
         resources.add(entity.service.EntrepriseFacadeREST.class);
         resources.add(entity.service.ExcuseFacadeREST.class);

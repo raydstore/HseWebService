@@ -43,11 +43,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Entreprise.findByOwner", query = "SELECT e FROM Entreprise e WHERE e.owner = :owner"),
     @NamedQuery(name = "Entreprise.findByLastuser", query = "SELECT e FROM Entreprise e WHERE e.lastuser = :lastuser")})
 public class Entreprise implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "identreprise")
+    private Collection<Accidentvehiculeinsurance> accidentvehiculeinsuranceCollection;
     @Size(max = 128)
     @Column(name = "ADRESS")
     private String adress;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "identreprise")
-    private Collection<Accidentvehicule> accidentvehiculeCollection;
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -207,12 +208,12 @@ public class Entreprise implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Accidentvehicule> getAccidentvehiculeCollection() {
-        return accidentvehiculeCollection;
+    public Collection<Accidentvehiculeinsurance> getAccidentvehiculeinsuranceCollection() {
+        return accidentvehiculeinsuranceCollection;
     }
 
-    public void setAccidentvehiculeCollection(Collection<Accidentvehicule> accidentvehiculeCollection) {
-        this.accidentvehiculeCollection = accidentvehiculeCollection;
+    public void setAccidentvehiculeinsuranceCollection(Collection<Accidentvehiculeinsurance> accidentvehiculeinsuranceCollection) {
+        this.accidentvehiculeinsuranceCollection = accidentvehiculeinsuranceCollection;
     }
     
 }

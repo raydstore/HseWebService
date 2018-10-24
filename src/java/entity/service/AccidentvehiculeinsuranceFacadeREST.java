@@ -5,7 +5,8 @@
  */
 package entity.service;
 
-import entity.Driversh;
+import entity.Accidentvehiculeinsurance;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,54 +26,54 @@ import javax.ws.rs.core.MediaType;
  * @author boutarfa
  */
 @Stateless
-@Path("driversh")
-public class DrivershFacadeREST extends AbstractFacade<Driversh> {
+@Path("accidentvehiculeinsurance")
+public class AccidentvehiculeinsuranceFacadeREST extends AbstractFacade<Accidentvehiculeinsurance> {
 
     @PersistenceContext(unitName = "HseWebServicePU")
     private EntityManager em;
 
-    public DrivershFacadeREST() {
-        super(Driversh.class);
+    public AccidentvehiculeinsuranceFacadeREST() {
+        super(Accidentvehiculeinsurance.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Driversh entity) {
+    public void create(Accidentvehiculeinsurance entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, Driversh entity) {
+    public void edit(@PathParam("id") BigDecimal id, Accidentvehiculeinsurance entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") BigDecimal id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Driversh find(@PathParam("id") String id) {
+    public Accidentvehiculeinsurance find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Driversh> findAll() {
+    public List<Accidentvehiculeinsurance> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Driversh> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Accidentvehiculeinsurance> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

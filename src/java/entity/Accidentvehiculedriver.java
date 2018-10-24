@@ -13,9 +13,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,32 +31,49 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ACCIDENTVEHICULEDRIVER")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Accidentvehiculedriver.findAll", query = "SELECT a FROM Accidentvehiculedriver a"),
-    @NamedQuery(name = "Accidentvehiculedriver.findById", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.id = :id"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByMembership", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.membership = :membership"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByPermit", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.permit = :permit"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByDatecreate", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.datecreate = :datecreate"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByDateupdate", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByOwner", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Accidentvehiculedriver.findByLastuser", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Accidentvehiculedriver.findAll", query = "SELECT a FROM Accidentvehiculedriver a")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByIdaccidentvehicule", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.idaccidentvehicule = :idaccidentvehicule")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByName", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.name = :name")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByAdress", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.adress = :adress")    
+    , @NamedQuery(name = "Accidentvehiculedriver.findByMembership", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.membership = :membership")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByLicensenumber", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.licensenumber = :licensenumber")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByDatecreate", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.datecreate = :datecreate")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByDateupdate", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByOwner", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.owner = :owner")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByLastuser", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.lastuser = :lastuser")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByIssuedon", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.issuedon = :issuedon")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByIssuedby", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.issuedby = :issuedby")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByDateofbirth", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.dateofbirth = :dateofbirth")
+    , @NamedQuery(name = "Accidentvehiculedriver.findByPlaceofbirth", query = "SELECT a FROM Accidentvehiculedriver a WHERE a.placeofbirth = :placeofbirth")})
 public class Accidentvehiculedriver implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID")
-    private BigDecimal id;
+    @Column(name = "IDACCIDENTVEHICULE")
+    private BigDecimal idaccidentvehicule;
+//    @Basic(optional = false)
+//    @NotNull
+    @Size(min = 1, max = 64)
+    @Column(name = "NAME")
+    private String name;
+//    @Basic(optional = false)
+//    @NotNull
+    @Size(min = 1, max = 128)
+    @Column(name = "ADRESS")
+    private String adress;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 31)
+    @Size(min = 1, max = 1)
     @Column(name = "MEMBERSHIP")
     private String membership;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 64)
-    @Column(name = "PERMIT")
-    private String permit;
+//    @Basic(optional = false)
+//    @NotNull
+    @Size(min = 1, max = 24)
+    @Column(name = "LICENSENUMBER")
+    private String licensenumber;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -73,34 +90,60 @@ public class Accidentvehiculedriver implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Accidentvehicule idaccidentvehicule;
-    @JoinColumn(name = "IDDRIVER", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Driver iddriver;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ISSUEDON")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date issuedon;
+//    @Basic(optional = false)
+    @Size(min = 1, max = 64)
+    @Column(name = "ISSUEDBY")
+    private String issuedby;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATEOFBIRTH")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateofbirth;
+    @Size(max = 31)
+    @Column(name = "PLACEOFBIRTH")
+    private String placeofbirth;
+    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehicule accidentvehicule;
 
     public Accidentvehiculedriver() {
     }
 
-    public Accidentvehiculedriver(BigDecimal id) {
-        this.id = id;
+    public Accidentvehiculedriver(BigDecimal idaccidentvehicule) {
+        this.idaccidentvehicule = idaccidentvehicule;
     }
 
-    public Accidentvehiculedriver(BigDecimal id, String membership, String permit, Date datecreate, Date dateupdate) {
-        this.id = id;
+    public Accidentvehiculedriver(BigDecimal idaccidentvehicule, String name, String membership, String licensenumber, Date datecreate, Date dateupdate, Date issuedon, String issuedby, Date dateofbirth) {
+        this.idaccidentvehicule = idaccidentvehicule;
+        this.name = name;
         this.membership = membership;
-        this.permit = permit;
+        this.licensenumber = licensenumber;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
+        this.issuedon = issuedon;
+        this.issuedby = issuedby;
+        this.dateofbirth = dateofbirth;
     }
 
-    public BigDecimal getId() {
-        return id;
+    public BigDecimal getIdaccidentvehicule() {
+        return idaccidentvehicule;
     }
 
-    public void setId(BigDecimal id) {
-        this.id = id;
+    public void setIdaccidentvehicule(BigDecimal idaccidentvehicule) {
+        this.idaccidentvehicule = idaccidentvehicule;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMembership() {
@@ -111,12 +154,12 @@ public class Accidentvehiculedriver implements Serializable {
         this.membership = membership;
     }
 
-    public String getPermit() {
-        return permit;
+    public String getLicensenumber() {
+        return licensenumber;
     }
 
-    public void setPermit(String permit) {
-        this.permit = permit;
+    public void setLicensenumber(String licensenumber) {
+        this.licensenumber = licensenumber;
     }
 
     public Date getDatecreate() {
@@ -151,26 +194,58 @@ public class Accidentvehiculedriver implements Serializable {
         this.lastuser = lastuser;
     }
 
-    public Accidentvehicule getIdaccidentvehicule() {
-        return idaccidentvehicule;
+    public Date getIssuedon() {
+        return issuedon;
     }
 
-    public void setIdaccidentvehicule(Accidentvehicule idaccidentvehicule) {
-        this.idaccidentvehicule = idaccidentvehicule;
+    public void setIssuedon(Date issuedon) {
+        this.issuedon = issuedon;
     }
 
-    public Driver getIddriver() {
-        return iddriver;
+    public String getIssuedby() {
+        return issuedby;
     }
 
-    public void setIddriver(Driver iddriver) {
-        this.iddriver = iddriver;
+    public void setIssuedby(String issuedby) {
+        this.issuedby = issuedby;
+    }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
+    public String getPlaceofbirth() {
+        return placeofbirth;
+    }
+
+    public void setPlaceofbirth(String placeofbirth) {
+        this.placeofbirth = placeofbirth;
+    }
+
+    public Accidentvehicule getAccidentvehicule() {
+        return accidentvehicule;
+    }
+
+    public void setAccidentvehicule(Accidentvehicule accidentvehicule) {
+        this.accidentvehicule = accidentvehicule;
+    }
+    
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idaccidentvehicule != null ? idaccidentvehicule.hashCode() : 0);
         return hash;
     }
 
@@ -181,7 +256,7 @@ public class Accidentvehiculedriver implements Serializable {
             return false;
         }
         Accidentvehiculedriver other = (Accidentvehiculedriver) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idaccidentvehicule == null && other.idaccidentvehicule != null) || (this.idaccidentvehicule != null && !this.idaccidentvehicule.equals(other.idaccidentvehicule))) {
             return false;
         }
         return true;
@@ -189,7 +264,7 @@ public class Accidentvehiculedriver implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Accidentvehiculedriver[ id=" + id + " ]";
+        return "entity.Accidentvehiculedriver[ idaccidentvehicule=" + idaccidentvehicule + " ]";
     }
     
 }
