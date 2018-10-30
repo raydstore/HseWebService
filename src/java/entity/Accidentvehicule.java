@@ -124,6 +124,16 @@ public class Accidentvehicule implements Serializable {
 //    private Accidentvehiculeowner accidentvehiculeowner;
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "accidentvehicule")
 //    private Accidentvehiculedriver accidentvehiculedriver;
+    
+    @JoinColumn(name = "ID", referencedColumnName = "IDACCIDENTVEHICULE", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehiculedriver accidentvehiculedriver;
+    @JoinColumn(name = "ID", referencedColumnName = "IDACCIDENTVEHICULE", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehiculeinsurance accidentvehiculeinsurance;
+    @JoinColumn(name = "ID", referencedColumnName = "IDACCIDENTVEHICULE", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehiculeowner accidentvehiculeowner;
 
     public Accidentvehicule() {
     }
@@ -256,14 +266,30 @@ public class Accidentvehicule implements Serializable {
     public void setIdgrid(BigInteger idgrid) {
         this.idgrid = idgrid;
     }
+    
+    public Accidentvehiculedriver getAccidentvehiculedriver() {
+        return accidentvehiculedriver;
+    }
 
-//    public Accidentvehiculeinsurance getAccidentvehiculeinsurance() {
-//        return accidentvehiculeinsurance;
-//    }
-//
-//    public void setAccidentvehiculeinsurance(Accidentvehiculeinsurance accidentvehiculeinsurance) {
-//        this.accidentvehiculeinsurance = accidentvehiculeinsurance;
-//    }
+    public void setAccidentvehiculedriver(Accidentvehiculedriver accidentvehiculedriver) {
+        this.accidentvehiculedriver = accidentvehiculedriver;
+    }
+
+    public Accidentvehiculeinsurance getAccidentvehiculeinsurance() {
+        return accidentvehiculeinsurance;
+    }
+
+    public void setAccidentvehiculeinsurance(Accidentvehiculeinsurance accidentvehiculeinsurance) {
+        this.accidentvehiculeinsurance = accidentvehiculeinsurance;
+    }
+
+    public Accidentvehiculeowner getAccidentvehiculeowner() {
+        return accidentvehiculeowner;
+    }
+
+    public void setAccidentvehiculeowner(Accidentvehiculeowner accidentvehiculeowner) {
+        this.accidentvehiculeowner = accidentvehiculeowner;
+    }
 
     public Mark getIdmark() {
         return idmark;

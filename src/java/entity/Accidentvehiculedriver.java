@@ -107,9 +107,9 @@ public class Accidentvehiculedriver implements Serializable {
     @Size(max = 31)
     @Column(name = "PLACEOFBIRTH")
     private String placeofbirth;
-    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Accidentvehicule accidentvehicule;
+//    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID", insertable = false, updatable = false)
+//    @OneToOne(optional = false)
+//    private Accidentvehicule accidentvehicule;
 
     public Accidentvehiculedriver() {
     }
@@ -226,13 +226,7 @@ public class Accidentvehiculedriver implements Serializable {
         this.placeofbirth = placeofbirth;
     }
 
-    public Accidentvehicule getAccidentvehicule() {
-        return accidentvehicule;
-    }
-
-    public void setAccidentvehicule(Accidentvehicule accidentvehicule) {
-        this.accidentvehicule = accidentvehicule;
-    }
+    
     
     public String getAdress() {
         return adress;

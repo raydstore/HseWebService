@@ -81,9 +81,6 @@ public class Accidentvehiculeinsurance implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Accidentvehicule accidentvehicule;
     @JoinColumn(name = "IDENTREPRISE", referencedColumnName = "ID")
     @ManyToOne(optional = true)
     private Entreprise identreprise;
@@ -166,14 +163,6 @@ public class Accidentvehiculeinsurance implements Serializable {
 
     public void setLastuser(String lastuser) {
         this.lastuser = lastuser;
-    }
-
-    public Accidentvehicule getAccidentvehicule() {
-        return accidentvehicule;
-    }
-
-    public void setAccidentvehicule(Accidentvehicule accidentvehicule) {
-        this.accidentvehicule = accidentvehicule;
     }
 
     public Entreprise getIdentreprise() {
