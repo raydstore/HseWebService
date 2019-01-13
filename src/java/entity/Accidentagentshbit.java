@@ -37,6 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagentshbit.findById", query = "SELECT a FROM Accidentagentshbit a WHERE a.id = :id"),
     @NamedQuery(name = "Accidentagentshbit.findByIdbit", query = "SELECT a FROM Accidentagentshbit a WHERE a.idbit = :idbit"),
     @NamedQuery(name = "Accidentagentshbit.findByIdbitclass", query = "SELECT a FROM Accidentagentshbit a WHERE a.idbitclass = :idbitclass"),
+    @NamedQuery(name = "Accidentagentshbit.findByName", query = "SELECT a FROM Accidentagentshbit a WHERE a.name = :name"),
     @NamedQuery(name = "Accidentagentshbit.findByKind", query = "SELECT a FROM Accidentagentshbit a WHERE a.kind = :kind"),
     @NamedQuery(name = "Accidentagentshbit.findByIdgrid", query = "SELECT a FROM Accidentagentshbit a WHERE a.idgrid = :idgrid"),
     @NamedQuery(name = "Accidentagentshbit.findByDatecreate", query = "SELECT a FROM Accidentagentshbit a WHERE a.datecreate = :datecreate"),
@@ -61,6 +62,9 @@ public class Accidentagentshbit implements Serializable {
     @Size(min = 1, max = 4)
     @Column(name = "IDBITCLASS")
     private String idbitclass;
+    @Size(max = 128)
+    @Column(name = "NAME")
+    private String name;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1)
@@ -97,10 +101,11 @@ public class Accidentagentshbit implements Serializable {
         this.id = id;
     }
 
-    public Accidentagentshbit(BigDecimal id, String idbit, String idbitclass, String kind, Date datecreate, Date dateupdate) {
+    public Accidentagentshbit(BigDecimal id, String idbit, String idbitclass, String name, String kind, Date datecreate, Date dateupdate) {
         this.id = id;
         this.idbit = idbit;
         this.idbitclass = idbitclass;
+        this.name = name;
         this.kind = kind;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
@@ -129,6 +134,16 @@ public class Accidentagentshbit implements Serializable {
     public void setIdbitclass(String idbitclass) {
         this.idbitclass = idbitclass;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
 
     public String getKind() {
         return kind;

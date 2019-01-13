@@ -13,6 +13,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -37,12 +38,36 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Agent.findById", query = "SELECT a FROM Agent a WHERE a.id = :id"),
     @NamedQuery(name = "Agent.findByFirstname", query = "SELECT a FROM Agent a WHERE a.firstname = :firstname"),
     @NamedQuery(name = "Agent.findByLastname", query = "SELECT a FROM Agent a WHERE a.lastname = :lastname"),
-    @NamedQuery(name = "Agent.findByHiredate", query = "SELECT a FROM Agent a WHERE a.hiredate = :hiredate"),
+    @NamedQuery(name = "Agent.findByDateofbirth", query = "SELECT a FROM Agent a WHERE a.dateofbirth = :dateofbirth"),
+    @NamedQuery(name = "Agent.findByPlaceofbirth", query = "SELECT a FROM Agent a WHERE a.placeofbirth = :placeofbirth"),
+    @NamedQuery(name = "Agent.findByFamilysituation", query = "SELECT a FROM Agent a WHERE a.familysituation = :familysituation"),
     @NamedQuery(name = "Agent.findByDatecreate", query = "SELECT a FROM Agent a WHERE a.datecreate = :datecreate"),
     @NamedQuery(name = "Agent.findByDateupdate", query = "SELECT a FROM Agent a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Agent.findByOwner", query = "SELECT a FROM Agent a WHERE a.owner = :owner"),
     @NamedQuery(name = "Agent.findByLastuser", query = "SELECT a FROM Agent a WHERE a.lastuser = :lastuser")})
 public class Agent implements Serializable {
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATEOFBIRTH")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateofbirth;
+    @Size(max = 31)
+    @Column(name = "PLACEOFBIRTH")
+    private String placeofbirth;
+    @Size(max = 1)
+    @Column(name = "FAMILYSITUATION")
+    private String familysituation;
+    @Size(max = 128)
+    @Column(name = "ADRESS")
+    private String adress;
+//    @JoinColumn(name = "ID", referencedColumnName = "IDAGENT", insertable = false, updatable = false)
+//    @OneToOne(optional = false)
+////    @OneToOne(cascade = CascadeType.ALL, mappedBy = "agent")
+//    private Detailagent detailagent;
+
+    @OneToMany(mappedBy = "idagent")
+    private Collection<Accidentvehiculedriversh> accidentvehiculedrivershCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "agent")
     private Collection<Accidentagentsh> accidentagentshCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idagentdeclare")
@@ -65,11 +90,11 @@ public class Agent implements Serializable {
     @Size(min = 1, max = 31)
     @Column(name = "LASTNAME")
     private String lastname;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "HIREDATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date hiredate;
+//    @Basic(optional = false)
+//    @NotNull
+//    @Column(name = "HIREDATE")
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private Date hiredate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -98,11 +123,13 @@ public class Agent implements Serializable {
         this.id = id;
     }
 
-    public Agent(String id, String firstname, String lastname, Date hiredate, Date datecreate, Date dateupdate) {
+    public Agent(String id, String firstname, String lastname, Date dateofbirth, String placeofbirth, String familysituation, Date datecreate, Date dateupdate) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.hiredate = hiredate;
+        this.dateofbirth = dateofbirth;
+        this.placeofbirth = placeofbirth;
+        this.familysituation = familysituation;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
     }
@@ -131,13 +158,7 @@ public class Agent implements Serializable {
         this.lastname = lastname;
     }
 
-    public Date getHiredate() {
-        return hiredate;
-    }
-
-    public void setHiredate(Date hiredate) {
-        this.hiredate = hiredate;
-    }
+    
 
     public Date getDatecreate() {
         return datecreate;
@@ -240,5 +261,54 @@ public class Agent implements Serializable {
     public void setAccidentCollection1(Collection<Accident> accidentCollection1) {
         this.accidentCollection1 = accidentCollection1;
     }
+
+    @XmlTransient
+    public Collection<Accidentvehiculedriversh> getAccidentvehiculedrivershCollection() {
+        return accidentvehiculedrivershCollection;
+    }
+
+    public void setAccidentvehiculedrivershCollection(Collection<Accidentvehiculedriversh> accidentvehiculedrivershCollection) {
+        this.accidentvehiculedrivershCollection = accidentvehiculedrivershCollection;
+    }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
+    public String getPlaceofbirth() {
+        return placeofbirth;
+    }
+
+    public void setPlaceofbirth(String placeofbirth) {
+        this.placeofbirth = placeofbirth;
+    }
+
+    public String getFamilysituation() {
+        return familysituation;
+    }
+
+    public void setFamilysituation(String familysituation) {
+        this.familysituation = familysituation;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+//    public Detailagent getDetailagent() {
+//        return detailagent;
+//    }
+//
+//    public void setDetailagent(Detailagent detailagent) {
+//        this.detailagent = detailagent;
+//    }
     
 }

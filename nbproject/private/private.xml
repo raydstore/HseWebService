@@ -3,29 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Inspectedsite.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Action.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehiculeinsurance.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ApplicationConfig.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwAccidentagentshbitFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/InspectedsiteFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehicule.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwSitenotinspectedFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwAccidentagentshbit.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentvehiculeFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehiculeowner.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/LabelFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwSitenotinspected.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwGridforaccidentFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accident.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwInspectedsite.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentvehiculedriverFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwInspectedsiteFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/InspectplanningFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/SiteFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Site.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/DetailagentFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwAccidentagentshbitFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagentshbitFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehiculedriver.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehiculedriverns.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentshbit.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehicule.java</file>
         </group>
     </open-files>
 </project-private>

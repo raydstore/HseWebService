@@ -107,6 +107,13 @@ public class Accidentvehiculedriver implements Serializable {
     @Size(max = 31)
     @Column(name = "PLACEOFBIRTH")
     private String placeofbirth;
+    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "IDACCIDENTVEHICULE", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehiculedriversh accidentvehiculedriversh;
+    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "IDACCIDENTVEHICULE", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Accidentvehiculedriverns accidentvehiculedriverns;
+    
 //    @JoinColumn(name = "IDACCIDENTVEHICULE", referencedColumnName = "ID", insertable = false, updatable = false)
 //    @OneToOne(optional = false)
 //    private Accidentvehicule accidentvehicule;
@@ -235,6 +242,27 @@ public class Accidentvehiculedriver implements Serializable {
     public void setAdress(String adress) {
         this.adress = adress;
     }
+
+    public Accidentvehiculedriversh getAccidentvehiculedriversh() {
+        return accidentvehiculedriversh;
+    }
+
+    public void setAccidentvehiculedriversh(Accidentvehiculedriversh accidentvehiculedriversh) {
+        this.accidentvehiculedriversh = accidentvehiculedriversh;
+    }
+
+    public Accidentvehiculedriverns getAccidentvehiculedriverns() {
+        return accidentvehiculedriverns;
+    }
+
+    public void setAccidentvehiculedriverns(Accidentvehiculedriverns accidentvehiculedriverns) {
+        this.accidentvehiculedriverns = accidentvehiculedriverns;
+    }
+    
+    
+    
+    
+    
 
     @Override
     public int hashCode() {
