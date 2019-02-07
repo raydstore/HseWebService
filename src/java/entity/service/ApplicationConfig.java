@@ -67,6 +67,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.ExcuseagentFacadeREST.class);
         resources.add(entity.service.Function1FacadeREST.class);
         resources.add(entity.service.FunctionagentFacadeREST.class);
+        resources.add(entity.service.GenericResource.class);
         resources.add(entity.service.GridFacadeREST.class);
         resources.add(entity.service.InspectedsiteFacadeREST.class);
         resources.add(entity.service.InspectplanningFacadeREST.class);

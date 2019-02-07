@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpLigneCommande" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4728dc80-017b-4682-b7d5-9172cf063a98">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="stylemontant" pattern="da #,##0.00"/>
+	<parameter name="p1" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[SELECT
+     LIGNE_COMMANDE."IDCOMMANDE" AS LIGNE_COMMANDE_IDCOMMANDE,
+     LIGNE_COMMANDE."IDFACTURE" AS LIGNE_COMMANDE_IDFACTURE,
+     FACTURE."ID" AS FACTURE_ID,
+     FACTURE."VOLET" AS FACTURE_VOLET,
+     FACTURE."CURDATE" AS FACTURE_CURDATE,
+     FACTURE."FACTDATE" AS FACTURE_FACTDATE,
+     FACTURE."DATESEND" AS FACTURE_DATESEND,
+     FACTURE."MONTANT" AS FACTURE_MONTANT,
+     FACTURE."IDBORDEREAU" AS FACTURE_IDBORDEREAU,
+     FACTURE."NUMERO" AS FACTURE_NUMERO,
+     FACTURE."MOIS" AS FACTURE_MOIS
+FROM
+     "ORDN"."FACTURE" FACTURE INNER JOIN "ORDN"."LIGNE_COMMANDE" LIGNE_COMMANDE ON FACTURE."ID" = LIGNE_COMMANDE."IDFACTURE"
+WHERE
+     LIGNE_COMMANDE."IDCOMMANDE" = $P{p1}]]>
+	</queryString>
+	<field name="LIGNE_COMMANDE_IDCOMMANDE" class="java.math.BigDecimal"/>
+	<field name="LIGNE_COMMANDE_IDFACTURE" class="java.lang.String"/>
+	<field name="FACTURE_ID" class="java.lang.String"/>
+	<field name="FACTURE_VOLET" class="java.lang.String"/>
+	<field name="FACTURE_CURDATE" class="java.sql.Timestamp"/>
+	<field name="FACTURE_FACTDATE" class="java.sql.Timestamp"/>
+	<field name="FACTURE_DATESEND" class="java.sql.Timestamp"/>
+	<field name="FACTURE_MONTANT" class="java.math.BigDecimal"/>
+	<field name="FACTURE_IDBORDEREAU" class="java.lang.String"/>
+	<field name="FACTURE_NUMERO" class="java.lang.String"/>
+	<field name="FACTURE_MOIS" class="java.lang.String"/>
+	<pageHeader>
+		<band height="50">
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="10" width="254" height="31" backcolor="#999999" uuid="cc4dc608-8beb-440d-9e97-b0d3c4318824"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Liste Facture]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="0" width="132" height="31" backcolor="#999999" uuid="c1b57fa6-45ca-4659-baeb-bc8e767a687c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Enreg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="0" width="254" height="31" backcolor="#999999" uuid="9c524c92-843e-4fe0-a9a2-0631327739b1"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="145" y="0" width="132" height="31" backcolor="#999999" uuid="b85d9112-04ee-443c-994a-0be1962ea9d7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Facture]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="133" height="26" uuid="d67953d6-252e-472d-be6f-6f9cb31c8e0b"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LIGNE_COMMANDE_IDFACTURE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="133" height="26" uuid="35a35b02-decf-43b1-8fd9-dca4ec6d9c44"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FACTURE_NUMERO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="278" y="0" width="254" height="26" uuid="499f72db-0dc2-4f60-b689-166c8cf0faab"/>
+				<box topPadding="5" leftPadding="5">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FACTURE_MONTANT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

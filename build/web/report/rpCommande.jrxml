@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpCommande" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36e96828-119a-4058-b8d9-f288098a9933">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" fontSize="14"/>
+	<parameter name="p" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     COMMANDE."ID" AS COMMANDE_ID,
+     COMMANDE."DATESEND" AS COMMANDE_DATESEND,
+     COMMANDE."IDETAPE" AS COMMANDE_IDETAPE,
+     COMMANDE."IDPARTIE_COMMANDE" AS COMMANDE_IDPARTIE_COMMANDE,
+     PARTIE_COMMANDE."VOLET" AS PARTIE_COMMANDE_VOLET,
+     PARTIE_COMMANDE."IDCONTRAT" AS PARTIE_COMMANDE_IDCONTRAT,
+     PARTIE."ID" AS PARTIE_ID,
+     PARTIE."IDSTRUCTURE" AS PARTIE_IDSTRUCTURE,
+     PARTIE."SERVICE" AS PARTIE_SERVICE,
+     PARTIE."IDFOURNISSEUR" AS PARTIE_IDFOURNISSEUR,
+     PARTIE."IDMONAIS" AS PARTIE_IDMONAIS,
+     FOURNISSEUR."NAME" AS FOURNISSEUR_NAME
+
+FROM
+     "ORDN"."PARTIE_COMMANDE" PARTIE_COMMANDE INNER JOIN "ORDN"."COMMANDE" COMMANDE ON PARTIE_COMMANDE."ID" = COMMANDE."IDPARTIE_COMMANDE"
+     INNER JOIN "ORDN"."PARTIE" PARTIE ON PARTIE_COMMANDE."IDPARTIE" = PARTIE."ID"
+     INNER JOIN "ORDN"."FOURNISSEUR" FOURNISSEUR ON PARTIE."IDFOURNISSEUR" = FOURNISSEUR."ID"
+WHERE
+     COMMANDE."ID" = $P{p}]]>
+	</queryString>
+	<field name="COMMANDE_ID" class="java.math.BigDecimal"/>
+	<field name="COMMANDE_DATESEND" class="java.sql.Timestamp"/>
+	<field name="COMMANDE_IDETAPE" class="java.math.BigDecimal"/>
+	<field name="COMMANDE_IDPARTIE_COMMANDE" class="java.math.BigDecimal"/>
+	<field name="PARTIE_COMMANDE_VOLET" class="java.lang.String"/>
+	<field name="PARTIE_COMMANDE_IDCONTRAT" class="java.lang.String"/>
+	<field name="PARTIE_ID" class="java.math.BigDecimal"/>
+	<field name="PARTIE_IDSTRUCTURE" class="java.lang.String"/>
+	<field name="PARTIE_SERVICE" class="java.math.BigDecimal"/>
+	<field name="PARTIE_IDFOURNISSEUR" class="java.lang.String"/>
+	<field name="PARTIE_IDMONAIS" class="java.lang.String"/>
+	<field name="FOURNISSEUR_NAME" class="java.lang.String"/>
+	<variable name="labelservice" class="java.lang.String" calculation="Lowest">
+		<variableExpression><![CDATA[$F{PARTIE_SERVICE}.toString()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="17" width="332" height="33" uuid="f7a1a3d6-df5a-4ff4-8794-a1851948d454"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bordereau de commande]]></text>
+			</staticText>
+			<line>
+				<reportElement x="121" y="50" width="332" height="1" uuid="2b017f41-8fa6-4e46-b33d-29ae1f0ef8de"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="230" y="0" width="182" height="20" uuid="698b8404-565e-43f2-b445-c069e2f68593"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date d'envoi :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="style1" x="412" y="0" width="138" height="20" uuid="7e017b4c-548b-4981-82d4-b52f6df7f75d"/>
+				<textFieldExpression><![CDATA[$F{COMMANDE_DATESEND}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="163" splitType="Stretch">
+			<staticText>
+				<reportElement style="style1" x="0" y="0" width="110" height="20" uuid="e21fbd39-961b-4857-a316-2bff51d57007"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° commande :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="style1" x="121" y="0" width="87" height="20" uuid="f5cf487e-f050-4083-ba43-02f44f0e8e20"/>
+				<textFieldExpression><![CDATA[$F{COMMANDE_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="121" y="113" width="324" height="20" uuid="6333abaf-eb2f-4ccc-9264-d6b5fc14fd49"/>
+				<textFieldExpression><![CDATA[($F{PARTIE_COMMANDE_VOLET}.equals("I")) ? "Investissement" : "Exploitation"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="121" y="57" width="324" height="20" uuid="6fec4a5a-77bb-4a29-af70-079968fe26fc"/>
+				<textFieldExpression><![CDATA[$F{PARTIE_COMMANDE_IDCONTRAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="121" y="85" width="324" height="20" uuid="a80b06f6-fbc0-468e-b5d5-9c5971884eb9"/>
+				<textFieldExpression><![CDATA[($F{PARTIE_SERVICE} == new java.math.BigDecimal(8)) ? "fournisseur etranger" : "Fournisseur locaux"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style1" x="121" y="29" width="87" height="20" uuid="68f9f324-2cdc-4f32-8ba2-dc7074b2ccb8"/>
+				<textFieldExpression><![CDATA[$F{PARTIE_IDFOURNISSEUR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="style1" x="0" y="29" width="100" height="20" uuid="e74854df-5ec7-4ba8-a227-756f07c8f9d7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fournisseur :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="57" width="100" height="20" uuid="4564e1dc-7b33-4a27-abd7-85028b7a298a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contrat :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="85" width="100" height="20" uuid="85d78f0c-b53c-46e4-9d1e-cecb107871ee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Service :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style1" x="0" y="113" width="100" height="20" uuid="5beb6643-a993-4190-99ad-5ce63da0836b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volet :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="style1" x="215" y="29" width="332" height="20" uuid="6bf779f7-23e2-4ed3-9437-0c35162b7265"/>
+				<textFieldExpression><![CDATA[$F{FOURNISSEUR_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="155" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="20" width="555" height="135" uuid="c7b02016-0cd2-4170-bf52-2d3c26420770"/>
+				<subreportParameter name="p1">
+					<subreportParameterExpression><![CDATA[$F{COMMANDE_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["rpLigneCommande.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
