@@ -46,6 +46,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.AccidentvehiculeinsuranceFacadeREST.class);
         resources.add(entity.service.AccidentvehiculeownerFacadeREST.class);
         resources.add(entity.service.ActionFacadeREST.class);
+        resources.add(entity.service.ActionaccidentFacadeREST.class);
         resources.add(entity.service.ActionassignmentFacadeREST.class);
         resources.add(entity.service.ActivityFacadeREST.class);
         resources.add(entity.service.AgencyFacadeREST.class);
@@ -85,6 +86,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.Object1FacadeREST.class);
         resources.add(entity.service.OperationFacadeREST.class);
         resources.add(entity.service.OpscardFacadeREST.class);
+        resources.add(entity.service.PrintResource.class);
         resources.add(entity.service.PropertyFacadeREST.class);
         resources.add(entity.service.RankFacadeREST.class);
         resources.add(entity.service.RecommendationFacadeREST.class);
@@ -98,6 +100,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.VpropertyFacadeREST.class);
         resources.add(entity.service.VwAccidentagentshbitFacadeREST.class);
         resources.add(entity.service.VwAccidentnatureFacadeREST.class);
+        resources.add(entity.service.VwActionaccidentFacadeREST.class);
         resources.add(entity.service.VwAgentFacadeREST.class);
         resources.add(entity.service.VwDamageFacadeREST.class);
         resources.add(entity.service.VwDamageaccidentnatureFacadeREST.class);

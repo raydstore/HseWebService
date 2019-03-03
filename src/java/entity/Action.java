@@ -14,8 +14,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,21 +33,17 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ACTION")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Action.findAll", query = "SELECT a FROM Action a"),
-    @NamedQuery(name = "Action.findById", query = "SELECT a FROM Action a WHERE a.id = :id"),
-    @NamedQuery(name = "Action.findByKind", query = "SELECT a FROM Action a WHERE a.kind = :kind"),
-    @NamedQuery(name = "Action.findByState", query = "SELECT a FROM Action a WHERE a.state = :state"),
-    @NamedQuery(name = "Action.findByName", query = "SELECT a FROM Action a WHERE a.name = :name"),
-    @NamedQuery(name = "Action.findByDatecreate", query = "SELECT a FROM Action a WHERE a.datecreate = :datecreate"),
-    @NamedQuery(name = "Action.findByDateupdate", query = "SELECT a FROM Action a WHERE a.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Action.findByOwner", query = "SELECT a FROM Action a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser")
-//        ,
-//    @NamedQuery(name = "Action.findByAccident", query = "SELECT a FROM Action a WHERE a.idparent.id = :idparent")
-})
+    @NamedQuery(name = "Action.findAll", query = "SELECT a FROM Action a")
+    , @NamedQuery(name = "Action.findById", query = "SELECT a FROM Action a WHERE a.id = :id")
+    , @NamedQuery(name = "Action.findByKind", query = "SELECT a FROM Action a WHERE a.kind = :kind")
+    , @NamedQuery(name = "Action.findByName", query = "SELECT a FROM Action a WHERE a.name = :name")
+    , @NamedQuery(name = "Action.findByDatecreate", query = "SELECT a FROM Action a WHERE a.datecreate = :datecreate")
+    , @NamedQuery(name = "Action.findByDateupdate", query = "SELECT a FROM Action a WHERE a.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Action.findByOwner", query = "SELECT a FROM Action a WHERE a.owner = :owner")
+    , @NamedQuery(name = "Action.findByLastuser", query = "SELECT a FROM Action a WHERE a.lastuser = :lastuser")
+    , @NamedQuery(name = "Action.findByState", query = "SELECT a FROM Action a WHERE a.state = :state")})
 public class Action implements Serializable {
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaction")
-    private Collection<Actionassignment> actionassignmentCollection;
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -62,11 +56,6 @@ public class Action implements Serializable {
     @Size(min = 1, max = 1)
     @Column(name = "KIND")
     private String kind;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1)
-    @Column(name = "STATE")
-    private String state;
     @Size(max = 256)
     @Column(name = "NAME")
     private String name;
@@ -86,9 +75,13 @@ public class Action implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-//    @JoinColumn(name = "IDPARENT", referencedColumnName = "ID")
-//    @ManyToOne
-//    private Accident idparent;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1)
+    @Column(name = "STATE")
+    private String state;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "action")
+    private Collection<Actionassignment> actionassignmentCollection;
 
     public Action() {
     }
@@ -97,11 +90,12 @@ public class Action implements Serializable {
         this.id = id;
     }
 
-    public Action(BigDecimal id, String kind, Date datecreate, Date dateupdate) {
+    public Action(BigDecimal id, String kind, Date datecreate, Date dateupdate, String state) {
         this.id = id;
         this.kind = kind;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
+        this.state = state;
     }
 
     public BigDecimal getId() {
@@ -119,16 +113,6 @@ public class Action implements Serializable {
     public void setKind(String kind) {
         this.kind = kind;
     }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-    
-    
 
     public String getName() {
         return name;
@@ -170,13 +154,22 @@ public class Action implements Serializable {
         this.lastuser = lastuser;
     }
 
-//    public Accident getIdparent() {
-//        return idparent;
-//    }
-//
-//    public void setIdparent(Accident idparent) {
-//        this.idparent = idparent;
-//    }
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    @XmlTransient
+    public Collection<Actionassignment> getActionassignmentCollection() {
+        return actionassignmentCollection;
+    }
+
+    public void setActionassignmentCollection(Collection<Actionassignment> actionassignmentCollection) {
+        this.actionassignmentCollection = actionassignmentCollection;
+    }
 
     @Override
     public int hashCode() {
@@ -201,15 +194,6 @@ public class Action implements Serializable {
     @Override
     public String toString() {
         return "entity.Action[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Actionassignment> getActionassignmentCollection() {
-        return actionassignmentCollection;
-    }
-
-    public void setActionassignmentCollection(Collection<Actionassignment> actionassignmentCollection) {
-        this.actionassignmentCollection = actionassignmentCollection;
     }
     
 }

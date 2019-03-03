@@ -75,7 +75,7 @@ public class GenericResource {
         } catch (SQLException e) {
             connection = null;
         }
-        String reportPath = getReportPath(request, "rptCompteRenduCirculation.jasper");
+        String reportPath = getReportPath(request, "rptAccidentTravail.jasper");
         Map parametersMap = new HashMap();
         parametersMap.put("p", idaccident);
         JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, parametersMap, connection);//beanCollectionDataSource);
@@ -111,6 +111,8 @@ public class GenericResource {
     @Produces("application/pdf")
     public Response printCmd(@QueryParam("idaccident") BigDecimal idaccident)  throws JRException, IOException {
        // byte[] byteArray = printCommande(httpServletRequest, new BigDecimal(1));
+        Map parametersMap = new HashMap();
+        parametersMap.put("p", idaccident);
         byte[] byteArray = printCptRendu(httpServletRequest, idaccident);
         ResponseBuilder response = Response.ok((Object) byteArray);
         response.type("application/pdf");

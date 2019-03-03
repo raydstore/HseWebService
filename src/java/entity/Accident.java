@@ -57,6 +57,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Accident implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Actionaccident> actionaccidentCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
     private Collection<Aggravatingfactor> aggravatingfactorCollection;
 
     private static final long serialVersionUID = 1L;
@@ -79,12 +82,12 @@ public class Accident implements Serializable {
     @Column(name = "TIME")
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
-    @Size(max = 250)
+    @Size(max = 300)
     @Column(name = "SITEDESCRIPTION")
     private String sitedescription;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 1000)
+    @Size(min = 1, max = 3000)
     @Column(name = "EVENT")
     private String event;
     @Basic(optional = false)
@@ -107,21 +110,33 @@ public class Accident implements Serializable {
     @NotNull
     @Column(name = "TABINDEX")
     private BigInteger tabindex;
-    @Size(max = 200)
+    @Size(max = 300)
     @Column(name = "PLACE")
     private String place;
-    @Size(max = 200)
+    @Size(max = 300)
     @Column(name = "PERSONDAMAGE")
     private String persondamage;
-    @Size(max = 200)
+    @Size(max = 300)
     @Column(name = "PROPERTYDAMAGE")
     private String propertydamage;
-    @Size(max = 200)
+    @Size(max = 300)
     @Column(name = "ENVIRENEMENTDAMAGE")
     private String envirenementdamage;
-    @Size(max = 150)
+    @Size(max = 350)
     @Column(name = "OBVIOUSCAUSE")
     private String obviouscause;
+    @Size(max = 300)
+    @Column(name = "PPERSONDAMAGE")
+    private String ppersondamage;
+    @Size(max = 300)
+    @Column(name = "PPROPERTYDAMAGE")
+    private String ppropertydamage;
+    @Size(max = 300)
+    @Column(name = "PENVIRENEMENTDAMAGE")
+    private String penvirenementdamage;
+    @Size(max = 3000)
+    @Column(name = "PEVENT")
+    private String pevent;
     @JoinColumn(name = "IDAGENTDECLARE", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Agent idagentdeclare;
@@ -308,6 +323,40 @@ public class Accident implements Serializable {
     public void setIdsite(Site idsite) {
         this.idsite = idsite;
     }
+
+    public String getPpersondamage() {
+        return ppersondamage;
+    }
+
+    public void setPpersondamage(String ppersondamage) {
+        this.ppersondamage = ppersondamage;
+    }
+
+    public String getPpropertydamage() {
+        return ppropertydamage;
+    }
+
+    public void setPpropertydamage(String ppropertydamage) {
+        this.ppropertydamage = ppropertydamage;
+    }
+
+    public String getPenvirenementdamage() {
+        return penvirenementdamage;
+    }
+
+    public void setPenvirenementdamage(String penvirenementdamage) {
+        this.penvirenementdamage = penvirenementdamage;
+    }
+
+    public String getPevent() {
+        return pevent;
+    }
+
+    public void setPevent(String pevent) {
+        this.pevent = pevent;
+    }
+    
+    
     
     @XmlTransient
     public Collection<Accidentnature> getAccidentnatureCollection() {
@@ -377,6 +426,15 @@ public class Accident implements Serializable {
 
     public void setAggravatingfactorCollection(Collection<Aggravatingfactor> aggravatingfactorCollection) {
         this.aggravatingfactorCollection = aggravatingfactorCollection;
+    }
+
+    @XmlTransient
+    public Collection<Actionaccident> getActionaccidentCollection() {
+        return actionaccidentCollection;
+    }
+
+    public void setActionaccidentCollection(Collection<Actionaccident> actionaccidentCollection) {
+        this.actionaccidentCollection = actionaccidentCollection;
     }
     
 }

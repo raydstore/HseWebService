@@ -153,6 +153,14 @@ public class Accidentpicture implements Serializable {
         this.idaccident = idaccident;
     }
 
+    public Serializable getImage() {
+        return image;
+    }
+
+    public void setImage(Serializable image) {
+        this.image = image;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

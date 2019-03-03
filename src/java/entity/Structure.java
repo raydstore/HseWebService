@@ -33,14 +33,15 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "STRUCTURE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Structure.findAll", query = "SELECT s FROM Structure s"),
-    @NamedQuery(name = "Structure.findById", query = "SELECT s FROM Structure s WHERE s.id = :id"),
-    @NamedQuery(name = "Structure.findByName", query = "SELECT s FROM Structure s WHERE s.name = :name"),
-    @NamedQuery(name = "Structure.findByDatecreate", query = "SELECT s FROM Structure s WHERE s.datecreate = :datecreate"),
-    @NamedQuery(name = "Structure.findByDateupdate", query = "SELECT s FROM Structure s WHERE s.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Structure.findByOwner", query = "SELECT s FROM Structure s WHERE s.owner = :owner"),
-    @NamedQuery(name = "Structure.findByLastuser", query = "SELECT s FROM Structure s WHERE s.lastuser = :lastuser")})
+    @NamedQuery(name = "Structure.findAll", query = "SELECT s FROM Structure s")
+    , @NamedQuery(name = "Structure.findById", query = "SELECT s FROM Structure s WHERE s.id = :id")
+    , @NamedQuery(name = "Structure.findByName", query = "SELECT s FROM Structure s WHERE s.name = :name")
+    , @NamedQuery(name = "Structure.findByDatecreate", query = "SELECT s FROM Structure s WHERE s.datecreate = :datecreate")
+    , @NamedQuery(name = "Structure.findByDateupdate", query = "SELECT s FROM Structure s WHERE s.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Structure.findByOwner", query = "SELECT s FROM Structure s WHERE s.owner = :owner")
+    , @NamedQuery(name = "Structure.findByLastuser", query = "SELECT s FROM Structure s WHERE s.lastuser = :lastuser")})
 public class Structure implements Serializable {
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -69,7 +70,7 @@ public class Structure implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idstructure")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "structure")
     private Collection<Actionassignment> actionassignmentCollection;
 
     public Structure() {

@@ -25,11 +25,11 @@ public class NewCrossOriginResourceSharingFilter implements ContainerResponseFil
         response.getHeaders().putSingle("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Origin, Accept, Client-Security-Token, Accept-Encoding");
         //"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
                 //"Content-Type, Accept");
-       // response.getHeaders().putSingle("Content-Type", "application/json");
+      // response.getHeaders().putSingle("Content-Type", "application/json");
        String contentType = response.getHeaderString("Content-Type");
-       if (!contentType.equals("application/pdf")) {
-          response.getHeaders().putSingle("Content-Type", "application/json"); 
-       }
+//       if (!contentType.equals("application/pdf")) {
+//          response.getHeaders().putSingle("Content-Type", "application/json"); 
+//       }
     }
     
 }

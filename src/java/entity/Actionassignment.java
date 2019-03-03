@@ -6,12 +6,12 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -31,26 +31,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ACTIONASSIGNMENT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Actionassignment.findAll", query = "SELECT a FROM Actionassignment a"),
-    @NamedQuery(name = "Actionassignment.findById", query = "SELECT a FROM Actionassignment a WHERE a.id = :id"),
-    @NamedQuery(name = "Actionassignment.findBySendin", query = "SELECT a FROM Actionassignment a WHERE a.sendin = :sendin"),
-    @NamedQuery(name = "Actionassignment.findByDatecreate", query = "SELECT a FROM Actionassignment a WHERE a.datecreate = :datecreate"),
-    @NamedQuery(name = "Actionassignment.findByDateupdate", query = "SELECT a FROM Actionassignment a WHERE a.dateupdate = :dateupdate"),
-    @NamedQuery(name = "Actionassignment.findByOwner", query = "SELECT a FROM Actionassignment a WHERE a.owner = :owner"),
-    @NamedQuery(name = "Actionassignment.findByLastuser", query = "SELECT a FROM Actionassignment a WHERE a.lastuser = :lastuser")})
+    @NamedQuery(name = "Actionassignment.findAll", query = "SELECT a FROM Actionassignment a")
+    , @NamedQuery(name = "Actionassignment.findByIdsendaction", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idsendaction = :idsendaction")
+    , @NamedQuery(name = "Actionassignment.findByIdaction", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idaction = :idaction")
+    , @NamedQuery(name = "Actionassignment.findByIdstructure", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idstructure = :idstructure")
+    , @NamedQuery(name = "Actionassignment.findByDatecreate", query = "SELECT a FROM Actionassignment a WHERE a.datecreate = :datecreate")
+    , @NamedQuery(name = "Actionassignment.findByDateupdate", query = "SELECT a FROM Actionassignment a WHERE a.dateupdate = :dateupdate")
+    , @NamedQuery(name = "Actionassignment.findByOwner", query = "SELECT a FROM Actionassignment a WHERE a.owner = :owner")
+    , @NamedQuery(name = "Actionassignment.findByLastuser", query = "SELECT a FROM Actionassignment a WHERE a.lastuser = :lastuser")})
 public class Actionassignment implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
-    private BigDecimal id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "SENDIN")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date sendin;
+    @EmbeddedId
+    protected ActionassignmentPK actionassignmentPK;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -67,41 +60,39 @@ public class Actionassignment implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @JoinColumn(name = "IDACTION", referencedColumnName = "ID")
+    @JoinColumn(name = "IDACTION", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Action idaction;
-    @JoinColumn(name = "IDSTRUCTURE", referencedColumnName = "ID")
+    private Action action;
+    @JoinColumn(name = "IDSENDACTION", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Structure idstructure;
+    private Sendaction sendaction;
+    @JoinColumn(name = "IDSTRUCTURE", referencedColumnName = "ID", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Structure structure;
 
     public Actionassignment() {
     }
 
-    public Actionassignment(BigDecimal id) {
-        this.id = id;
+    public Actionassignment(ActionassignmentPK actionassignmentPK) {
+        this.actionassignmentPK = actionassignmentPK;
     }
 
-    public Actionassignment(BigDecimal id, Date sendin, Date datecreate, Date dateupdate) {
-        this.id = id;
-        this.sendin = sendin;
+    public Actionassignment(ActionassignmentPK actionassignmentPK, Date datecreate, Date dateupdate) {
+        this.actionassignmentPK = actionassignmentPK;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
     }
 
-    public BigDecimal getId() {
-        return id;
+    public Actionassignment(BigInteger idsendaction, BigInteger idaction, BigInteger idstructure) {
+        this.actionassignmentPK = new ActionassignmentPK(idsendaction, idaction, idstructure);
     }
 
-    public void setId(BigDecimal id) {
-        this.id = id;
+    public ActionassignmentPK getActionassignmentPK() {
+        return actionassignmentPK;
     }
 
-    public Date getSendin() {
-        return sendin;
-    }
-
-    public void setSendin(Date sendin) {
-        this.sendin = sendin;
+    public void setActionassignmentPK(ActionassignmentPK actionassignmentPK) {
+        this.actionassignmentPK = actionassignmentPK;
     }
 
     public Date getDatecreate() {
@@ -136,26 +127,34 @@ public class Actionassignment implements Serializable {
         this.lastuser = lastuser;
     }
 
-    public Action getIdaction() {
-        return idaction;
+    public Action getAction() {
+        return action;
     }
 
-    public void setIdaction(Action idaction) {
-        this.idaction = idaction;
+    public void setAction(Action action) {
+        this.action = action;
     }
 
-    public Structure getIdstructure() {
-        return idstructure;
+    public Sendaction getSendaction() {
+        return sendaction;
     }
 
-    public void setIdstructure(Structure idstructure) {
-        this.idstructure = idstructure;
+    public void setSendaction(Sendaction sendaction) {
+        this.sendaction = sendaction;
+    }
+
+    public Structure getStructure() {
+        return structure;
+    }
+
+    public void setStructure(Structure structure) {
+        this.structure = structure;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (actionassignmentPK != null ? actionassignmentPK.hashCode() : 0);
         return hash;
     }
 
@@ -166,7 +165,7 @@ public class Actionassignment implements Serializable {
             return false;
         }
         Actionassignment other = (Actionassignment) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.actionassignmentPK == null && other.actionassignmentPK != null) || (this.actionassignmentPK != null && !this.actionassignmentPK.equals(other.actionassignmentPK))) {
             return false;
         }
         return true;
@@ -174,7 +173,7 @@ public class Actionassignment implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Actionassignment[ id=" + id + " ]";
+        return "entity.Actionassignment[ actionassignmentPK=" + actionassignmentPK + " ]";
     }
     
 }

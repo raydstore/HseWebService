@@ -8,7 +8,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-06T09:23:01")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-02T10:32:57")
 @StaticMetamodel(Action.class)
 public class Action_ { 
 
@@ -17,9 +17,9 @@ public class Action_ {
     public static volatile SingularAttribute<Action, String> kind;
     public static volatile SingularAttribute<Action, String> name;
     public static volatile SingularAttribute<Action, BigDecimal> id;
-    public static volatile SingularAttribute<Action, String> state;
     public static volatile SingularAttribute<Action, Date> datecreate;
     public static volatile SingularAttribute<Action, Date> dateupdate;
+    public static volatile SingularAttribute<Action, String> state;
     public static volatile CollectionAttribute<Action, Actionassignment> actionassignmentCollection;
 
 }
