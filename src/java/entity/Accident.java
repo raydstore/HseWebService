@@ -53,6 +53,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Accident.findByPropertydamage", query = "SELECT a FROM Accident a WHERE a.propertydamage = :propertydamage")
     , @NamedQuery(name = "Accident.findByEnvirenementdamage", query = "SELECT a FROM Accident a WHERE a.envirenementdamage = :envirenementdamage")
     , @NamedQuery(name = "Accident.findByObviousecause", query = "SELECT a FROM Accident a WHERE a.obviouscause = :obviouscause")
+    , @NamedQuery(name = "Accident.findByVictim", query = "SELECT a FROM Accident a WHERE a.victim = :victim")  
+    , @NamedQuery(name = "Accident.findBySubject", query = "SELECT a FROM Accident a WHERE a.subject = :subject")      
 })
 public class Accident implements Serializable {
 
@@ -146,6 +148,12 @@ public class Accident implements Serializable {
     @JoinColumn(name = "IDSITE", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Site idsite;
+    @Size(max = 300)
+    @Column(name = "VICTIM")
+    private String victim;
+    @Size(max = 128)
+    @Column(name = "SUBJECT")
+    private String subject;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
     private Collection<Accidentpicture> accidentpictureCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
@@ -324,6 +332,22 @@ public class Accident implements Serializable {
         this.idsite = idsite;
     }
 
+    public String getVictim() {
+        return victim;
+    }
+
+    public void setVictim(String victim) {
+        this.victim = victim;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
     public String getPpersondamage() {
         return ppersondamage;
     }

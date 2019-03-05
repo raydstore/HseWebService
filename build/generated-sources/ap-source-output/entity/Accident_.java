@@ -16,7 +16,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-02T10:32:57")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-05T10:20:13")
 @StaticMetamodel(Accident.class)
 public class Accident_ { 
 
@@ -24,12 +24,14 @@ public class Accident_ {
     public static volatile SingularAttribute<Accident, Site> idsite;
     public static volatile SingularAttribute<Accident, String> ppersondamage;
     public static volatile SingularAttribute<Accident, String> ppropertydamage;
+    public static volatile SingularAttribute<Accident, String> subject;
     public static volatile SingularAttribute<Accident, Date> curdate;
     public static volatile SingularAttribute<Accident, Date> datecreate;
     public static volatile SingularAttribute<Accident, Date> dateupdate;
     public static volatile CollectionAttribute<Accident, Recommendation> recommendationCollection;
     public static volatile SingularAttribute<Accident, String> pevent;
     public static volatile CollectionAttribute<Accident, Accidentnature> accidentnatureCollection;
+    public static volatile SingularAttribute<Accident, String> victim;
     public static volatile CollectionAttribute<Accident, Accidentpicture> accidentpictureCollection;
     public static volatile SingularAttribute<Accident, BigDecimal> id;
     public static volatile SingularAttribute<Accident, String> place;

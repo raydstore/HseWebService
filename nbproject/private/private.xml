@@ -6,7 +6,10 @@
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Action.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentpicture.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/GenericResource.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwAccidentagentshbitFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/tool/PrintReport.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagentshbitFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwAccidentagentshbit.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwActionaccidentFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/PrintResource.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/LabelFacadeREST.java</file>
@@ -20,6 +23,7 @@
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionaccidentFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AgentFacadeREST.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionassignmentFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentshbit.java</file>
         </group>
     </open-files>
 </project-private>

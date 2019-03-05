@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "VwAccidentagentshbit.findByBitname", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.bitname = :bitname"),
     @NamedQuery(name = "VwAccidentagentshbit.findByIdbit", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.idbit = :idbit"),
     @NamedQuery(name = "VwAccidentagentshbit.findByName", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.name = :name"),
+    @NamedQuery(name = "VwAccidentagentshbit.findByIdaccidentbit", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.idaccidentbit = :idaccidentbit"),
     @NamedQuery(name = "VwAccidentagentshbit.findByIddamageIdagentIdgrid", query = "SELECT v FROM VwAccidentagentshbit v WHERE v.iddamage = :iddamage and v.idgrid = :idgrid and  v.idagent = :idagent")
 })
 public class VwAccidentagentshbit implements Serializable {
@@ -84,6 +86,10 @@ public class VwAccidentagentshbit implements Serializable {
     @Size(max = 128)
     @Column(name = "NAME")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDACCIDENTBIT")
+    private BigInteger idaccidentbit;
 
     public VwAccidentagentshbit() {
     }
@@ -171,5 +177,15 @@ public class VwAccidentagentshbit implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public BigInteger getIdaccidentbit() {
+        return idaccidentbit;
+    }
+
+    public void setIdaccidentbit(BigInteger idaccidentbit) {
+        this.idaccidentbit = idaccidentbit;
+    }
+    
+    
     
 }
