@@ -11,11 +11,12 @@
 	"VW$ALLBITCLASSOFAGENTSH"."IDAGENT",
 	"VW$ALLBITCLASSOFAGENTSH"."IDBITCLASS",
 	"VW$ALLBITCLASSOFAGENTSH"."NAMECLASS",
+	"VW$ALLBITCLASSOFAGENTSH"."NAMECLASS" || ' : ' as label,
 	"VW$ALLBITCLASSOFAGENTSH"."IDBIT",
 	"VW$ALLBITCLASSOFAGENTSH"."NAME"
 FROM "VW$ALLBITCLASSOFAGENTSH"
 WHERE "VW$ALLBITCLASSOFAGENTSH"."IDDAMAGE" =  $P{p1} and
-               "VW$ALLBITCLASSOFAGENTSH"."IDAGENT" =  $P{p2} ]]>
+               "VW$ALLBITCLASSOFAGENTSH"."IDAGENT" =  $P{p2}]]>
 	</queryString>
 	<field name="ID" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ID"/>
@@ -32,6 +33,9 @@ WHERE "VW$ALLBITCLASSOFAGENTSH"."IDDAMAGE" =  $P{p1} and
 	<field name="NAMECLASS" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="NAMECLASS"/>
 	</field>
+	<field name="LABEL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LABEL"/>
+	</field>
 	<field name="IDBIT" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="IDBIT"/>
 	</field>
@@ -44,18 +48,21 @@ WHERE "VW$ALLBITCLASSOFAGENTSH"."IDDAMAGE" =  $P{p1} and
 	<detail>
 		<band height="32" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="260" height="30" uuid="c155d4d0-1e0d-437e-b4b0-5afd3875b18c"/>
+				<reportElement x="0" y="0" width="183" height="30" uuid="c155d4d0-1e0d-437e-b4b0-5afd3875b18c"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{NAMECLASS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{LABEL}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="-100" y="0" width="100" height="30" uuid="9f18b968-7c6e-41c7-87ce-669540d44b06"/>
 				<text><![CDATA[NAMECLASS]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="266" y="0" width="294" height="30" uuid="c7a15f7b-95a6-4e96-83e9-77888b5edafd"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="0" width="363" height="30" uuid="c7a15f7b-95a6-4e96-83e9-77888b5edafd"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
 			</textField>
 		</band>

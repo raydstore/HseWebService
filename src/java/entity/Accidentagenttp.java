@@ -36,7 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagenttp.findByAccidentdomain", query = "SELECT a FROM Accidentagenttp a WHERE a.accidentdomain = :accidentdomain"),
     @NamedQuery(name = "Accidentagenttp.findByTypeaccident", query = "SELECT a FROM Accidentagenttp a WHERE a.typeaccident = :typeaccident"),
     @NamedQuery(name = "Accidentagenttp.findBySamury", query = "SELECT a FROM Accidentagenttp a WHERE a.samury = :samury"),
+    @NamedQuery(name = "Accidentagenttp.findByFunction", query = "SELECT a FROM Accidentagenttp a WHERE a.function = :function"),
     @NamedQuery(name = "Accidentagenttp.findByDatecreate", query = "SELECT a FROM Accidentagenttp a WHERE a.datecreate = :datecreate"),
+    @NamedQuery(name = "Accidentagenttp.findByDateofbirth", query = "SELECT a FROM Accidentagenttp a WHERE a.dateofbirth = :dateofbirth"),
     @NamedQuery(name = "Accidentagenttp.findByDateupdate", query = "SELECT a FROM Accidentagenttp a WHERE a.dateupdate = :dateupdate"),
     @NamedQuery(name = "Accidentagenttp.findByOwner", query = "SELECT a FROM Accidentagenttp a WHERE a.owner = :owner"),
     @NamedQuery(name = "Accidentagenttp.findByLastuser", query = "SELECT a FROM Accidentagenttp a WHERE a.lastuser = :lastuser"),
@@ -53,6 +55,14 @@ public class Accidentagenttp implements Serializable {
     @Size(min = 1, max = 64)
     @Column(name = "NAME")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATEOFBIRTH")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateofbirth;
+    @Size(max = 70)
+    @Column(name = "FUNCTION")
+    private String function;
     @Basic(optional = false)
     @NotNull
     @Column(name = "ACCIDENTDOMAIN")
@@ -99,11 +109,13 @@ public class Accidentagenttp implements Serializable {
         this.accidentagenttpPK = accidentagenttpPK;
     }
 
-    public Accidentagenttp(AccidentagenttpPK accidentagenttpPK, String name, short accidentdomain, String typeaccident, String samury, Date datecreate, Date dateupdate, BigInteger countstopwork, BigInteger idgrid) {
+    public Accidentagenttp(AccidentagenttpPK accidentagenttpPK, String name, short accidentdomain, String typeaccident, String function, Date dateofbirth, String samury, Date datecreate, Date dateupdate, BigInteger countstopwork, BigInteger idgrid) {
         this.accidentagenttpPK = accidentagenttpPK;
         this.name = name;
         this.accidentdomain = accidentdomain;
         this.typeaccident = typeaccident;
+        this.function = function;
+        this.dateofbirth = dateofbirth;
         this.samury = samury;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
@@ -130,6 +142,24 @@ public class Accidentagenttp implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+    
+    
 
     public short getAccidentdomain() {
         return accidentdomain;

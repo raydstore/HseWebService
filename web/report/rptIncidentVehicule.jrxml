@@ -124,21 +124,21 @@ WHERE
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Déclaration d'incident sur véhicule]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="361" y="71" width="110" height="30" uuid="7eb9f6f4-a011-4f4f-9b89-db2d6abefdea"/>
+				<reportElement x="361" y="71" width="113" height="30" uuid="7eb9f6f4-a011-4f4f-9b89-db2d6abefdea"/>
 				<textElement>
-					<font size="11" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hassi-Messaoud, le ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="56" width="228" height="30" uuid="73451a06-4bb4-4d14-9e71-77b6c11092fc"/>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Activité Exploration - Production]]></text>
 			</staticText>
@@ -152,25 +152,28 @@ WHERE
 			<staticText>
 				<reportElement x="1" y="86" width="228" height="30" uuid="b5e199e5-b87d-405b-92ef-24957987edc6"/>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Direction Régionale]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="103" width="175" height="27" uuid="10f79be4-6484-4b9a-ae8c-c96304398426"/>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hassi-Messaoud]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="471" y="71" width="83" height="30" uuid="81bd279f-9b19-40a1-9ad9-e1cfc36fbbe7"/>
+				<reportElement x="476" y="71" width="83" height="30" uuid="81bd279f-9b19-40a1-9ad9-e1cfc36fbbe7"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="150" width="71" height="17" uuid="3da4a453-a4a7-49d6-a2f6-594ebf9df686"/>
 				<textElement textAlignment="Justified">
-					<font isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Date et Heure:]]></text>
 			</staticText>
@@ -178,6 +181,9 @@ WHERE
 				<reportElement x="26" y="126" width="132" height="24" uuid="45c49292-c107-410d-bf21-ae26a3b03e65">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ca2a52b-81f1-4e68-be24-0ed903dafb2f"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -191,34 +197,47 @@ WHERE
 				<reportElement x="259" y="149" width="286" height="17" uuid="b3c875d8-4056-4cd5-b626-309f838b2ffd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8691df20-a8fa-4627-b779-410f8579292a"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{SITEDESCRIPTION}]]></textFieldExpression>
 			</textField>
 			<textField pattern="h:mm">
 				<reportElement x="142" y="149" width="55" height="17" uuid="77b67f81-4280-433b-9652-67c1c29c037e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f3de457-1e83-4d1f-83a4-feaf8234d8b4"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{TIME}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="76" y="149" width="55" height="17" uuid="b12e9137-aeb0-4067-843a-c402d9a7ed6a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="533fb4a8-fe92-4492-b01a-1c8d7ae387c8"/>
 				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{CURDATE}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="230" y="149" width="71" height="17" uuid="d302eb6c-1d09-41f9-ab4e-45c3421affa3"/>
 				<textElement textAlignment="Justified">
-					<font isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[lieu: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="126" width="18" height="24" uuid="3cb44464-649a-4d0d-adcd-dca865c3f067"/>
 				<textElement textAlignment="Justified">
-					<font isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[N° : ]]></text>
 			</staticText>
+			<image>
+				<reportElement x="2" y="2" width="50" height="50" uuid="e215ee53-41ad-49ee-b01e-d94f9d8c42ec"/>
+				<imageExpression><![CDATA["./logo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
@@ -240,13 +259,15 @@ WHERE
 				<reportElement x="0" y="56" width="555" height="54" uuid="0e49db2b-ff34-44c1-88cd-ccf815c7bff7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3060bea2-f39e-42b9-96a2-b08db38e3d23"/>
 				</reportElement>
-				<textElement textAlignment="Left"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{EVENT}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="3" width="156" height="30" uuid="c440f5c6-43bb-411b-b515-a255789fe7d8"/>
 				<textElement textAlignment="Justified">
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Dégât matériels :]]></text>
 			</staticText>
@@ -254,7 +275,9 @@ WHERE
 				<reportElement x="9" y="20" width="530" height="30" uuid="3011ee72-eb7b-4100-970d-67380384fddd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6b7967b8-612b-4640-86ad-b2097aa9f138"/>
 				</reportElement>
-				<textElement textAlignment="Left"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{PROPERTYDAMAGE}]]></textFieldExpression>
 			</textField>
 		</band>

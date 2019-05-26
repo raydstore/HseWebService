@@ -108,7 +108,6 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.VwElementdamageFacadeREST.class);
         resources.add(entity.service.VwElementgridFacadeREST.class);
         resources.add(entity.service.VwGridFacadeREST.class);
-        resources.add(entity.service.VwGridforaccidentFacadeREST.class);
         resources.add(entity.service.VwInspectedsiteFacadeREST.class);
         resources.add(entity.service.VwLastidoftableFacadeREST.class);
         resources.add(entity.service.VwNotelementofnatureaccidentFacadeREST.class);
@@ -116,6 +115,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.VwPropertyFacadeREST.class);
         resources.add(entity.service.VwSitenotinspectedFacadeREST.class);
         resources.add(entity.service.WorksheetFacadeREST.class);
+        resources.add(entity.service.VwGridforaccidentFacadeREST.class);
     }
     
 }

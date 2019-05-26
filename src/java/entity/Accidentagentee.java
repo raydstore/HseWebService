@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Accidentagentee.findByIddamage", query = "SELECT a FROM Accidentagentee a WHERE a.accidentagenteePK.iddamage = :iddamage"),
     @NamedQuery(name = "Accidentagentee.findByName", query = "SELECT a FROM Accidentagentee a WHERE a.name = :name"),
     @NamedQuery(name = "Accidentagentee.findByFunction", query = "SELECT a FROM Accidentagentee a WHERE a.function = :function"),
+    @NamedQuery(name = "Accidentagentee.findByDateofbirth", query = "SELECT a FROM Accidentagentee a WHERE a.dateofbirth = :dateofbirth"),
     @NamedQuery(name = "Accidentagentee.findByAccidentdomain", query = "SELECT a FROM Accidentagentee a WHERE a.accidentdomain = :accidentdomain"),
     @NamedQuery(name = "Accidentagentee.findByCountstopwork", query = "SELECT a FROM Accidentagentee a WHERE a.countstopwork = :countstopwork"),
     @NamedQuery(name = "Accidentagentee.findByTypeaccident", query = "SELECT a FROM Accidentagentee a WHERE a.typeaccident = :typeaccident"),
@@ -56,6 +57,11 @@ public class Accidentagentee implements Serializable {
     @Size(min = 1, max = 64)
     @Column(name = "NAME")
     private String name;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DATEOFBIRTH")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateofbirth;
     @Size(max = 70)
     @Column(name = "FUNCTION")
     private String function;
@@ -106,13 +112,14 @@ public class Accidentagentee implements Serializable {
         this.accidentagenteePK = accidentagenteePK;
     }
 
-    public Accidentagentee(AccidentagenteePK accidentagenteePK, String name, short accidentdomain, BigInteger countstopwork, String typeaccident, String samury, Date datecreate, Date dateupdate) {
+    public Accidentagentee(AccidentagenteePK accidentagenteePK, String name, short accidentdomain, BigInteger countstopwork, String typeaccident, String samury, Date dateofbirth, Date datecreate, Date dateupdate) {
         this.accidentagenteePK = accidentagenteePK;
         this.name = name;
         this.accidentdomain = accidentdomain;
         this.countstopwork = countstopwork;
         this.typeaccident = typeaccident;
         this.samury = samury;
+        this.dateofbirth = dateofbirth;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
     }
@@ -136,6 +143,16 @@ public class Accidentagentee implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Date getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(Date dateofbirth) {
+        this.dateofbirth = dateofbirth;
+    }
+    
+    
 
     public String getFunction() {
         return function;

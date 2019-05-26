@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-03-05T10:20:13")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-05-25T13:33:38")
 @StaticMetamodel(VwGridforaccident.class)
 public class VwGridforaccident_ { 
 
@@ -16,6 +16,7 @@ public class VwGridforaccident_ {
     public static volatile SingularAttribute<VwGridforaccident, BigInteger> id;
     public static volatile SingularAttribute<VwGridforaccident, String> col5;
     public static volatile SingularAttribute<VwGridforaccident, String> col2;
+    public static volatile SingularAttribute<VwGridforaccident, String> idw;
     public static volatile SingularAttribute<VwGridforaccident, String> col3;
     public static volatile SingularAttribute<VwGridforaccident, String> col1;
 

@@ -27,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "VwGridforaccident.findAll", query = "SELECT v FROM VwGridforaccident v")
-    , @NamedQuery(name = "VwGridforaccident.findById", query = "SELECT v FROM VwGridforaccident v WHERE v.id = :id")
+    , @NamedQuery(name = "VwGridforaccident.findByIdw", query = "SELECT v FROM VwGridforaccident v WHERE v.idw = :idw")
+    , @NamedQuery(name = "VwGridforaccident.findById", query = "SELECT v FROM VwGridforaccident v WHERE v.id = :id")    
     , @NamedQuery(name = "VwGridforaccident.findByIdaccident", query = "SELECT v FROM VwGridforaccident v WHERE v.idaccident = :idaccident")
     , @NamedQuery(name = "VwGridforaccident.findByCol1", query = "SELECT v FROM VwGridforaccident v WHERE v.col1 = :col1")
     , @NamedQuery(name = "VwGridforaccident.findByCol2", query = "SELECT v FROM VwGridforaccident v WHERE v.col2 = :col2")
@@ -40,11 +41,15 @@ public class VwGridforaccident implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    //@Basic(optional = false)
+    //@NotNull
+    @Size(max = 13)
+    @Column(name = "IDW")
+    private String idw;
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
     private BigInteger id;
-    @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDACCIDENT")
@@ -74,6 +79,14 @@ public class VwGridforaccident implements Serializable {
     public VwGridforaccident() {
     }
 
+    public String getIdw() {
+        return idw;
+    }
+
+    public void setIdw(String idw) {
+        this.idw = idw;
+    }
+    
     public BigInteger getId() {
         return id;
     }
