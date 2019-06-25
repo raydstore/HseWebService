@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptRecommandation" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="550b3126-29e4-485c-afa7-88d3e953c0c0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "VW$ACTIONRECOMANDATION"."IDACCIDENT",
+	"VW$ACTIONRECOMANDATION"."ID",
+	"VW$ACTIONRECOMANDATION"."KIND",
+	"VW$ACTIONRECOMANDATION"."NAME",
+	"VW$ACTIONRECOMANDATION"."DATECREATE",
+	"VW$ACTIONRECOMANDATION"."DATEUPDATE",
+	"VW$ACTIONRECOMANDATION"."OWNER",
+	"VW$ACTIONRECOMANDATION"."LASTUSER",
+	"VW$ACTIONRECOMANDATION"."STATE"
+FROM "VW$ACTIONRECOMANDATION"
+WHERE 
+	 "VW$ACTIONRECOMANDATION"."IDACCIDENT" = $P{p} 
+	 AND "VW$ACTIONRECOMANDATION"."KIND" = 'R']]>
+	</queryString>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="KIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="KIND"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="DATECREATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATECREATE"/>
+	</field>
+	<field name="DATEUPDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEUPDATE"/>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OWNER"/>
+	</field>
+	<field name="LASTUSER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LASTUSER"/>
+	</field>
+	<field name="STATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATE"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="18" backcolor="#D6D6D6" uuid="a5fed931-9ddb-4f44-be27-f8421b3cc660"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[K- Recommandations :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="4" width="540" height="17" uuid="7801b268-2d12-42be-ac9b-12f390b03d3d"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

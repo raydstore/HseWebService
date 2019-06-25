@@ -9,6 +9,10 @@
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentsh.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwGridforaccident.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ApplicationConfig.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwGridFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/NewCrossOriginResourceSharingFilter.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/nbproject/private/private.xml</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/conf/persistence.xml</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Agent.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagenttp.java</file>
         </group>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCauseAccident" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Error" uuid="ac46b3a0-b829-49fa-b87b-37878a58148a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "CAUSE"."ID",
+	"CAUSE"."IDACCIDENT",
+	"CAUSE"."NAME",
+	"CAUSE"."DATECREATE",
+	"CAUSE"."DATEUPDATE",
+	"CAUSE"."OWNER",
+	"CAUSE"."LASTUSER"
+FROM "CAUSE"
+WHERE "CAUSE"."IDACCIDENT" =  $P{p}]]>
+	</queryString>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="DATECREATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATECREATE"/>
+	</field>
+	<field name="DATEUPDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEUPDATE"/>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OWNER"/>
+	</field>
+	<field name="LASTUSER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LASTUSER"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="18" backcolor="#D6D6D6" uuid="324f9b64-90cb-4f6e-9ae9-c8ebce0c5193"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[J- Causes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="4" width="540" height="17" uuid="84c1d18d-3400-481c-94f5-75a928979284"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

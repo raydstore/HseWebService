@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptVehiculeAccident" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="df2d3559-b0a3-4a7c-9df7-4997d8b39f68">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[SELECT *
+FROM "VW$ACCIDENTVEHICULE"
+WHERE 
+	 "VW$ACCIDENTVEHICULE"."IDACCIDENT" = $P{p}]]>
+	</queryString>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="IDDAMAGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDDAMAGE"/>
+	</field>
+	<field name="LINENUMBER" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LINENUMBER"/>
+	</field>
+	<field name="IDMARK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDMARK"/>
+	</field>
+	<field name="MARK" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MARK"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="KIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="KIND"/>
+	</field>
+	<field name="CLASSIFICATION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CLASSIFICATION"/>
+	</field>
+	<field name="SOURCE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SOURCE"/>
+	</field>
+	<field name="DESTINATION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESTINATION"/>
+	</field>
+	<field name="MATRICULE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MATRICULE"/>
+	</field>
+	<field name="MEMBERSHIP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MEMBERSHIP"/>
+	</field>
+	<field name="LICENSENUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LICENSENUMBER"/>
+	</field>
+	<field name="ISSUEDON" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="ISSUEDON"/>
+	</field>
+	<field name="ISSUEDBY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ISSUEDBY"/>
+	</field>
+	<field name="IDAGENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="IDAGENT"/>
+	</field>
+	<field name="NAMEDRIVER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEDRIVER"/>
+	</field>
+	<field name="DATEOFBIRTH" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEOFBIRTH"/>
+	</field>
+	<field name="PLACEOFBIRTH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PLACEOFBIRTH"/>
+	</field>
+	<field name="ADRESS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ADRESS"/>
+	</field>
+	<field name="NAMEINSURANCE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEINSURANCE"/>
+	</field>
+	<field name="IDENTREPRISE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDENTREPRISE"/>
+	</field>
+	<field name="POLICYNUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="POLICYNUMBER"/>
+	</field>
+	<field name="DATEFIRST" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEFIRST"/>
+	</field>
+	<field name="DATELAST" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATELAST"/>
+	</field>
+	<field name="NAMEOWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEOWNER"/>
+	</field>
+	<field name="ADRESSOWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ADRESSOWNER"/>
+	</field>
+	<field name="PHONEOWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PHONEOWNER"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="18" backcolor="#D6D6D6" uuid="df1da5ca-50f3-4201-b85e-e8e7769d2391"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph lineSpacing="Proportional" leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[D- Renseignement sur le véhicule]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="64" width="153" height="20" uuid="52139605-d809-4197-87ce-8048dcdd9883"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N du permi de conduire :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="24" width="93" height="20" uuid="186627f4-3f95-4127-bd6b-befc90029cbc"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Immatriculation :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="87" width="113" height="22" uuid="e23ce282-d87c-456d-8679-19b039c43b01"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dégâts matériels :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="64" width="160" height="23" uuid="0fb56e19-5fdc-4433-948a-e66b4e928677"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date et lieu de délivrance :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="44" width="83" height="24" uuid="aed55605-e989-40a0-8153-c955fc0d243a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Conducteur :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="44" width="120" height="26" uuid="255d8540-7244-4d64-a8e8-2864808e347a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fonction/Structure :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="5" width="93" height="20" uuid="dc880562-6d2c-4d28-9830-2d1d97be4dd4"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Véhicule << >> :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="25" width="66" height="16" uuid="741b9ece-7ae7-4237-9354-a6ed54979d6f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Appartenent]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="109" y="24" width="100" height="17" uuid="602ee9a3-9117-4a6a-97ae-1bf913a168e7"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MATRICULE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="94" y="44" width="206" height="17" uuid="675f4461-3899-4ad0-a25d-4170ead76035"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMEDRIVER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="157" y="64" width="100" height="17" uuid="2fd1d26a-b7ed-49e4-b801-388d5c5cc9f9"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LICENSENUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="433" y="45" width="157" height="17" uuid="6e448a03-2d0e-4d14-acc2-048b0af43e99"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMEOWNER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="470" y="64" width="120" height="17" uuid="502221dc-e4c8-42bb-8aff-348bc575a71d"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ISSUEDON}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="110" width="580" height="20" isPrintWhenDetailOverflows="true" uuid="24d44b5c-5625-4a14-a502-cf10b09613a1"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

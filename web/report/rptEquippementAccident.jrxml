@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptEquippementAccident" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Error" uuid="a139579e-b221-4f5d-9e8e-4e186cba1f1f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "VW$ACCIDENTMATERIAL"."IDACCIDENT",
+	"VW$ACCIDENTMATERIAL"."ID",
+	"VW$ACCIDENTMATERIAL"."IDDAMAGE",
+	"VW$ACCIDENTMATERIAL"."ACCIDENTDOMAIN",
+	"VW$ACCIDENTMATERIAL"."DAMAGENAME",
+	"VW$ACCIDENTMATERIAL"."NAME",
+	"VW$ACCIDENTMATERIAL"."DATECREATE",
+	"VW$ACCIDENTMATERIAL"."DATEUPDATE",
+	"VW$ACCIDENTMATERIAL"."OWNER",
+	"VW$ACCIDENTMATERIAL"."LASTUSER",
+	"VW$ACCIDENTMATERIAL"."IDGRID"
+FROM "VW$ACCIDENTMATERIAL"
+WHERE 
+	 "VW$ACCIDENTMATERIAL"."IDACCIDENT" = $P{p}]]>
+	</queryString>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDDAMAGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDDAMAGE"/>
+	</field>
+	<field name="ACCIDENTDOMAIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ACCIDENTDOMAIN"/>
+	</field>
+	<field name="DAMAGENAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DAMAGENAME"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="DATECREATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATECREATE"/>
+	</field>
+	<field name="DATEUPDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEUPDATE"/>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OWNER"/>
+	</field>
+	<field name="LASTUSER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LASTUSER"/>
+	</field>
+	<field name="IDGRID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDGRID"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="18" backcolor="#D6D6D6" uuid="6dac6907-0022-4a4f-9844-351d9d61b513"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[E- Renseignement sur équipements]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="21" width="134" height="20" uuid="f1e64cd7-6390-4b58-961e-31cff88c9fb8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre d'équipements :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="3" width="93" height="20" uuid="4de0122b-da19-44e5-846b-d9f125328b28"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Equipement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="24" width="115" height="20" uuid="bf044036-fd1b-41a8-a018-0558dea8ccef"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Type d'équipement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="45" width="65" height="20" uuid="9dda8e48-a6c4-489d-b9d4-a8b3b566f6e9"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Repère :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="89" y="3" width="491" height="17" uuid="7b86909b-a236-437e-be8b-010a3bf8dfa4"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="118" y="24" width="462" height="17" uuid="fbd5f9a4-36ea-4ee2-9e31-97f47b326466"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DAMAGENAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="45" width="520" height="17" uuid="5e6363dd-2043-47ad-bc1a-f40f45944b83"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

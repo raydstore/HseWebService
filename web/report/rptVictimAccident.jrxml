@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptVictimAccident" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ce50045a-6646-44da-80c1-74973dacb573">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "VW$ACCIDENTAGENTSH"."IDACCIDENT",
+	"VW$ACCIDENTAGENTSH"."KIND",
+	"VW$ACCIDENTAGENTSH"."ID",
+	"VW$ACCIDENTAGENTSH"."IDDAMAGE",
+	"VW$ACCIDENTAGENTSH"."REGISTRATIONNUMBER",
+	"VW$ACCIDENTAGENTSH"."NAME",
+	"VW$ACCIDENTAGENTSH"."DATEOFBIRTH",
+	"VW$ACCIDENTAGENTSH"."FUNCTION",
+	"VW$ACCIDENTAGENTSH"."NAMEENTREPRISE",
+	"VW$ACCIDENTAGENTSH"."ACCIDENTDOMAIN",
+	"VW$ACCIDENTAGENTSH"."COUNTSTOPWORK",
+	"VW$ACCIDENTAGENTSH"."TYPEACCIDENT",
+	"VW$ACCIDENTAGENTSH"."SAMURY",
+	"VW$ACCIDENTAGENTSH"."DATECREATE",
+	"VW$ACCIDENTAGENTSH"."DATEUPDATE",
+	"VW$ACCIDENTAGENTSH"."OWNER",
+	"VW$ACCIDENTAGENTSH"."LASTUSER",
+	"VW$ACCIDENTAGENTSH"."IDGRID",
+	FLOOR((sysdate  - "VW$ACCIDENTAGENTSH"."DATERECRUITMENT")/365) as NBYEARWORK ,
+	FLOOR((sysdate  - "VW$ACCIDENTAGENTSH"."DATEOFBIRTH")/365) as age ,
+	rownum as num, 
+	decode(rownum, 1, 'Sonatrach', '')  as nameofkind
+FROM "VW$ACCIDENTAGENTSH"
+WHERE 
+	 "VW$ACCIDENTAGENTSH"."IDACCIDENT" = $P{p} 
+UNION 
+SELECT "VW$ACCIDENTAGENTTP"."IDACCIDENT",
+	"VW$ACCIDENTAGENTTP"."KIND",
+	"VW$ACCIDENTAGENTTP"."ID",
+	"VW$ACCIDENTAGENTTP"."IDDAMAGE",
+	' ' as registrationnumber,	
+	"VW$ACCIDENTAGENTTP"."NAME",
+	"VW$ACCIDENTAGENTTP"."DATEOFBIRTH",
+	"VW$ACCIDENTAGENTTP"."FUNCTION",
+	"VW$ACCIDENTAGENTTP"."NAMEENTREPRISE",
+	"VW$ACCIDENTAGENTTP"."ACCIDENTDOMAIN",
+	"VW$ACCIDENTAGENTTP"."COUNTSTOPWORK",
+	"VW$ACCIDENTAGENTTP"."TYPEACCIDENT",
+	"VW$ACCIDENTAGENTTP"."SAMURY",
+	"VW$ACCIDENTAGENTTP"."DATECREATE",
+	"VW$ACCIDENTAGENTTP"."DATEUPDATE",
+	"VW$ACCIDENTAGENTTP"."OWNER",
+	"VW$ACCIDENTAGENTTP"."LASTUSER",
+	"VW$ACCIDENTAGENTTP"."IDGRID", 
+	null ,
+	FLOOR((sysdate  - "VW$ACCIDENTAGENTTP"."DATEOFBIRTH")/365) as age ,
+	rownum as num, 
+	decode(rownum, 1, 'Tièrce personne', '')  as nameofkind
+FROM "VW$ACCIDENTAGENTTP"
+WHERE 
+	 "VW$ACCIDENTAGENTTP"."IDACCIDENT" = $P{p} 
+UNION 
+SELECT "VW$ACCIDENTAGENTEE"."IDACCIDENT",
+	"VW$ACCIDENTAGENTEE"."KIND",
+	"VW$ACCIDENTAGENTEE"."ID",
+	"VW$ACCIDENTAGENTEE"."IDDAMAGE",
+	' ' as registrationnumber,		
+	"VW$ACCIDENTAGENTEE"."NAME",
+	"VW$ACCIDENTAGENTEE"."DATEOFBIRTH",
+	"VW$ACCIDENTAGENTEE"."FUNCTION",
+	"VW$ACCIDENTAGENTEE"."NAMEENTREPRISE",
+	"VW$ACCIDENTAGENTEE"."ACCIDENTDOMAIN",
+	"VW$ACCIDENTAGENTEE"."COUNTSTOPWORK",
+	"VW$ACCIDENTAGENTEE"."TYPEACCIDENT",
+	"VW$ACCIDENTAGENTEE"."SAMURY",
+	"VW$ACCIDENTAGENTEE"."DATECREATE",
+	"VW$ACCIDENTAGENTEE"."DATEUPDATE",
+	"VW$ACCIDENTAGENTEE"."OWNER",
+	"VW$ACCIDENTAGENTEE"."LASTUSER",
+	"VW$ACCIDENTAGENTEE"."IDGRID", 
+	null ,
+	FLOOR((sysdate  - "VW$ACCIDENTAGENTEE"."DATEOFBIRTH")/365) as age ,
+	rownum as num, 
+	decode(rownum, 1, 'Entreprise exterieur', '')  as nameofkind
+FROM "VW$ACCIDENTAGENTEE"
+WHERE 
+	 "VW$ACCIDENTAGENTEE"."IDACCIDENT" = $P{p}]]>
+	</queryString>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="KIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="KIND"/>
+	</field>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDDAMAGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDDAMAGE"/>
+	</field>
+	<field name="REGISTRATIONNUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="REGISTRATIONNUMBER"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="DATEOFBIRTH" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEOFBIRTH"/>
+	</field>
+	<field name="FUNCTION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FUNCTION"/>
+	</field>
+	<field name="NAMEENTREPRISE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEENTREPRISE"/>
+	</field>
+	<field name="ACCIDENTDOMAIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ACCIDENTDOMAIN"/>
+	</field>
+	<field name="COUNTSTOPWORK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COUNTSTOPWORK"/>
+	</field>
+	<field name="TYPEACCIDENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TYPEACCIDENT"/>
+	</field>
+	<field name="SAMURY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SAMURY"/>
+	</field>
+	<field name="DATECREATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATECREATE"/>
+	</field>
+	<field name="DATEUPDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEUPDATE"/>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OWNER"/>
+	</field>
+	<field name="LASTUSER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LASTUSER"/>
+	</field>
+	<field name="IDGRID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDGRID"/>
+	</field>
+	<field name="NBYEARWORK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NBYEARWORK"/>
+	</field>
+	<field name="AGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="AGE"/>
+	</field>
+	<field name="NUM" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NUM"/>
+	</field>
+	<field name="NAMEOFKIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEOFKIND"/>
+	</field>
+	<variable name="kind" class="java.lang.String">
+		<variableExpression><![CDATA[$V{kind}.equals($F{KIND}) ? $V{kind}  : $F{KIND}]]></variableExpression>
+	</variable>
+	<variable name="index_victim" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{kind}.equals($F{KIND}) ? $V{index_victim}  : 1]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="18" backcolor="#CCCCCC" uuid="38b8de07-f488-4ca8-bd28-7b62b51dc8d6"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isUnderline="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[C- Renseignement sur les victimes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="27">
+			<printWhenExpression><![CDATA[$F{NAMEOFKIND} == null ? new Boolean(false) : new Boolean(true)]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="186" y="0" width="172" height="27" backcolor="#CCCCCC" uuid="19d24575-c028-480c-8899-73b98c43971f"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph leftIndent="35" spacingBefore="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMEOFKIND}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="182" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="26" width="108" height="30" uuid="504fcf2f-5dad-4820-ae1d-785636667cfa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nom et prénom:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="46" width="71" height="30" uuid="373832d5-4cac-4aa8-931d-b4ebdd4a95ae"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fonction :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="66" width="71" height="30" uuid="6bf1aa54-8701-4393-a4d0-63c61b2c7ded"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Matricule :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="87" width="139" height="30" uuid="bebb6249-d762-415b-bef9-b89a34e6d05f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Entreprise / Structure :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="113" width="148" height="23" uuid="49f67e83-23e7-41c7-ac17-97dac5ce252a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ancienneté dans le poste :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="87" width="403" height="30" uuid="c57a3d65-eda0-41e0-a7a0-56473c36238d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMEENTREPRISE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="66" width="183" height="30" uuid="baaf09e9-7b5d-4f36-b431-6e41f1fe3a06"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REGISTRATIONNUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="46" width="403" height="30" uuid="0366a159-2f0b-488f-af67-82485421893f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FUNCTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="62" y="1" width="27" height="27" backcolor="#CCCCCC" uuid="cd752583-f808-42cf-a877-d5e7e77eeca7"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="3" spacingBefore="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUM}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="135" width="148" height="23" uuid="cc0f0907-dd57-4271-b835-5ce1e66f4e6e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre de jour d'arrêt :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="135" width="155" height="22" uuid="fed112a1-24bb-4661-aef6-6f009590aa8e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNTSTOPWORK}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="159" width="148" height="23" uuid="48da3f38-1904-4dc8-a620-b6a1f927a971"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nature et siège de lession :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="159" width="403" height="22" uuid="b0be5ee7-ac02-4c99-ad68-7e490bd9cd60"/>
+				<textElement verticalAlignment="Middle"/>
+			</textField>
+			<staticText>
+				<reportElement x="275" y="110" width="41" height="30" uuid="de494394-81df-419b-9dd0-bbad8ed77324"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Age :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="332" y="111" width="54" height="30" uuid="76577f2a-3db2-4614-b7f6-48d7be839ee3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AGE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="24" width="172" height="30" uuid="868ff692-a9ed-427d-a974-ca484bf2f243"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="8" y="1" width="55" height="27" backcolor="#CCCCCC" uuid="f2a3ea7f-e712-4d5e-a5cf-6eb97c734092"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="12" isBold="true"/>
+					<paragraph leftIndent="7" spacingBefore="7"/>
+				</textElement>
+				<text><![CDATA[Victime :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="114" width="54" height="22" uuid="73a283c7-9374-4581-ae11-3ea9b9fc9610"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NBYEARWORK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
