@@ -21,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -29,6 +30,7 @@ import javax.ws.rs.QueryParam;
 @Stateless
 @Path("action")
 public class ActionFacadeREST extends AbstractFacade<Action> {
+
     @PersistenceContext(unitName = "HseWebServicePU")
     private EntityManager em;
 
@@ -38,14 +40,14 @@ public class ActionFacadeREST extends AbstractFacade<Action> {
 
     @POST
     @Override
-    @Consumes({"application/xml", "application/json"})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Action entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({"application/xml", "application/json"})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") BigDecimal id, Action entity) {
         super.edit(entity);
     }
@@ -58,30 +60,30 @@ public class ActionFacadeREST extends AbstractFacade<Action> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Action find(@PathParam("id") BigDecimal id) {
         return super.find(id);
     }
 
     @GET
     // @Override
-    @Produces({"application/xml", "application/json"})
-    public List<Action> findAll(@QueryParam("idparent") BigInteger idparent) {
-        if (idparent != null)
-            return em.createNamedQuery("Action.findByAccident").setParameter("idparent", idparent).getResultList();
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Action> findAll(@QueryParam("state") BigInteger state) {
+        if (state != null)
+            return em.createNamedQuery("Action.findByState").setParameter("state", state).getResultList();
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Action> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
     @GET
     @Path("count")
-    @Produces("text/plain")
+    @Produces(MediaType.TEXT_PLAIN)
     public String countREST() {
         return String.valueOf(super.count());
     }

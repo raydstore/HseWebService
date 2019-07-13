@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Actionassignment.findAll", query = "SELECT a FROM Actionassignment a")
     , @NamedQuery(name = "Actionassignment.findByIdsendaction", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idsendaction = :idsendaction")
     , @NamedQuery(name = "Actionassignment.findByIdaction", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idaction = :idaction")
-    , @NamedQuery(name = "Actionassignment.findByIdstructure", query = "SELECT a FROM Actionassignment a WHERE a.actionassignmentPK.idstructure = :idstructure")
+    , @NamedQuery(name = "Actionassignment.findByState", query = "SELECT a FROM Actionassignment a WHERE a.state = :state")        
     , @NamedQuery(name = "Actionassignment.findByDatecreate", query = "SELECT a FROM Actionassignment a WHERE a.datecreate = :datecreate")
     , @NamedQuery(name = "Actionassignment.findByDateupdate", query = "SELECT a FROM Actionassignment a WHERE a.dateupdate = :dateupdate")
     , @NamedQuery(name = "Actionassignment.findByOwner", query = "SELECT a FROM Actionassignment a WHERE a.owner = :owner")
@@ -44,6 +44,11 @@ public class Actionassignment implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ActionassignmentPK actionassignmentPK;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1)
+    @Column(name = "STATE")
+    private String state;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -66,10 +71,6 @@ public class Actionassignment implements Serializable {
     @JoinColumn(name = "IDSENDACTION", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Sendaction sendaction;
-    @JoinColumn(name = "IDSTRUCTURE", referencedColumnName = "ID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Structure structure;
-
     public Actionassignment() {
     }
 
@@ -77,14 +78,15 @@ public class Actionassignment implements Serializable {
         this.actionassignmentPK = actionassignmentPK;
     }
 
-    public Actionassignment(ActionassignmentPK actionassignmentPK, Date datecreate, Date dateupdate) {
+    public Actionassignment(ActionassignmentPK actionassignmentPK, String state,Date datecreate, Date dateupdate) {
         this.actionassignmentPK = actionassignmentPK;
-        this.datecreate = datecreate;
-        this.dateupdate = dateupdate;
+        this.datecreate         = datecreate;
+        this.dateupdate         = dateupdate;
+        this.state              = state;
     }
 
-    public Actionassignment(BigInteger idsendaction, BigInteger idaction, BigInteger idstructure) {
-        this.actionassignmentPK = new ActionassignmentPK(idsendaction, idaction, idstructure);
+    public Actionassignment(BigInteger idsendaction, BigInteger idaction) {
+        this.actionassignmentPK = new ActionassignmentPK(idsendaction, idaction);
     }
 
     public ActionassignmentPK getActionassignmentPK() {
@@ -95,6 +97,14 @@ public class Actionassignment implements Serializable {
         this.actionassignmentPK = actionassignmentPK;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+    
     public Date getDatecreate() {
         return datecreate;
     }
@@ -141,14 +151,6 @@ public class Actionassignment implements Serializable {
 
     public void setSendaction(Sendaction sendaction) {
         this.sendaction = sendaction;
-    }
-
-    public Structure getStructure() {
-        return structure;
-    }
-
-    public void setStructure(Structure structure) {
-        this.structure = structure;
     }
 
     @Override

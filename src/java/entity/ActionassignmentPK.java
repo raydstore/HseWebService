@@ -27,18 +27,13 @@ public class ActionassignmentPK implements Serializable {
     @NotNull
     @Column(name = "IDACTION")
     private BigInteger idaction;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "IDSTRUCTURE")
-    private BigInteger idstructure;
 
     public ActionassignmentPK() {
     }
 
-    public ActionassignmentPK(BigInteger idsendaction, BigInteger idaction, BigInteger idstructure) {
+    public ActionassignmentPK(BigInteger idsendaction, BigInteger idaction) {
         this.idsendaction = idsendaction;
         this.idaction = idaction;
-        this.idstructure = idstructure;
     }
 
     public BigInteger getIdsendaction() {
@@ -57,20 +52,11 @@ public class ActionassignmentPK implements Serializable {
         this.idaction = idaction;
     }
 
-    public BigInteger getIdstructure() {
-        return idstructure;
-    }
-
-    public void setIdstructure(BigInteger idstructure) {
-        this.idstructure = idstructure;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (idsendaction != null ? idsendaction.hashCode() : 0);
         hash += (idaction != null ? idaction.hashCode() : 0);
-        hash += (idstructure != null ? idstructure.hashCode() : 0);
         return hash;
     }
 
@@ -87,15 +73,12 @@ public class ActionassignmentPK implements Serializable {
         if ((this.idaction == null && other.idaction != null) || (this.idaction != null && !this.idaction.equals(other.idaction))) {
             return false;
         }
-        if ((this.idstructure == null && other.idstructure != null) || (this.idstructure != null && !this.idstructure.equals(other.idstructure))) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "entity.ActionassignmentPK[ idsendaction=" + idsendaction + ", idaction=" + idaction + ", idstructure=" + idstructure + " ]";
+        return "entity.ActionassignmentPK[ idsendaction=" + idsendaction + ", idaction=" + idaction  + " ]";
     }
     
 }

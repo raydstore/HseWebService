@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Sendaction.findAll", query = "SELECT s FROM Sendaction s")
     , @NamedQuery(name = "Sendaction.findById", query = "SELECT s FROM Sendaction s WHERE s.id = :id")
+    , @NamedQuery(name = "Sendaction.findByIdStructure", query = "SELECT s FROM Sendaction s WHERE s.id = :idstructure")    
     , @NamedQuery(name = "Sendaction.findByCurdate", query = "SELECT s FROM Sendaction s WHERE s.curdate = :curdate")
     , @NamedQuery(name = "Sendaction.findByDatecreate", query = "SELECT s FROM Sendaction s WHERE s.datecreate = :datecreate")
     , @NamedQuery(name = "Sendaction.findByDateupdate", query = "SELECT s FROM Sendaction s WHERE s.dateupdate = :dateupdate")
@@ -49,6 +51,10 @@ public class Sendaction implements Serializable {
     @NotNull
     @Column(name = "ID")
     private BigDecimal id;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "IDSTRUCTURE")
+    private BigInteger idstructure;
     @Basic(optional = false)
     @NotNull
     @Column(name = "CURDATE")
@@ -80,8 +86,9 @@ public class Sendaction implements Serializable {
         this.id = id;
     }
 
-    public Sendaction(BigDecimal id, Date curdate, Date datecreate, Date dateupdate) {
+    public Sendaction(BigDecimal id, BigInteger idstructure, Date curdate, Date datecreate, Date dateupdate) {
         this.id = id;
+        this.idstructure = idstructure;
         this.curdate = curdate;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
@@ -95,6 +102,14 @@ public class Sendaction implements Serializable {
         this.id = id;
     }
 
+    public BigInteger getIdstructure() {
+        return idstructure;
+    }
+
+    public void setIdstructure(BigInteger idstructure) {
+        this.idstructure = idstructure;
+    }
+    
     public Date getCurdate() {
         return curdate;
     }

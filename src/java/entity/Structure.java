@@ -70,8 +70,6 @@ public class Structure implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "structure")
-    private Collection<Actionassignment> actionassignmentCollection;
 
     public Structure() {
     }
@@ -133,15 +131,6 @@ public class Structure implements Serializable {
 
     public void setLastuser(String lastuser) {
         this.lastuser = lastuser;
-    }
-
-    @XmlTransient
-    public Collection<Actionassignment> getActionassignmentCollection() {
-        return actionassignmentCollection;
-    }
-
-    public void setActionassignmentCollection(Collection<Actionassignment> actionassignmentCollection) {
-        this.actionassignmentCollection = actionassignmentCollection;
     }
 
     @Override

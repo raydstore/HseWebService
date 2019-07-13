@@ -44,8 +44,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Opscard.findByDatecreate", query = "SELECT o FROM Opscard o WHERE o.datecreate = :datecreate"),
     @NamedQuery(name = "Opscard.findByDateupdate", query = "SELECT o FROM Opscard o WHERE o.dateupdate = :dateupdate"),
     @NamedQuery(name = "Opscard.findByOwner", query = "SELECT o FROM Opscard o WHERE o.owner = :owner"),
-    @NamedQuery(name = "Opscard.findByLastuser", query = "SELECT o FROM Opscard o WHERE o.lastuser = :lastuser"),
-    @NamedQuery(name = "Opscard.findByTabindex", query = "SELECT o FROM Opscard o WHERE o.tabindex = :tabindex")})
+    @NamedQuery(name = "Opscard.findByLastuser", query = "SELECT o FROM Opscard o WHERE o.lastuser = :lastuser")})
 public class Opscard implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -107,11 +106,7 @@ public class Opscard implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "TABINDEX")
-    private BigInteger tabindex;
-
+    
     public Opscard() {
     }
 
@@ -119,7 +114,7 @@ public class Opscard implements Serializable {
         this.id = id;
     }
 
-    public Opscard(BigDecimal id, Date curdate, String kind, String degree, String state, String jobsite, Date datecreate, Date dateupdate, BigInteger tabindex) {
+    public Opscard(BigDecimal id, Date curdate, String kind, String degree, String state, String jobsite, Date datecreate, Date dateupdate) {
         this.id = id;
         this.curdate = curdate;
         this.kind = kind;
@@ -128,7 +123,6 @@ public class Opscard implements Serializable {
         this.jobsite = jobsite;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
-        this.tabindex = tabindex;
     }
 
     public BigDecimal getId() {
@@ -241,14 +235,6 @@ public class Opscard implements Serializable {
 
     public void setLastuser(String lastuser) {
         this.lastuser = lastuser;
-    }
-
-    public BigInteger getTabindex() {
-        return tabindex;
-    }
-
-    public void setTabindex(BigInteger tabindex) {
-        this.tabindex = tabindex;
     }
 
     @Override
