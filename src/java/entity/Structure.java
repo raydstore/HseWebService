@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Structure.findByLastuser", query = "SELECT s FROM Structure s WHERE s.lastuser = :lastuser")})
 public class Structure implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "structure")
+    private Collection<Detailopscardstructure> detailopscardstructureCollection;
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -156,6 +159,15 @@ public class Structure implements Serializable {
     @Override
     public String toString() {
         return "entity.Structure[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Detailopscardstructure> getDetailopscardstructureCollection() {
+        return detailopscardstructureCollection;
+    }
+
+    public void setDetailopscardstructureCollection(Collection<Detailopscardstructure> detailopscardstructureCollection) {
+        this.detailopscardstructureCollection = detailopscardstructureCollection;
     }
     
 }

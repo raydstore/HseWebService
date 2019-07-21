@@ -46,6 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Site.findByLastuser", query = "SELECT s FROM Site s WHERE s.lastuser = :lastuser")})
 public class Site implements Serializable {
 
+    @OneToMany(mappedBy = "idsite")
+    private Collection<Detailopscard> detailopscardCollection;
+
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idsite")
 //    private Inspectedsite inspectedsite;
 
@@ -239,6 +242,15 @@ public class Site implements Serializable {
 //    public void setInspectedsite(Inspectedsite inspectedsite) {
 //        this.inspectedsite = inspectedsite;
 //    }
+
+    @XmlTransient
+    public Collection<Detailopscard> getDetailopscardCollection() {
+        return detailopscardCollection;
+    }
+
+    public void setDetailopscardCollection(Collection<Detailopscard> detailopscardCollection) {
+        this.detailopscardCollection = detailopscardCollection;
+    }
 
    
     

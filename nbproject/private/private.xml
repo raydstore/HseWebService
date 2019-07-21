@@ -3,26 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwActionsendedFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Action.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentee.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagentsh.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwGridforaccident.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ApplicationConfig.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwGridFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/nbproject/private/private.xml</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/conf/persistence.xml</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/AccidentagenteeFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/WorkFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Detailopscard.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionopscardFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/DetailopscardstructureFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwActionopscard.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehicule.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Site.java</file>
             <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwActionaccidentFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/web/report/rptRapportAccident.jrxml</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwGridforaccidentFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/VwActionsended.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/NewCrossOriginResourceSharingFilter.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/StructureFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Agent.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentagenttp.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionassignmentFacadeREST.java</file>
-            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/SendactionFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/DetailopscardFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Actionopscard.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Actionaccident.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/Accidentvehiculedriver.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/ActionaccidentFacadeREST.java</file>
+            <file>file:/F:/NetBeansProjects/HseWebService/src/java/entity/service/VwActionopscardFacadeREST.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,19 +8,25 @@ package entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -41,13 +47,24 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Opscard.findByDegree", query = "SELECT o FROM Opscard o WHERE o.degree = :degree"),
     @NamedQuery(name = "Opscard.findByState", query = "SELECT o FROM Opscard o WHERE o.state = :state"),
     @NamedQuery(name = "Opscard.findByJobsite", query = "SELECT o FROM Opscard o WHERE o.jobsite = :jobsite"),
+    @NamedQuery(name = "Opscard.findByNameentreprise", query = "SELECT o FROM Opscard o WHERE o.nameentreprise = :nameentreprise"),
+    @NamedQuery(name = "Opscard.findByPhone", query = "SELECT o FROM Opscard o WHERE o.phone = :phone"),
+    @NamedQuery(name = "Opscard.findByAction", query = "SELECT o FROM Opscard o WHERE o.action = :action"),
     @NamedQuery(name = "Opscard.findByDatecreate", query = "SELECT o FROM Opscard o WHERE o.datecreate = :datecreate"),
     @NamedQuery(name = "Opscard.findByDateupdate", query = "SELECT o FROM Opscard o WHERE o.dateupdate = :dateupdate"),
     @NamedQuery(name = "Opscard.findByOwner", query = "SELECT o FROM Opscard o WHERE o.owner = :owner"),
     @NamedQuery(name = "Opscard.findByLastuser", query = "SELECT o FROM Opscard o WHERE o.lastuser = :lastuser")})
 public class Opscard implements Serializable {
-    private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opscard")
+//    private Collection<Actionopscard> actionopscardCollection;
+
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Size(max = 31)
+    @Column(name = "PHONE")
+    private String phone;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opscard")
+//    private Collection<Actionopscard> actionopscardCollection;
     @Id
     @Basic(optional = false)
     @NotNull
@@ -90,6 +107,12 @@ public class Opscard implements Serializable {
     @Size(min = 1, max = 1)
     @Column(name = "JOBSITE")
     private String jobsite;
+    @Size(max = 64)
+    @Column(name = "NAMEENTREPRISE")
+    private String nameentreprise;
+    @Size(max = 512)
+    @Column(name = "ACTION")
+    private String action;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATECREATE")
@@ -106,6 +129,18 @@ public class Opscard implements Serializable {
     @Size(max = 31)
     @Column(name = "LASTUSER")
     private String lastuser;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    
+    @JoinColumn(name = "ID", referencedColumnName = "IDOPSCARD", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "opscard")
+    private Detailopscard detailopscard;
+
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "opscard")
+//    private Collection<Actionopscard> actionopscardCollection;
+//    private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     
     public Opscard() {
     }
@@ -114,13 +149,15 @@ public class Opscard implements Serializable {
         this.id = id;
     }
 
-    public Opscard(BigDecimal id, Date curdate, String kind, String degree, String state, String jobsite, Date datecreate, Date dateupdate) {
+    public Opscard(BigDecimal id, Date curdate, String kind, String degree, String state, String jobsite, String nameentreprise, String phone, Date datecreate, Date dateupdate) {
         this.id = id;
         this.curdate = curdate;
         this.kind = kind;
         this.degree = degree;
         this.state = state;
         this.jobsite = jobsite;
+        this.nameentreprise = nameentreprise;
+        this.phone = phone;
         this.datecreate = datecreate;
         this.dateupdate = dateupdate;
     }
@@ -205,6 +242,32 @@ public class Opscard implements Serializable {
         this.jobsite = jobsite;
     }
 
+    public String getNameentreprise() {
+        return nameentreprise;
+    }
+
+    public void setNameentreprise(String nameentreprise) {
+        this.nameentreprise = nameentreprise;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+    
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    
+
     public Date getDatecreate() {
         return datecreate;
     }
@@ -261,5 +324,40 @@ public class Opscard implements Serializable {
     public String toString() {
         return "entity.Opscard[ id=" + id + " ]";
     }
+
+//    @XmlTransient
+//    public Collection<Actionopscard> getActionopscardCollection() {
+//        return actionopscardCollection;
+//    }
+//
+//    public void setActionopscardCollection(Collection<Actionopscard> actionopscardCollection) {
+//        this.actionopscardCollection = actionopscardCollection;
+//    }
+
+    public Detailopscard getDetailopscard() {
+        return detailopscard;
+    }
+
+    public void setDetailopscard(Detailopscard detailopscard) {
+        this.detailopscard = detailopscard;
+    }
+
+//    @XmlTransient
+//    public Collection<Actionopscard> getActionopscardCollection() {
+//        return actionopscardCollection;
+//    }
+//
+//    public void setActionopscardCollection(Collection<Actionopscard> actionopscardCollection) {
+//        this.actionopscardCollection = actionopscardCollection;
+//    }
+
+//    @XmlTransient
+//    public Collection<Actionopscard> getActionopscardCollection() {
+//        return actionopscardCollection;
+//    }
+//
+//    public void setActionopscardCollection(Collection<Actionopscard> actionopscardCollection) {
+//        this.actionopscardCollection = actionopscardCollection;
+//    }
     
 }

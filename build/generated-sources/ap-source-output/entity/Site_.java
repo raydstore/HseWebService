@@ -1,6 +1,7 @@
 package entity;
 
 import entity.Accident;
+import entity.Detailopscard;
 import entity.Label;
 import entity.Site;
 import java.math.BigDecimal;
@@ -10,12 +11,13 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-11T19:02:58")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-21T08:41:00")
 @StaticMetamodel(Site.class)
 public class Site_ { 
 
     public static volatile SingularAttribute<Site, String> owner;
     public static volatile SingularAttribute<Site, Site> idparent;
+    public static volatile CollectionAttribute<Site, Detailopscard> detailopscardCollection;
     public static volatile SingularAttribute<Site, String> lastuser;
     public static volatile CollectionAttribute<Site, Site> siteCollection;
     public static volatile SingularAttribute<Site, String> name;
