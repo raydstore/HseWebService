@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptItemsWorkSheet" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="74c37223-ec51-49d9-8d16-68c6c0fe5489">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<style name="StyleItem">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{ISBRANCHE}.intValue() == 0]]></conditionExpression>
+			<style fontName="Arial" fontSize="12"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{ISBRANCHE}.intValue() == 1]]></conditionExpression>
+			<style mode="Opaque" backcolor="#9BA4AB" fontName="Arial" fontSize="14" isBold="true"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="p" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "VW$ITEMSOFWORKSHEET"."ID",
+	"VW$ITEMSOFWORKSHEET"."IDTITLETASK",
+	"VW$ITEMSOFWORKSHEET"."NAME",
+	"VW$ITEMSOFWORKSHEET"."RANKGLOBAL",
+	"VW$ITEMSOFWORKSHEET"."PATH",
+	"VW$ITEMSOFWORKSHEET"."RANK",
+	"VW$ITEMSOFWORKSHEET"."LENGTH",
+	"VW$ITEMSOFWORKSHEET"."ISBRANCHE"
+FROM "VW$ITEMSOFWORKSHEET"
+WHERE  "VW$ITEMSOFWORKSHEET"."ID" = to_char($P!{p})]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDTITLETASK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDTITLETASK"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="RANKGLOBAL" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="RANKGLOBAL"/>
+	</field>
+	<field name="PATH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PATH"/>
+	</field>
+	<field name="RANK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="RANK"/>
+	</field>
+	<field name="LENGTH" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LENGTH"/>
+	</field>
+	<field name="ISBRANCHE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ISBRANCHE"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="StyleItem" x="0" y="0" width="555" height="30" uuid="6f6d814f-5ee9-4780-9197-cb5f1d5be9aa"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-100" y="0" width="100" height="30" uuid="7fac6834-b5b4-41ec-9541-9762a772f10e"/>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

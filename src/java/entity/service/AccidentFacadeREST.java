@@ -23,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author boutarfa
+ * @author master
  */
 @Stateless
 @Path("accident")

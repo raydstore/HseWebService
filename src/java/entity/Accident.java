@@ -58,6 +58,14 @@ import javax.xml.bind.annotation.XmlTransient;
 })
 public class Accident implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "WRITEIN")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date writein;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
+    private Collection<Stepaccident> stepaccidentCollection;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccident")
     private Collection<Actionaccident> actionaccidentCollection;
 
@@ -459,6 +467,23 @@ public class Accident implements Serializable {
 
     public void setActionaccidentCollection(Collection<Actionaccident> actionaccidentCollection) {
         this.actionaccidentCollection = actionaccidentCollection;
+    }
+
+    public Date getWritein() {
+        return writein;
+    }
+
+    public void setWritein(Date writein) {
+        this.writein = writein;
+    }
+
+    @XmlTransient
+    public Collection<Stepaccident> getStepaccidentCollection() {
+        return stepaccidentCollection;
+    }
+
+    public void setStepaccidentCollection(Collection<Stepaccident> stepaccidentCollection) {
+        this.stepaccidentCollection = stepaccidentCollection;
     }
     
 }

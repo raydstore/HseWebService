@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -94,8 +95,15 @@ public class Site implements Serializable {
     private Site idparent;
 //    @Column(name = "IDPARENT")
 //    private BigDecimal idparent;
+    
 //    @OneToOne(cascade = CascadeType.ALL, mappedBy = "site")
 //    private Detailsite detailsite;
+    
+    
+    @JoinColumn(name = "ID", referencedColumnName = "IDSITE")
+    @OneToOne
+    @MapsId
+    private Detailsite detailsite;
 
 //    public BigDecimal getIdparent() {
 //        return idparent;
@@ -193,13 +201,13 @@ public class Site implements Serializable {
         this.idparent = idparent;
     }
 
-//    public Detailsite getDetailsite() {
-//        return detailsite;
-//    }
-//
-//    public void setDetailsite(Detailsite detailsite) {
-//        this.detailsite = detailsite;
-//    }
+    public Detailsite getDetailsite() {
+        return detailsite;
+    }
+
+    public void setDetailsite(Detailsite detailsite) {
+        this.detailsite = detailsite;
+    }
 
     @Override
     public int hashCode() {

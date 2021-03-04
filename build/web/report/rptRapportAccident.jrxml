@@ -3,6 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptRapportAccident" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a55acf2d-35c4-4b27-928e-d23ff0cb3eb1">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+    <property name="net.sf.jasperreports.default.font.name", value="Helvetica"/>
+	
 	<parameter name="p" class="java.math.BigDecimal"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT "VW$ACCIDENT"."ID",
@@ -138,9 +141,6 @@ WHERE      "VW$ACCIDENT"."ID" = $P{p}]]>
 				<reportElement x="1" y="150" width="561" height="1" uuid="6e5cf820-9b76-4ce2-a15a-92a168319791"/>
 			</line>
 			<line>
-				<reportElement x="0" y="186" width="561" height="1" uuid="56aa55dd-3ca6-4ed7-9bbb-77702b7bab0a"/>
-			</line>
-			<line>
 				<reportElement x="0" y="719" width="561" height="1" uuid="19fdca5a-cf99-4d8e-aa18-6fc1b5570315"/>
 			</line>
 			<line>
@@ -227,151 +227,171 @@ WHERE      "VW$ACCIDENT"."ID" = $P{p}]]>
 				<text><![CDATA[4. Date de l’accident /incident :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="9" y="153" width="319" height="19" uuid="c862b3ea-3426-4a64-adb5-586c01b03b3a"/>
+				<reportElement x="10" y="302" width="326" height="19" uuid="bc5da89b-0483-4004-be1d-846d6dc88521"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[6. Description du lieu et des installations impliquées :]]></text>
+				<text><![CDATA[8. Description de l’événement (déroulement des faits) : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="10" y="190" width="326" height="19" uuid="bc5da89b-0483-4004-be1d-846d6dc88521"/>
+				<reportElement x="14" y="494" width="321" height="19" uuid="611bfda3-7c00-4056-bff8-585c23a464dd"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[7. Description de l’événement (déroulement des faits) : ]]></text>
+				<text><![CDATA[9. Description des dommages avérés et potentiels]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="14" y="494" width="321" height="19" uuid="611bfda3-7c00-4056-bff8-585c23a464dd"/>
-				<textElement>
-					<font fontName="Arial" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[8. Description des dommages avérés et potentiels]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="30" y="524" width="119" height="19" uuid="b6e61eb1-3ed5-43a4-973e-2050e9a4ac95"/>
+				<reportElement x="30" y="524" width="119" height="19" uuid="b6e61eb1-3ed5-43a4-973e-2050e9a4ac95"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Aux Personnes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="216" y="524" width="126" height="19" uuid="92702a4d-c62f-405e-a5e5-ed54476fd21a"/>
+				<reportElement x="216" y="524" width="126" height="19" uuid="92702a4d-c62f-405e-a5e5-ed54476fd21a"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[A l’environnement ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="429" y="524" width="91" height="19" uuid="91ecc243-46bb-4c4d-b965-76fcb993f6f2"/>
+				<reportElement x="429" y="524" width="91" height="19" uuid="91ecc243-46bb-4c4d-b965-76fcb993f6f2"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Aux biens]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="10" y="651" width="142" height="19" uuid="e72f8f90-0579-49a9-bf5b-cc9859a6b335"/>
+				<reportElement x="10" y="651" width="142" height="19" uuid="e72f8f90-0579-49a9-bf5b-cc9859a6b335"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[9. Causes probables :]]></text>
+				<text><![CDATA[10. Causes probables :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="45" y="722" width="169" height="19" uuid="66d60ed9-96f7-4250-8a06-c1b85da557fe"/>
+				<reportElement x="45" y="722" width="169" height="19" uuid="66d60ed9-96f7-4250-8a06-c1b85da557fe"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[10. Etablissement du CR]]></text>
+				<text><![CDATA[11. Etablissement du CR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="320" y="722" width="139" height="19" uuid="eb8e07c0-3e10-41f5-88ad-520302973e33"/>
+				<reportElement x="320" y="722" width="139" height="19" uuid="eb8e07c0-3e10-41f5-88ad-520302973e33"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[11. Validation du CR]]></text>
+				<text><![CDATA[12. Validation du CR]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="13" y="92" width="244" height="20" uuid="d470d553-3007-446f-98d8-3c1c86554e8e"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SITENAME}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="268" y="91" width="281" height="20" uuid="2af465b3-461b-4ca5-abb4-a53ec41e974b"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PLACE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="16" y="132" width="244" height="20" uuid="03cafe61-38cf-4012-a840-6e1d92d69418"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CURDATE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="HH:mm" isBlankWhenNull="true">
 				<reportElement x="271" y="132" width="244" height="20" uuid="10002980-c2c2-4629-90b6-59e80fa9b584"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CURDATE}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="18" y="168" width="541" height="20" uuid="fbfc76b5-7fac-4d28-8f63-90d0c42d41af"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="18" y="274" width="541" height="20" uuid="fbfc76b5-7fac-4d28-8f63-90d0c42d41af"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SITEDESCRIPTION}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="18" y="217" width="531" height="263" uuid="c0ebb74a-aba9-4ff1-9235-6ae9cd449ba7"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="18" y="323" width="531" height="165" uuid="c0ebb74a-aba9-4ff1-9235-6ae9cd449ba7"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{EVENT}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="16" y="545" width="154" height="95" uuid="4fa4dd74-0006-4961-97e0-b53e9d40a635"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERSONDAMAGE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="201" y="545" width="154" height="95" uuid="d331f786-38d4-48bb-bde8-49bd43291f8f"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PROPERTYDAMAGE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="391" y="545" width="154" height="95" uuid="e0494040-1e98-418b-9c73-f72337647521"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ENVIRENEMENTDAMAGE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="21" y="669" width="524" height="46" uuid="44ca4834-2cec-4588-9601-9965488fc531"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{OBVIOUSCAUSE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="21" y="742" width="195" height="20" uuid="3acd8799-c40a-4531-96c4-766c07056200"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{AGENTDECLARE}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="301" y="742" width="195" height="20" uuid="e3cbe755-c18f-4588-9da3-61b4709ec9a9"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{AGENTVALIDATE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="299" width="561" height="1" uuid="98c184bf-46ca-4b9f-8f74-f3198fcb9c62"/>
+			</line>
+			<staticText>
+				<reportElement x="14" y="260" width="319" height="19" uuid="222766f4-5d91-4010-8311-0a6e3d7c89bf"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. Description du lieu et des installations impliquées :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="8" y="154" width="93" height="16" uuid="24fc3b7e-83b5-4256-a00a-66650371cbdc"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. Victimes :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="1" y="171" width="559" height="86" uuid="889b0680-200c-4286-92a6-b33ba2fa5f13"/>
+				<box leftPadding="10">
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VICTIM}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

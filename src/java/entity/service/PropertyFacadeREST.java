@@ -7,7 +7,7 @@ package entity.service;
 
 import entity.Property;
 import entity.PropertyPK;
-import static entity.PropertyPK_.idobject;
+// import static entity.PropertyPK_.idobject;
 import java.math.BigInteger;
 import java.util.List;
 import javax.ejb.Stateless;

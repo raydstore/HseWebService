@@ -8,6 +8,7 @@ import entity.Aggravatingfactor;
 import entity.Cause;
 import entity.Recommendation;
 import entity.Site;
+import entity.Stepaccident;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -16,7 +17,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-21T08:41:00")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2021-03-04T15:45:04")
 @StaticMetamodel(Accident.class)
 public class Accident_ { 
 
@@ -29,6 +30,7 @@ public class Accident_ {
     public static volatile SingularAttribute<Accident, Date> datecreate;
     public static volatile SingularAttribute<Accident, Date> dateupdate;
     public static volatile CollectionAttribute<Accident, Recommendation> recommendationCollection;
+    public static volatile SingularAttribute<Accident, Date> writein;
     public static volatile SingularAttribute<Accident, String> pevent;
     public static volatile CollectionAttribute<Accident, Accidentnature> accidentnatureCollection;
     public static volatile SingularAttribute<Accident, String> victim;
@@ -43,6 +45,7 @@ public class Accident_ {
     public static volatile SingularAttribute<Accident, BigInteger> tabindex;
     public static volatile SingularAttribute<Accident, String> persondamage;
     public static volatile SingularAttribute<Accident, String> classification;
+    public static volatile CollectionAttribute<Accident, Stepaccident> stepaccidentCollection;
     public static volatile CollectionAttribute<Accident, Actionaccident> actionaccidentCollection;
     public static volatile SingularAttribute<Accident, Agent> idagentdeclare;
     public static volatile SingularAttribute<Accident, String> lastuser;

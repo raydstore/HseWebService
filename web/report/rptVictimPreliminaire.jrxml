@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptVictimPreliminaire" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5e4e4f7c-af9e-41f6-bb19-379e5e45e998">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="hseCon.xml"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p" class="java.math.BigDecimal"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT VW$ACCIDENTVICTIM.*, 
+     ROW_NUMBER()
+   OVER (PARTITION BY kind ORDER BY num) || kind AS NAMEOFKIND
+FROM VW$ACCIDENTVICTIM
+WHERE 
+   VW$ACCIDENTVICTIM.IDACCIDENT = $P{p}
+ORDER BY VW$ACCIDENTVICTIM.POSITION, NAMEOFKIND]]>
+	</queryString>
+	<field name="IDACCIDENT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDACCIDENT"/>
+	</field>
+	<field name="KIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="KIND"/>
+	</field>
+	<field name="ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+	</field>
+	<field name="IDDAMAGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDDAMAGE"/>
+	</field>
+	<field name="REGISTRATIONNUMBER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="REGISTRATIONNUMBER"/>
+	</field>
+	<field name="NAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAME"/>
+	</field>
+	<field name="DATEOFBIRTH" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEOFBIRTH"/>
+	</field>
+	<field name="FUNCTION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FUNCTION"/>
+	</field>
+	<field name="NAMEENTREPRISE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEENTREPRISE"/>
+	</field>
+	<field name="ACCIDENTDOMAIN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ACCIDENTDOMAIN"/>
+	</field>
+	<field name="COUNTSTOPWORK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COUNTSTOPWORK"/>
+	</field>
+	<field name="TYPEACCIDENT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TYPEACCIDENT"/>
+	</field>
+	<field name="SAMURY" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SAMURY"/>
+	</field>
+	<field name="DATECREATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATECREATE"/>
+	</field>
+	<field name="DATEUPDATE" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="DATEUPDATE"/>
+	</field>
+	<field name="OWNER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="OWNER"/>
+	</field>
+	<field name="LASTUSER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="LASTUSER"/>
+	</field>
+	<field name="IDGRID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="IDGRID"/>
+	</field>
+	<field name="NBYEARWORK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NBYEARWORK"/>
+	</field>
+	<field name="AGE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="AGE"/>
+	</field>
+	<field name="POSITION" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="POSITION"/>
+	</field>
+	<field name="NUM" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NUM"/>
+	</field>
+	<field name="NAMEOFKIND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMEOFKIND"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16">
+			<staticText>
+				<reportElement positionType="Float" x="9" y="0" width="111" height="14" uuid="2ec54b91-9f23-48f1-ba1d-c3bd9cb0cff8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Nom et prénom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="236" y="0" width="111" height="14" uuid="4b5ef2c2-0bbd-464b-93e8-86c2f01fb6d6"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fonction :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="446" y="0" width="111" height="14" uuid="d47f4aa0-3c25-405d-8210-eeb4a586210f"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Appartenance :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="6" y="0" width="214" height="13" uuid="d109fc81-5263-41cd-ae11-4e348bb7024f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51df97a5-d8aa-451a-a7aa-0c350ecbca57"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="235" y="0" width="207" height="13" uuid="9745e5e1-f6b8-46ee-86c6-5454ae9dbcff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74472789-9aaf-4e64-8928-7e8ef1bbea4a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{FUNCTION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="446" y="0" width="100" height="13" uuid="faa66dc4-0f74-46d2-a0c3-6bae26c16a24">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d50f9d4d-c606-42b2-a2ca-c322fe097a08"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NAMEOFKIND}.equalsIgnoreCase("1SH") ? "Sonatrach" : ($F{NAMEOFKIND}.equalsIgnoreCase("1EE") ? "Entreprise exterieur" : ($F{NAMEOFKIND}.equalsIgnoreCase("1TP") ? "Tièrce personne" : ""))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

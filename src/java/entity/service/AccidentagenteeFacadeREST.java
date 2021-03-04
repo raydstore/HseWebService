@@ -41,8 +41,14 @@ public class AccidentagenteeFacadeREST extends AbstractFacade<Accidentagentee> {
          * it is ignored in the following code.
          * Matrix parameters are used as field names to build a primary key instance.
          */
+        System.out.print(" -- bs ---- ");
+        System.out.print(pathSegment);
+        System.out.print(" -- ends ---- ");
         entity.AccidentagenteePK key = new entity.AccidentagenteePK();
         javax.ws.rs.core.MultivaluedMap<String, String> map = pathSegment.getMatrixParameters();
+        System.out.print(" -- bm ---- ");
+        System.out.print(map);
+        System.out.print(" -- end ---- ");
         java.util.List<String> id = map.get("id");
         if (id != null && !id.isEmpty()) {
             key.setId(new java.math.BigInteger(id.get(0)));

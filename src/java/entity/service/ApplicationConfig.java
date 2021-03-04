@@ -60,6 +60,7 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.CauseFacadeREST.class);
         resources.add(entity.service.DamageFacadeREST.class);
         resources.add(entity.service.DamagedefinitionFacadeREST.class);
+        resources.add(entity.service.DelegateroleFacadeREST.class);
         resources.add(entity.service.DetailagentFacadeREST.class);
         resources.add(entity.service.DetailopscardFacadeREST.class);
         resources.add(entity.service.DetailopscardstructureFacadeREST.class);
@@ -93,14 +94,19 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.PropertyFacadeREST.class);
         resources.add(entity.service.RankFacadeREST.class);
         resources.add(entity.service.RecommendationFacadeREST.class);
+        resources.add(entity.service.RoleFacadeREST.class);
         resources.add(entity.service.SendactionFacadeREST.class);
         resources.add(entity.service.SiteFacadeREST.class);
         resources.add(entity.service.StatementtaskFacadeREST.class);
+        resources.add(entity.service.StepaccidentFacadeREST.class);
         resources.add(entity.service.StructureFacadeREST.class);
         resources.add(entity.service.TitletaskFacadeREST.class);
         resources.add(entity.service.TypeobjectFacadeREST.class);
         resources.add(entity.service.TypeoperationFacadeREST.class);
         resources.add(entity.service.UnitmeasureFacadeREST.class);
+        resources.add(entity.service.UserdelegateroleFacadeREST.class);
+        resources.add(entity.service.UsersFacadeREST.class);
+        resources.add(entity.service.VehiculedisputtingFacadeREST.class);
         resources.add(entity.service.VpropertyFacadeREST.class);
         resources.add(entity.service.VwAccidentagentshbitFacadeREST.class);
         resources.add(entity.service.VwAccidentnatureFacadeREST.class);
@@ -117,12 +123,16 @@ public class ApplicationConfig extends Application {
         resources.add(entity.service.VwGridforaccidentFacadeREST.class);
         resources.add(entity.service.VwInspectedsiteFacadeREST.class);
         resources.add(entity.service.VwLastidoftableFacadeREST.class);
+        resources.add(entity.service.VwListreportofaccidentFacadeREST.class);
         resources.add(entity.service.VwNotelementofnatureaccidentFacadeREST.class);
         resources.add(entity.service.VwNotnatureofaccidentFacadeREST.class);
         resources.add(entity.service.VwOpscardFacadeREST.class);
         resources.add(entity.service.VwPropertyFacadeREST.class);
         resources.add(entity.service.VwReststructureofopscardFacadeREST.class);
+        resources.add(entity.service.VwSchemavehiculedisputtingFacadeREST.class);
         resources.add(entity.service.VwSitenotinspectedFacadeREST.class);
+        resources.add(entity.service.VwUserauthorizationmoduleFacadeREST.class);
+        resources.add(entity.service.VwVehiculedisputtingFacadeREST.class);
         resources.add(entity.service.WorkFacadeREST.class);
         resources.add(entity.service.WorksheetFacadeREST.class);
     }

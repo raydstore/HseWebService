@@ -78,8 +78,6 @@ public class Accidentagentee implements Serializable {
     @Size(min = 1, max = 1)
     @Column(name = "TYPEACCIDENT")
     private String typeaccident;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 512)
     @Column(name = "SAMURY")
     private String samury;
